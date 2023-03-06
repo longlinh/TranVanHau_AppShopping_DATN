@@ -1,11 +1,18 @@
 package com.example.appshoppingdatn
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.appshoppingdatn.base.activity.BaseActivity
+import com.example.appshoppingdatn.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity<ActivityMainBinding>(){
+
+    override fun getLayoutResourceId(): Int {
+        return R.layout.activity_main
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        mBinding.txtData.text = "Hau"
     }
+
 }
