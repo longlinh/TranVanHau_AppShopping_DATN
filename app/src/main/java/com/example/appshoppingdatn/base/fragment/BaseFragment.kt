@@ -19,6 +19,12 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
         binding = DataBindingUtil.inflate(inflater, getLayoutResId(), container, false)
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initControls(view, savedInstanceState)
+    }
     abstract fun getLayoutResId(): Int
 
+    abstract fun initControls(view: View, savedInstanceState: Bundle?)
 }

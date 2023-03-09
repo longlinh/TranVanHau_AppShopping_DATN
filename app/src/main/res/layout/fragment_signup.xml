@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/custom_editext_login"
+            android:drawableStart="@drawable/baseline_email_24"
+            android:drawablePadding="15dp"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:textSize="18sp"
+            android:padding="15dp"
+            android:textColor="@color/black" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/custom_editext_login"
+            android:drawableStart="@drawable/baseline_person_24"
+            android:drawablePadding="15dp"
+            android:hint="User"
+            android:textSize="18sp"
+            android:inputType="text"
+            android:maxLines="1"
+            android:padding="15dp"
+            android:textColor="@color/black" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/custom_editext_login"
+            android:drawableStart="@drawable/baseline_lock_24"
+            android:drawablePadding="15dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:padding="15dp"
+            android:textSize="18sp"
+            android:textColor="@color/black" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="18sp"
+            android:background="@drawable/custom_editext_login"
+            android:drawableStart="@drawable/baseline_email_24"
+            android:drawablePadding="15dp"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:padding="15dp"
+            android:textColor="@color/black" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/custom_editext_login"
+            android:drawableStart="@drawable/baseline_local_phone_24"
+            android:drawablePadding="15dp"
+            android:hint="Phone number"
+            android:inputType="phone"
+            android:maxLines="1"
+            android:padding="15dp"
+            android:textColor="@color/black" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@drawable/custom_btn_login"
+            android:text="Login"
+            android:textAllCaps="false"
+            android:id="@+id/btnLogin"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textSize="23sp" />
+    </LinearLayout>
+</layout>

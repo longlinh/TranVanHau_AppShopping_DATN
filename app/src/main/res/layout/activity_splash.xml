@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.activity.splash.SplashActivity">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:elevation="1dp"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/background_splash"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:elevation="2dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/app_logo"
+                android:src="@drawable/ic_hive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/app_text"
+                android:layout_width="260dp"
+                android:layout_marginTop="90dp"
+                android:layout_alignParentEnd="true"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bee2"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+</layout>

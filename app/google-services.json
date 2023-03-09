@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1031083338163",
+    "project_id": "appshoppingdatn",
+    "storage_bucket": "appshoppingdatn.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1031083338163:android:e365c09be5a54b89c883c6",
+        "android_client_info": {
+          "package_name": "com.example.appshoppingdatn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1031083338163-9081i5q8moj7ukhq399v8bc22025e3om.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABahdPqRAUJTRmvpL7TGEOcb4y2D-ByHo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1031083338163-9081i5q8moj7ukhq399v8bc22025e3om.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
