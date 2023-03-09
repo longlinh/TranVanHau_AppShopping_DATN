@@ -1,4 +1,4 @@
-package com.example.appshoppingdatn.ui.activity.login
+package com.example.appshoppingdatn.presentation.ui.activity.login
 
 import android.graphics.Color
 import android.os.Bundle
@@ -6,10 +6,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.example.appshoppingdatn.R
-import com.example.appshoppingdatn.base.activity.BaseActivity
+import com.example.appshoppingdatn.presentation.ui.base.activity.BaseActivity
 import com.example.appshoppingdatn.databinding.ActivityLoginBinding
-import com.example.appshoppingdatn.ui.fragment.signin.SigninFragment
-import com.example.appshoppingdatn.ui.fragment.signup.SignupFragment
+import com.example.appshoppingdatn.presentation.ui.fragment.signin.SigninFragment
+import com.example.appshoppingdatn.presentation.ui.fragment.signup.SignupFragment
 
 class LoginActivity : BaseActivity<ActivityLoginBinding>() {
     private var viewPagerAdapter: ViewPagerAdapter? = null

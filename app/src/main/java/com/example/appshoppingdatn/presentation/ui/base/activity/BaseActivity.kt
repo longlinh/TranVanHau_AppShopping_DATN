@@ -1,4 +1,4 @@
-package com.example.appshoppingdatn.base.activity
+package com.example.appshoppingdatn.presentation.ui.base.activity
 
 import android.os.Bundle
 

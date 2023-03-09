@@ -14,10 +14,10 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".ui.activity.login.LoginActivity"
+            android:name=".presentation.ui.activity.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activity.splash.SplashActivity"
+            android:name=".presentation.ui.activity.splash.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +26,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activity.home.MainActivity"
+            android:name=".presentation.ui.activity.home.MainActivity"
             android:exported="false" />
     </application>
 

@@ -1,13 +1,13 @@
-package com.example.appshoppingdatn.ui.activity.splash
+package com.example.appshoppingdatn.presentation.ui.activity.splash
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.animation.AnimationUtils
 import com.example.appshoppingdatn.R
-import com.example.appshoppingdatn.base.activity.BaseActivity
+import com.example.appshoppingdatn.presentation.ui.base.activity.BaseActivity
 import com.example.appshoppingdatn.databinding.ActivitySplashBinding
-import com.example.appshoppingdatn.ui.activity.home.MainActivity
-import com.example.appshoppingdatn.ui.activity.login.LoginActivity
+import com.example.appshoppingdatn.presentation.ui.activity.home.MainActivity
+import com.example.appshoppingdatn.presentation.ui.activity.login.LoginActivity
 
 
 class SplashActivity : BaseActivity<ActivitySplashBinding>() {

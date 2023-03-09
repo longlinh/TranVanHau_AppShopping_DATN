@@ -1,9 +1,9 @@
-package com.example.appshoppingdatn.ui.fragment.signup
+package com.example.appshoppingdatn.presentation.ui.fragment.signup
 
 import android.os.Bundle
 import android.view.View
 import com.example.appshoppingdatn.R
-import com.example.appshoppingdatn.base.fragment.BaseFragment
+import com.example.appshoppingdatn.presentation.ui.base.fragment.BaseFragment
 import com.example.appshoppingdatn.databinding.FragmentSignupBinding
 
 class SignupFragment : BaseFragment<FragmentSignupBinding>() {

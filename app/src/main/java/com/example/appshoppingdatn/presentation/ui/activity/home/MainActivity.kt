@@ -1,8 +1,8 @@
-package com.example.appshoppingdatn.ui.activity.home
+package com.example.appshoppingdatn.presentation.ui.activity.home
 
 import android.os.Bundle
 import com.example.appshoppingdatn.R
-import com.example.appshoppingdatn.base.activity.BaseActivity
+import com.example.appshoppingdatn.presentation.ui.base.activity.BaseActivity
 import com.example.appshoppingdatn.databinding.ActivityMainBinding
 
 class MainActivity : BaseActivity<ActivityMainBinding>(){

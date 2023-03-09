@@ -1,4 +1,4 @@
-package com.example.appshoppingdatn.base.fragment
+package com.example.appshoppingdatn.presentation.ui.base.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
