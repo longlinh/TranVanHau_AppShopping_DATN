@@ -1,6 +1,7 @@
 package com.example.appshoppingdatn.presentation.ui.base.activity
 
 import android.os.Bundle
+import android.widget.Toast
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -18,4 +19,8 @@ abstract class BaseActivity<T : ViewDataBinding> :AppCompatActivity() {
     abstract fun getLayoutResourceId(): Int
 
     abstract fun initControls(savedInstanceState: Bundle?)
+
+    fun showMessage(message : String){
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
 }
