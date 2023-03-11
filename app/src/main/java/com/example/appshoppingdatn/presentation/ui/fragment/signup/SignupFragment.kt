@@ -5,12 +5,15 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.example.appshoppingdatn.R
-import com.example.appshoppingdatn.presentation.ui.base.fragment.BaseFragment
 import com.example.appshoppingdatn.databinding.FragmentSignupBinding
 import com.example.appshoppingdatn.presentation.ui.activity.home.MainActivity
+import com.example.appshoppingdatn.presentation.ui.activity.login.LoginActivity
+import com.example.appshoppingdatn.presentation.ui.base.fragment.BaseFragment
+import com.example.appshoppingdatn.ultis.CustomProgressDialog
 
 class SignupFragment : BaseFragment<FragmentSignupBinding>() {
     private lateinit var viewModel : SignupViewModel
+    private var dialog: CustomProgressDialog? = null
     override fun getLayoutResId(): Int {
         return R.layout.fragment_signup
     }
@@ -20,13 +23,29 @@ class SignupFragment : BaseFragment<FragmentSignupBinding>() {
         viewModel.uiEventLiveData.observe(this){
             when(it){
                 SignupViewModel.NAV_REGISTER_SUCCESS -> onRegisterSuccess()
+                SignupViewModel.DIALOG_REGISTER_SHOW -> onShowDialog()
+                SignupViewModel.DIALOG_REGISTER_DIS -> onDisDialog()
+                SignupViewModel.NAV_REGISTER_ERROR -> onRegisterFail()
             }
         }
+        dialog = CustomProgressDialog(context)
         onSignup()
     }
 
+    private fun onRegisterFail() {
+        showMessage("Wrong email format or already existing account !")
+    }
+
+    private fun onDisDialog() {
+        dialog!!.dismiss()
+    }
+
+    private fun onShowDialog() {
+        dialog!!.show()
+    }
+
     private fun onRegisterSuccess() {
-        val intent = Intent(context, MainActivity::class.java)
+        val intent = Intent(context, LoginActivity::class.java)
         context?.startActivity(intent)
         showMessage("Signup Success")
     }
@@ -38,12 +57,7 @@ class SignupFragment : BaseFragment<FragmentSignupBinding>() {
             val confirmPassword = binding.edtConfirmPassword.text.toString().trim()
             val passWord = binding.edtPassword.text.toString().trim()
             val phone = binding.edtPhone.text.toString().trim()
-            viewModel.email = email
-            viewModel.passWord = passWord
-            viewModel.cofirmPassword = confirmPassword
-            viewModel.user = user
-            viewModel.phoneNumber = phone
-            viewModel.onSignup()
+            viewModel.onSignup(email,user,passWord,confirmPassword,phone,binding.edtEmail,binding.edtUser,binding.edtPassword,binding.edtConfirmPassword,binding.edtPhone)
         }
 
     }

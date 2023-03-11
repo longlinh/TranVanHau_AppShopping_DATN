@@ -1,20 +1,14 @@
 package com.example.appshoppingdatn.presentation.ui.fragment.signup
 
-import android.text.TextUtils
-import androidx.lifecycle.MutableLiveData
+import android.widget.EditText
 import com.example.appshoppingdatn.presentation.ui.base.SingleLiveData
 import com.example.appshoppingdatn.presentation.ui.base.viewmodel.BaseViewModel
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
 class SignupViewModel : BaseViewModel(){
-    lateinit var email : String
-    lateinit var user : String
-    lateinit var passWord : String
-    lateinit var cofirmPassword : String
-    lateinit var phoneNumber : String
-    private var firebaseUserMutableLiveData : MutableLiveData<FirebaseUser> ?= null
-    private var auth: FirebaseAuth?=null
+    private var auth: FirebaseAuth ?=null
     val uiEventLiveData = SingleLiveData<Int>()
 
     companion object{
@@ -22,33 +16,57 @@ class SignupViewModel : BaseViewModel(){
         const val DIALOG_REGISTER_SHOW = 2
         const val DIALOG_REGISTER_DIS = 3
         const val NAV_REGISTER_ERROR = 4
-        const val SHOW_MESSAGE_ERROR_VALIDATE = 5
     }
 
     init {
-
-        firebaseUserMutableLiveData = MutableLiveData()
         auth = FirebaseAuth.getInstance()
-        if (auth!!.currentUser !=null){
-            firebaseUserMutableLiveData!!.postValue(auth!!.currentUser)
+    }
+    fun onSignup(email : String,user : String,passWord : String,cofirmPassword : String,phoneNumber : String,
+    edtEmail : EditText , edtUser : EditText , edtPassword : EditText , edtConfirmPass : EditText , edtPhone : EditText){
+        if (email.isEmpty()){
+            showMessageValidate(edtEmail,"Email is not empty !")
+        }
+        else if (!emailValidator(email)){
+            showMessageValidate(edtEmail,"Invalid email !")
+        }
+        else if (user.isEmpty()){
+            showMessageValidate(edtUser,"User is not empty !")
+        }
+        else if (passWord.isEmpty()){
+            showMessageValidate(edtPassword,"Password is not empty !")
+        }
+        else if (passWord.length < 6){
+            showMessageValidate(edtPassword,"Password must be 6 or more characters !")
+        }
+        else if (cofirmPassword.isEmpty()){
+            showMessageValidate(edtConfirmPass,"Invalid password !")
+        }
+        else if (phoneNumber.isEmpty()){
+            showMessageValidate(edtPhone,"Phone number is not empty !")
+        }
+        else if (cofirmPassword != passWord){
+            showMessageValidate(edtConfirmPass,"Password was wrong !")
+        }
+        else{
+            uiEventLiveData.value = DIALOG_REGISTER_SHOW
+            auth?.createUserWithEmailAndPassword(email, passWord)?.addOnCompleteListener { task ->
+                uiEventLiveData.value = DIALOG_REGISTER_DIS
+                if (task.isSuccessful) {
+                    uiEventLiveData.value = NAV_REGISTER_SUCCESS
+                } else {
+                    uiEventLiveData.value = NAV_REGISTER_ERROR
+                }
+            }
         }
     }
-    fun onSignup(){
-        if (TextUtils.isEmpty(email)||TextUtils.isEmpty(passWord)||TextUtils.isEmpty(user)||TextUtils.isEmpty(cofirmPassword)||TextUtils.isEmpty(phoneNumber)){
-                uiEventLiveData.value = SHOW_MESSAGE_ERROR_VALIDATE
-        }else{
-            //uiEventLiveData.value = DIALOG_REGISTER_SHOW
-            auth?.createUserWithEmailAndPassword(email,passWord)?.addOnSuccessListener{task->
-//            uiEventLiveData.value = DIALOG_REGISTER_DIS
-
-                    uiEventLiveData.value = NAV_REGISTER_SUCCESS
-                }
-                    //uiEventLiveData.value = NAV_REGISTER_ERROR
-
-            }
-
-
+    private fun emailValidator(email: String?): Boolean {
+        val pattern: Pattern
+        val EMAIL_PATTERN = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
+        pattern = Pattern.compile(EMAIL_PATTERN)
+        val matcher: Matcher = pattern.matcher(email)
+        return matcher.matches()
     }
-
-
+    private fun showMessageValidate(edt : EditText,messageError : String){
+        edt.error = messageError
+    }
 }

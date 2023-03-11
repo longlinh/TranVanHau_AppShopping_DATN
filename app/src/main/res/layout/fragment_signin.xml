@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/edtPassword"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="35dp"
+                android:layout_marginEnd="53dp"
                 android:layout_marginBottom="15dp"
                 android:src="@drawable/baseline_visibility_24" />
         </RelativeLayout>
@@ -78,6 +78,7 @@
                 android:layout_height="wrap_content"
                 android:text="Forgot password ?"
                 android:textSize="18sp"
+                android:id="@+id/txtForgotPassword"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="20dp"
