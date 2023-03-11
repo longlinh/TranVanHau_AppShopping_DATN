@@ -2,6 +2,7 @@ package com.example.appshoppingdatn.presentation.ui.fragment.signin
 
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
+import android.view.Gravity
 import android.widget.EditText
 import android.widget.ImageView
 import com.example.appshoppingdatn.R
@@ -20,6 +21,7 @@ class SigninViewModel : BaseViewModel() {
         const val DIALOG_LOGIN_SHOW = 2
         const val DIALOG_LOGIN_DIS = 3
         const val NAV_LOGIN_ERROR = 4
+        const val RESET_PASSWORD_SUCCESS = 5
     }
 
     init {
@@ -36,9 +38,6 @@ class SigninViewModel : BaseViewModel() {
         else if (passWord.isEmpty()){
             showMessageValidate(edtPassword,"Password is not empty !")
         }
-        else if (passWord.length < 6){
-            showMessageValidate(edtPassword,"Password must be 6 or more characters !")
-        }
         else{
             uiEventLiveData.value = DIALOG_LOGIN_SHOW
             auth!!.signInWithEmailAndPassword(email, passWord).addOnCompleteListener { task ->
@@ -49,6 +48,22 @@ class SigninViewModel : BaseViewModel() {
                     uiEventLiveData.value = NAV_LOGIN_ERROR
                 }
             }
+        }
+    }
+    fun onResetPassword(email: String , edtEmail : EditText){
+        if (email.isEmpty()){
+            showMessageValidate(edtEmail,"Email is not empty !")
+        }else if (!emailValidator(email)){
+            showMessageValidate(edtEmail,"Invalid email !")
+        }else{
+            uiEventLiveData.value = DIALOG_LOGIN_SHOW
+            auth!!.sendPasswordResetEmail(email)
+                .addOnCompleteListener { task ->
+                    uiEventLiveData.value = DIALOG_LOGIN_DIS
+                    if (task.isSuccessful) {
+                       uiEventLiveData.value = RESET_PASSWORD_SUCCESS
+                    }
+                }
         }
     }
     private fun emailValidator(email: String?): Boolean {
@@ -73,4 +88,5 @@ class SigninViewModel : BaseViewModel() {
         }
         edtPassword.setSelection(edtPassword.length())
     }
+
 }

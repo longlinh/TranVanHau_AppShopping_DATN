@@ -6,7 +6,6 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.example.appshoppingdatn.R
 import com.example.appshoppingdatn.databinding.FragmentSignupBinding
-import com.example.appshoppingdatn.presentation.ui.activity.home.MainActivity
 import com.example.appshoppingdatn.presentation.ui.activity.login.LoginActivity
 import com.example.appshoppingdatn.presentation.ui.base.fragment.BaseFragment
 import com.example.appshoppingdatn.ultis.CustomProgressDialog

@@ -1,5 +1,6 @@
 package com.example.appshoppingdatn.presentation.ui.activity.login
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -18,9 +19,10 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
         return R.layout.activity_login
     }
 
+    @SuppressLint("ResourceType")
     override fun initControls(savedInstanceState: Bundle?) {
         mBinding.tabLayout.setupWithViewPager(mBinding.viewPager)
-        mBinding.tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#9F1DB9EA"))
+        mBinding.tabLayout.setSelectedTabIndicatorColor(Color.parseColor(getString(R.color.backgound_main)))
         viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
         viewPagerAdapter!!.addFragment(SigninFragment(),"Signin")
         viewPagerAdapter!!.addFragment(SignupFragment(),"Signup")

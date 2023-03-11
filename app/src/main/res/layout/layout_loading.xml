@@ -9,6 +9,7 @@
         android:layout_width="50dp"
         android:progressTint="@color/backgound_main"
         android:progressBackgroundTint="@color/backgound_main"
+
         android:layout_height="50dp"/>
     <TextView
         android:layout_width="wrap_content"
