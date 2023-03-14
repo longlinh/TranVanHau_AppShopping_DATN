@@ -27,6 +27,7 @@
         </activity>
         <activity
             android:name=".presentation.ui.activity.home.HomeActivity"
+            android:theme="@style/CustomNavigation"
             android:exported="false" />
     </application>
 

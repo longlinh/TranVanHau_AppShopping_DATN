@@ -7,20 +7,46 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".presentation.ui.activity.home.HomeActivity">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello World!"
-            android:id="@+id/txtData"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/bottomBar"
+                tools:context=".presentation.ui.activity.home.HomeActivity">
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/frame"
+                    app:layout_anchor="@id/appBar"
+                    android:layout_gravity="top"/>
+                <com.google.android.material.bottomappbar.BottomAppBar
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    app:fabCradleMargin="5sp"
+                    app:fabCradleRoundedCornerRadius="20sp"
+                    android:backgroundTint="@color/backgound_main"
+                    app:fabCradleVerticalOffset="2sp"
+                    android:background="@color/backgound_main"
+                    android:id="@+id/appBar">
+                    <com.google.android.material.bottomnavigation.BottomNavigationView
+                        android:id="@+id/bottomNavigation"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="15dp"
+                        android:background="@android:color/transparent"
+                        app:itemIconTint="@color/custom_navigation"
+                        app:itemTextColor="@color/custom_navigation"
+                        app:menu="@menu/menu_bottom_navigation" />
+                </com.google.android.material.bottomappbar.BottomAppBar>
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/backgound_main"
+                    android:src="@drawable/baseline_shopping_cart_24"
+                    app:layout_anchor="@id/appBar"
+                    android:id="@+id/btnCart"
+                    android:elevation="5dp"
+                    app:elevation="3sp"/>
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

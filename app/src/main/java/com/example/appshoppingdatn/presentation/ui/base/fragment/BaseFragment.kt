@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import com.example.appshoppingdatn.R
 
 abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
     lateinit var binding : T
@@ -27,6 +28,11 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
     }
     fun showMessage(message : String){
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+    }
+    open fun replaceFragment(fragment: Fragment) {
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.frame, fragment, Fragment::class.java.name)
+            .commit()
     }
     abstract fun getLayoutResId(): Int
 
