@@ -67,6 +67,8 @@ dependencies {
 
     //recyclerview
     implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
+    //circle indicator
+    implementation 'me.relex:circleindicator:2.1.6'
 
     implementation "com.google.code.gson:gson:$gson_version"
     implementation("com.squareup.okhttp3:okhttp:$okhttp_version")
