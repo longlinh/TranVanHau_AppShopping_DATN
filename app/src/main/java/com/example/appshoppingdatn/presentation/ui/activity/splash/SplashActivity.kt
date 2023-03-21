@@ -4,13 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.animation.AnimationUtils
 import com.example.appshoppingdatn.R
+import com.example.appshoppingdatn.data.database.SQLiteHelper
 import com.example.appshoppingdatn.presentation.ui.base.activity.BaseActivity
 import com.example.appshoppingdatn.databinding.ActivitySplashBinding
 import com.example.appshoppingdatn.presentation.ui.activity.login.LoginActivity
 
 
 class SplashActivity : BaseActivity<ActivitySplashBinding>() {
-
+    private var sqliteHelper : SQLiteHelper?=null
 
     override fun getLayoutResourceId(): Int {
         return R.layout.activity_splash
@@ -36,6 +37,22 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
             }
         }
         thread.start()
+        createTableSQLite()
+    }
+
+    private fun createTableSQLite() {
+        sqliteHelper = SQLiteHelper(this,"Shopping.db",null,1)
+        sqliteHelper!!.QueryData("CREATE TABLE IF NOT EXISTS FAVORITE(Id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "IdAccount VARCHAR(20)," +
+                "IdSP INTEGER," +
+                "Image NVARCHAR(100)," +
+                "NameSP NVARCHAR(100)," +
+                "PriceNow FLOAT,"+
+                "PriceOld FLOAT,"+
+                "Discription NVARCHAR(100),"+
+                "Type NVARCHAR(50),"+
+                "Selled INTEGER ,"+
+                "CheckFav NVARCHAR(50))")
     }
 
 

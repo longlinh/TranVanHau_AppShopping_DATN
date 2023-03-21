@@ -1,6 +1,7 @@
 package com.example.appshoppingdatn.presentation.ui.fragment.home
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
@@ -40,12 +41,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
     }
 
     private fun onDemoDataNew() {
-        listNew!!.add(New(0,R.drawable.iphone14,"[Mã AP1 giảm 5% tối đa 500k] Apple iphone 14 pro max 512GB",15500000f,"","",150))
-        listNew!!.add(New(0,R.drawable.iphone14,"[Mã AP1 giảm 5% tối đa 500k] Apple iphone 14 pro max 512GB",15500000f,"","",150))
-        listNew!!.add(New(0,R.drawable.iphone14,"[Mã AP1 giảm 5% tối đa 500k] Apple iphone 14 pro max 512GB",15500000f,"","",150))
-        listNew!!.add(New(0,R.drawable.iphone14,"[Mã AP1 giảm 5% tối đa 500k] Apple iphone 14 pro max 512GB",15500000f,"","",150))
-        listNew!!.add(New(0,R.drawable.iphone14,"[Mã AP1 giảm 5% tối đa 500k] Apple iphone 14 pro max 512GB",15500000f,"","",150))
-        listNew!!.add(New(0,R.drawable.iphone14,"[Mã AP1 giảm 5% tối đa 500k] Apple iphone 14 pro max 512GB",15500000f,"","",150))
+        listNew!!.add(New(0,"https://tranvanhau2001.000webhostapp.com/Hinhanh/iphone14.png","[Mã AP1 giảm 5% tối đa 500k] Apple iphone 14 pro max 512GB",15500000f,"","",150,0))
+        listNew!!.add(New(0,"https://tranvanhau2001.000webhostapp.com/Hinhanh/iphone14.png","[Mã AP1 giảm 5% tối đa 500k] Apple iphone 14 pro max 512GB",15500000f,"","",150,0))
+        listNew!!.add(New(0,"https://tranvanhau2001.000webhostapp.com/Hinhanh/iphone14.png","[Mã AP1 giảm 5% tối đa 500k] Apple iphone 14 pro max 512GB",15500000f,"","",150,1))
+        listNew!!.add(New(0,"https://tranvanhau2001.000webhostapp.com/Hinhanh/iphone14.png","[Mã AP1 giảm 5% tối đa 500k] Apple iphone 14 pro max 512GB",15500000f,"","",150,0))
+        listNew!!.add(New(0,"https://tranvanhau2001.000webhostapp.com/Hinhanh/iphone14.png","[Mã AP1 giảm 5% tối đa 500k] Apple iphone 14 pro max 512GB",15500000f,"","",150,0))
+        listNew!!.add(New(0,"https://tranvanhau2001.000webhostapp.com/Hinhanh/iphone14.png","[Mã AP1 giảm 5% tối đa 500k] Apple iphone 14 pro max 512GB",15500000f,"","",150,0))
         val linearLayoutManager = GridLayoutManager(context,2)
         binding.recylerNew.layoutManager = linearLayoutManager
         binding.recylerNew.adapter = newAdapter
@@ -53,11 +54,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
 
     @SuppressLint("WrongConstant")
     private fun onDemoDataSale() {
-        listSale!!.add(Sale(0,R.drawable.iphone14,"[Mã AP1 giảm 5% tối đa 500k] Apple iphone 14 pro max 512GB",15500000f,17500000f,"","",120,13))
-        listSale!!.add(Sale(0,R.drawable.iphone14,"[Mã AP1 giảm 5% tối đa 500k] Apple iphone 14 pro max 512GB",17560000f,19500000f,"","",130,20))
-        listSale!!.add(Sale(0,R.drawable.iphone14,"[Mã AP1 giảm 5% tối đa 500k] Apple iphone 14 pro max 512GB",23599000f,33500000f,"","",1200,30))
-        listSale!!.add(Sale(0,R.drawable.iphone14,"[Mã AP1 giảm 5% tối đa 500k] Apple iphone 14 pro max 512GB",13500000f,15500000f,"","",190,23))
-        listSale!!.add(Sale(0,R.drawable.iphone14,"[Mã AP1 giảm 5% tối đa 500k] Apple iphone 14 pro max 512GB",5500000f,8500000f,"","",520,15))
+        listSale!!.add(Sale(0,"https://tranvanhau2001.000webhostapp.com/Hinhanh/iphone14.png","[Mã AP1 giảm 5% tối đa 500k] Apple iphone 14 pro max 512GB",15500000f,17500000f,"","",120,13,0))
+        listSale!!.add(Sale(0,"https://tranvanhau2001.000webhostapp.com/Hinhanh/iphone14.png","[Mã AP1 giảm 5% tối đa 500k] Apple iphone 14 pro max 512GB",17560000f,19500000f,"","",130,20,1))
+        listSale!!.add(Sale(0,"https://tranvanhau2001.000webhostapp.com/Hinhanh/iphone14.png","[Mã AP1 giảm 5% tối đa 500k] Apple iphone 14 pro max 512GB",23599000f,33500000f,"","",1200,30,0))
+        listSale!!.add(Sale(0,"https://tranvanhau2001.000webhostapp.com/Hinhanh/iphone14.png","[Mã AP1 giảm 5% tối đa 500k] Apple iphone 14 pro max 512GB",13500000f,15500000f,"","",190,23,0))
+        listSale!!.add(Sale(0,"https://tranvanhau2001.000webhostapp.com/Hinhanh/iphone14.png","[Mã AP1 giảm 5% tối đa 500k] Apple iphone 14 pro max 512GB",5500000f,8500000f,"","",520,15,1))
         val linearLayoutManager = LinearLayoutManager.HORIZONTAL
         binding.recylerFlashSale.layoutManager = LinearLayoutManager(context,linearLayoutManager,false)
         binding.recylerFlashSale.adapter = saleAdapter
@@ -95,11 +96,27 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
        return listSale!![position]
     }
 
+    override fun getContextSale(): Context {
+        return requireContext()
+    }
+
     override fun getCountNew(): Int {
       return listNew!!.size
     }
 
     override fun getDataNew(position: Int): New {
         return listNew!![position]
+    }
+
+    override fun onClickInsertToFavorite(news: New) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onClickRemoveFavorite(news: New) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getContextNew(): Context {
+        return requireContext()
     }
 }
