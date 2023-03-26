@@ -4,12 +4,16 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.appshoppingdatn.R
+import com.example.appshoppingdatn.data.database.SQLiteHelper
 import com.example.appshoppingdatn.databinding.ItemNewBinding
+import com.example.appshoppingdatn.model.Favorite
 import com.example.appshoppingdatn.model.New
 import com.example.appshoppingdatn.ultis.Utils
+import com.google.firebase.auth.FirebaseAuth
 import java.text.DecimalFormat
 
 class NewAdapter(private val inter : INew) : RecyclerView.Adapter<NewAdapter.Companion.NewViewHolder>() {
@@ -20,8 +24,9 @@ class NewAdapter(private val inter : INew) : RecyclerView.Adapter<NewAdapter.Com
         fun getCountNew() : Int
         fun getDataNew(position : Int) : New
         fun onClickInsertToFavorite(news : New)
-        fun onClickRemoveFavorite(news : New)
+        fun onClickRemoveFavorite(news: New)
         fun getContextNew() : Context
+        fun onStatusFav(news : New , img : ImageView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewViewHolder {
@@ -41,11 +46,8 @@ class NewAdapter(private val inter : INew) : RecyclerView.Adapter<NewAdapter.Com
         holder.binding.txtNameNew.text = news.nameNew
         holder.binding.txtPriceNew.text = decimalFormat.format(news.priceNew)+"đ"
         holder.binding.txtSelledNew.text = "Đã bán " + news.selledNew
-        if (news.fav_status == 0){
-            holder.binding.imgFavorite.setImageResource(R.drawable.no_favorite)
-        }else{
-            holder.binding.imgFavorite.setImageResource(R.drawable.baseline_favorite_24)
-        }
+
+        inter.onStatusFav(news,holder.binding.imgFavorite)
         holder.binding.imgFavorite.setOnClickListener {
             if (news.fav_status == 0){
                 news.fav_status = 1
@@ -57,5 +59,7 @@ class NewAdapter(private val inter : INew) : RecyclerView.Adapter<NewAdapter.Com
                 inter.onClickRemoveFavorite(news)
             }
         }
+
     }
+
 }

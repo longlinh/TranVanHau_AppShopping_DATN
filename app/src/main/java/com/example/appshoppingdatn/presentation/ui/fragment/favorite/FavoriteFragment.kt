@@ -3,32 +3,65 @@ package com.example.appshoppingdatn.presentation.ui.fragment.favorite
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.appshoppingdatn.R
 import com.example.appshoppingdatn.databinding.FragmentFavoriteBinding
 import com.example.appshoppingdatn.model.Favorite
 import com.example.appshoppingdatn.presentation.ui.base.fragment.BaseFragment
 import com.example.appshoppingdatn.presentation.ui.fragment.favorite.adapter.FavoriteAdapter
+import com.example.appshoppingdatn.ultis.Utils
 
 class FavoriteFragment : BaseFragment<FragmentFavoriteBinding>() , FavoriteAdapter.IFav{
     private var adapter : FavoriteAdapter ?= null
+    private lateinit var viewModel: FavoriteViewModel
 
     override fun getLayoutResId(): Int {
         return R.layout.fragment_favorite
     }
 
     override fun initControls(view: View, savedInstanceState: Bundle?) {
+        viewModel = ViewModelProvider(this)[FavoriteViewModel::class.java]
+        viewModel.uiEventLiveData.observe(this){
+            when(it){
+
+            }
+        }
         adapter = FavoriteAdapter(this)
+        onShowDataFavorite()
+        initRecylerview()
+    }
+
+    private fun onShowDataFavorite() {
+        viewModel.onShowData(requireContext())
+    }
+
+    private fun initRecylerview() {
+        val linearLayoutManager = GridLayoutManager(context,2)
+        binding.recylerFavorite.layoutManager = linearLayoutManager
+        binding.recylerFavorite.adapter = adapter
     }
 
     override fun getCount(): Int {
-        TODO("Not yet implemented")
+        if (viewModel.listFav == null){
+            return 0
+        }
+        return viewModel.listFav!!.size
     }
 
     override fun getDataFav(position: Int): Favorite {
-        TODO("Not yet implemented")
+       return viewModel.listFav!![position]
     }
 
-    override fun getContext(): Context {
-        TODO("Not yet implemented")
+    override fun getContextFav(): Context {
+        return requireContext()
+    }
+
+    override fun onCLickRemove(position: Int) {
+        val fav = viewModel.listFav!![position]
+        viewModel.onRemoveFav(fav.idFav,requireContext())
+        viewModel.onRemoveItem(position)
+        initRecylerview()
     }
 }

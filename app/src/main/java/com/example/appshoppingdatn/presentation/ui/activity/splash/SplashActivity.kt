@@ -5,9 +5,9 @@ import android.os.Bundle
 import android.view.animation.AnimationUtils
 import com.example.appshoppingdatn.R
 import com.example.appshoppingdatn.data.database.SQLiteHelper
-import com.example.appshoppingdatn.presentation.ui.base.activity.BaseActivity
 import com.example.appshoppingdatn.databinding.ActivitySplashBinding
 import com.example.appshoppingdatn.presentation.ui.activity.login.LoginActivity
+import com.example.appshoppingdatn.presentation.ui.base.activity.BaseActivity
 
 
 class SplashActivity : BaseActivity<ActivitySplashBinding>() {
@@ -42,8 +42,8 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
 
     private fun createTableSQLite() {
         sqliteHelper = SQLiteHelper(this,"Shopping.db",null,1)
-        sqliteHelper!!.QueryData("CREATE TABLE IF NOT EXISTS FAVORITE(Id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "IdAccount VARCHAR(20)," +
+        sqliteHelper!!.QueryData("CREATE TABLE IF NOT EXISTS FAVORITE (Id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "IdAccount VARCHAR(100)," +
                 "IdSP INTEGER," +
                 "Image NVARCHAR(100)," +
                 "NameSP NVARCHAR(100)," +
@@ -52,6 +52,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
                 "Discription NVARCHAR(100),"+
                 "Type NVARCHAR(50),"+
                 "Selled INTEGER ,"+
+                "StatusFav INTEGER ," +
                 "CheckFav NVARCHAR(50))")
     }
 
