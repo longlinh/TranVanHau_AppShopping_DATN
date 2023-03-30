@@ -1,5 +1,7 @@
 package com.example.appshoppingdatn.presentation.ui.base.activity
 
+import android.content.Context
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.widget.Toast
 
@@ -29,5 +31,13 @@ abstract class BaseActivity<T : ViewDataBinding> :AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.frame, fragment, Fragment::class.java.name)
             .commit()
+    }
+    //Kiem tra ket noi internet
+    open fun isConnectedInternet(context: Context): Boolean {
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val networkWifi = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI)
+        val networkMobile = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE)
+        return networkWifi != null && networkWifi.isConnected || networkMobile != null && networkMobile.isConnected
     }
 }

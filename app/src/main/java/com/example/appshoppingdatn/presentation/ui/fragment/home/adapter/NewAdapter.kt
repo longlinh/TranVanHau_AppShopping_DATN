@@ -43,7 +43,7 @@ class NewAdapter(private val inter : INew) : RecyclerView.Adapter<NewAdapter.Com
         val decimalFormat = DecimalFormat("###,###,###")
         val news = inter.getDataNew(position)
         Glide.with(inter.getContextNew()).load(news.imgNew).into(holder.binding.imgNew)
-        holder.binding.txtNameNew.text = news.nameNew
+        holder.binding.txtNameNew.text = news.discriptionNew
         holder.binding.txtPriceNew.text = decimalFormat.format(news.priceNew)+"đ"
         holder.binding.txtSelledNew.text = "Đã bán " + news.selledNew
 

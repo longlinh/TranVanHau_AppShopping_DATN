@@ -1,5 +1,7 @@
 package com.example.appshoppingdatn.presentation.ui.base.fragment
 
+import android.content.Context
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -37,4 +39,13 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
     abstract fun getLayoutResId(): Int
 
     abstract fun initControls(view: View, savedInstanceState: Bundle?)
+
+    //Kiem tra ket noi internet
+    open fun isConnectedInternet(context: Context): Boolean {
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val networkWifi = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI)
+        val networkMobile = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE)
+        return networkWifi != null && networkWifi.isConnected || networkMobile != null && networkMobile.isConnected
+    }
 }
