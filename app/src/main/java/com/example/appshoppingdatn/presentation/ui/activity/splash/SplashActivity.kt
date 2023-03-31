@@ -42,7 +42,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
 
     private fun createTableSQLite() {
         sqliteHelper = SQLiteHelper(this,"Shopping1.db",null,2)
-        sqliteHelper!!.QueryData("CREATE TABLE FAVORITE1 (Id INTEGER PRIMARY KEY AUTOINCREMENT," +
+        sqliteHelper!!.QueryData("CREATE TABLE IF NOT EXISTS FAVORITE1 (Id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "IdAccount VARCHAR(100)," +
                 "IdSP INTEGER," +
                 "Image NVARCHAR(100)," +
