@@ -38,21 +38,22 @@ class SaleAdapter(private val inters : ISale) : RecyclerView.Adapter<SaleAdapter
     override fun onBindViewHolder(holder: SaleViewHolder, position: Int) {
         val decimalFormat = DecimalFormat("###,###,###")
         val saler = inters.getDataSale(position)
-        Glide.with(inters.getContextSale()).load(saler.imgSale).into(holder.binding.imgSale)
-        holder.binding.txtPercentSale.text = "-"+saler.percentSale+"%"
-        holder.binding.txtNameSale.text = saler.discriptionSale
-        holder.binding.txtPriceSaleOld.text = decimalFormat.format(saler.priceSaleOld)+"đ"
-        holder.binding.txtPriceSaleNew.text = decimalFormat.format(saler.priceSaleNow)+"đ"
-        holder.binding.txtSelled.text = "Đã bán " + saler.selledSale
+        Glide.with(inters.getContextSale()).load(saler.ImageSale).into(holder.binding.imgSale)
+        holder.binding.txtPercentSale.text = "-"+saler.PercentSale+"%"
+        holder.binding.txtNameSale.text = saler.DiscriptionSale
+        holder.binding.txtPriceSaleOld.text = decimalFormat.format(saler.PriceSaleOld)+"đ"
+        holder.binding.txtPriceSaleNew.text = decimalFormat.format(saler.PriceSaleNow)+"đ"
+        holder.binding.txtSelled.text = "Đã bán " + saler.SelledSale
 
         inters.onStatusSaleFav(saler,holder.binding.imgFavorite)
+
         holder.binding.imgFavorite.setOnClickListener {
-            if (saler.fav_status == 0){
-                saler.fav_status = 1
+            if (saler.FavStatusSale == 0){
+                saler.FavStatusSale = 1
                 holder.binding.imgFavorite.setImageResource(R.drawable.baseline_favorite_24)
                 inters.onClickInsertSaleToFavorite(saler)
             }else{
-                saler.fav_status = 0
+                saler.FavStatusSale = 0
                 holder.binding.imgFavorite.setImageResource(R.drawable.no_favorite)
                 inters.onClickRemoveSaleFavorite(saler)
             }

@@ -26,10 +26,10 @@ class FavoriteViewModel : BaseViewModel() {
         if (listFav != null){
             listFav!!.clear()
         }
-        sqLiteHelper = SQLiteHelper(context,"Shopping.db",null,1)
+        sqLiteHelper = SQLiteHelper(context,"Shopping1.db",null,2)
         firebaseUser = FirebaseAuth.getInstance().currentUser
         idAccount = firebaseUser!!.uid
-        val data = sqLiteHelper!!.getData("SELECT * FROM FAVORITE WHERE IdAccount = '$idAccount' AND StatusFav = '1' ")
+        val data = sqLiteHelper!!.getData("SELECT * FROM FAVORITE1 WHERE IdAccount = '$idAccount' AND StatusFav = '1' ")
         while (data.moveToNext()){
             val idFav = data.getInt(2)
             val imgFav = data.getString(3)
@@ -44,8 +44,8 @@ class FavoriteViewModel : BaseViewModel() {
         }
     }
     fun onRemoveFav(idFav : Int , context: Context){
-        sqLiteHelper = SQLiteHelper(context,"Shopping.db",null,1)
-        sqLiteHelper!!.QueryData("DELETE FROM FAVORITE WHERE IdSP = '$idFav'")
+        sqLiteHelper = SQLiteHelper(context,"Shopping1.db",null,2)
+        sqLiteHelper!!.QueryData("DELETE FROM FAVORITE1 WHERE IdSP = '$idFav'")
     }
     fun onRemoveItem(position : Int){
         listFav!!.removeAt(position)

@@ -42,19 +42,20 @@ class NewAdapter(private val inter : INew) : RecyclerView.Adapter<NewAdapter.Com
     override fun onBindViewHolder(holder: NewViewHolder, position: Int) {
         val decimalFormat = DecimalFormat("###,###,###")
         val news = inter.getDataNew(position)
-        Glide.with(inter.getContextNew()).load(news.imgNew).into(holder.binding.imgNew)
-        holder.binding.txtNameNew.text = news.discriptionNew
-        holder.binding.txtPriceNew.text = decimalFormat.format(news.priceNew)+"đ"
-        holder.binding.txtSelledNew.text = "Đã bán " + news.selledNew
+        Glide.with(inter.getContextNew()).load(news.ImageNew).into(holder.binding.imgNew)
+        holder.binding.txtNameNew.text = news.DiscriptionNew
+        holder.binding.txtPriceNew.text = decimalFormat.format(news.PriceNew)+"đ"
+        holder.binding.txtSelledNew.text = "Đã bán " + news.SelledNew
 
         inter.onStatusFav(news,holder.binding.imgFavorite)
+
         holder.binding.imgFavorite.setOnClickListener {
-            if (news.fav_status == 0){
-                news.fav_status = 1
+            if (news.FavStatus == 0){
+                news.FavStatus = 1
                 holder.binding.imgFavorite.setImageResource(R.drawable.baseline_favorite_24)
                 inter.onClickInsertToFavorite(news)
             }else{
-                news.fav_status = 0
+                news.FavStatus = 0
                 holder.binding.imgFavorite.setImageResource(R.drawable.no_favorite)
                 inter.onClickRemoveFavorite(news)
             }

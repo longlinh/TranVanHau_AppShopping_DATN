@@ -21,5 +21,6 @@ class SQLiteHelper(context: Context?, name: String?, factory: CursorFactory?, ve
     }
 
     override fun onCreate(sqLiteDatabase: SQLiteDatabase) {}
-    override fun onUpgrade(sqLiteDatabase: SQLiteDatabase, i: Int, i1: Int) {}
+    override fun onUpgrade(sqLiteDatabase: SQLiteDatabase, i: Int, i1: Int) {
+    }
 }

@@ -51,11 +51,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
 
     private fun onShowDataNew() {
         if (isConnectedInternet(requireContext())){
-           // viewModel.listSPNew.observe(this){
+            viewModel.listNewModel.observe(this){
                 val linearLayoutManager = GridLayoutManager(context,2)
                 binding.recylerNew.layoutManager = linearLayoutManager
                 binding.recylerNew.adapter = newAdapter
-          //  }
+            }
             Log.d("new",viewModel.listNewModel.toString())
         }else{
             showMessage("No internet !")
@@ -65,11 +65,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
     @SuppressLint("WrongConstant")
     private fun onDemoDataSale() {
         if (isConnectedInternet(requireContext())){
-        //    viewModel.listSale.observe(this){
+            viewModel.listSaleModel.observe(this){
                 val linearLayoutManager = LinearLayoutManager.HORIZONTAL
                 binding.recylerFlashSale.layoutManager = LinearLayoutManager(context,linearLayoutManager,false)
                 binding.recylerFlashSale.adapter = saleAdapter
-           // }
+            }
             Log.d("new",viewModel.listSaleModel.toString())
         }else{
             showMessage("No internet !")
@@ -101,11 +101,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
     }
 
     override fun getCountSale(): Int {
-        return viewModel.listSaleModel.size
+        return viewModel.listSaleModel.value!!.result.size
     }
 
     override fun getDataSale(position: Int): Sale {
-       return viewModel.listSaleModel[position]
+       return viewModel.listSaleModel.value!!.result[position]
     }
 
     override fun getContextSale(): Context {
@@ -114,12 +114,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
 
     override fun onClickInsertSaleToFavorite(sales: Sale) {
         val checkFav = "sale"
-        viewModel.onInsertFavoriteToSQLite(sales.idSale,sales.imgSale,sales.nameSale,sales.priceSaleNow,sales.priceSaleOld,sales.discriptionSale,sales.typeSale,sales.selledSale,sales.fav_status,checkFav,requireContext())
+        val identifier = 1
+        viewModel.onInsertFavoriteToSQLite(sales.IdSale,sales.ImageSale,sales.NameSale,sales.PriceSaleNow,sales.PriceSaleOld,sales.DiscriptionSale,sales.TypeSale,sales.SelledSale,sales.FavStatusSale,checkFav,identifier,requireContext())
         showMessage("Đã thêm vào danh sách yêu thích !")
     }
 
     override fun onClickRemoveSaleFavorite(sales: Sale) {
-        viewModel.onDeleteFavoriteToSQLite(sales.idSale,requireContext())
+        viewModel.onDeleteFavoriteToSQLite(sales.IdSale,requireContext())
         showMessage("Đã bỏ thích !")
     }
 
@@ -129,22 +130,26 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
 
 
     override fun getCountNew(): Int {
-      return viewModel.listNewModel.size
+        if (viewModel.listNewModel.value == null){
+            return 0
+        }
+        return viewModel.listNewModel.value!!.result.size
     }
 
     override fun getDataNew(position: Int): New {
-        return viewModel.listNewModel[position]
+        return viewModel.listNewModel.value!!.result[position]
     }
 
     override fun onClickInsertToFavorite(news : New) {
         val priceOld = 0f
         val checkFav = "new"
-        viewModel.onInsertFavoriteToSQLite(news.idNew,news.imgNew,news.nameNew,news.priceNew, priceOld,news.discriptionNew,news.typeNew,news.selledNew,news.fav_status,checkFav,requireContext())
+        val identifier = 0
+        viewModel.onInsertFavoriteToSQLite(news.IdNew,news.ImageNew,news.NameNew,news.PriceNew, priceOld,news.DiscriptionNew,news.TypeNew,news.SelledNew,news.FavStatus,checkFav,identifier,requireContext())
         showMessage("Đã thêm vào danh sách yêu thích !")
     }
 
     override fun onClickRemoveFavorite(news : New) {
-        viewModel.onDeleteFavoriteToSQLite(news.idNew,requireContext())
+        viewModel.onDeleteFavoriteToSQLite(news.IdNew,requireContext())
         showMessage("Đã bỏ thích !")
     }
 

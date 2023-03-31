@@ -1,12 +1,16 @@
 package com.example.appshoppingdatn.ultis
 
-import android.annotation.SuppressLint
-import android.widget.TextView
+
+
+import com.example.appshoppingdatn.model.NewModel
+import com.example.appshoppingdatn.model.SaleModel
+import java.util.ArrayList
 
 class Utils {
     companion object{
-        @SuppressLint("StaticFieldLeak")
-        var txtPriceOld : TextView ?= null
+        var listSalesMode :SaleModel ?= null
+        var listNewsModel  : NewModel ?= null
+        var count =0
     }
 
 }

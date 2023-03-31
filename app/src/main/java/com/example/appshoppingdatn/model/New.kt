@@ -1,13 +1,13 @@
 package com.example.appshoppingdatn.model
 
 class New(
-    val idNew : Int,
-    val imgNew : String,
-    val nameNew : String,
-    val priceNew : Float,
-    val discriptionNew : String,
-    val typeNew : String,
-    val selledNew : Int,
-    var fav_status : Int
+    val IdNew : Int,
+    val ImageNew : String,
+    val NameNew : String,
+    val PriceNew : Float,
+    val DiscriptionNew : String,
+    val TypeNew : String,
+    val SelledNew : Int,
+    var FavStatus : Int
 ) {
 }
