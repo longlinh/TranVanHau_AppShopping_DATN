@@ -54,7 +54,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
                 "Selled INTEGER ,"+
                 "StatusFav INTEGER ," +
                 "CheckFav NVARCHAR(50),"+
-                "Identifier INTEGER")
+                "Identifier INTEGER)")
     }
 
 
