@@ -1,7 +1,7 @@
 package com.example.appshoppingdatn.model
 
 data class Sale(
-    val IdSale : Int,
+    val IdSale : String,
     val ImageSale : String,
     val NameSale : String,
     val PriceSaleNow : Float,

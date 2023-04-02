@@ -1,7 +1,7 @@
 package com.example.appshoppingdatn.model
 
 data class Favorite(
-    val idFav : Int,
+    val idFav : String,
     val imgFav : String,
     val nameFav : String,
     val priceFavNow : Float,

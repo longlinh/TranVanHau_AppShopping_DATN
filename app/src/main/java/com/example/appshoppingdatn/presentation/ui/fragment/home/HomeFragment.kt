@@ -114,8 +114,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
 
     override fun onClickInsertSaleToFavorite(sales: Sale) {
         val checkFav = "sale"
-        val identifier = 1
-        viewModel.onInsertFavoriteToSQLite(sales.IdSale,sales.ImageSale,sales.NameSale,sales.PriceSaleNow,sales.PriceSaleOld,sales.DiscriptionSale,sales.TypeSale,sales.SelledSale,sales.FavStatusSale,checkFav,identifier,requireContext())
+        viewModel.onInsertFavoriteToSQLite(sales.IdSale,sales.ImageSale,sales.NameSale,sales.PriceSaleNow,sales.PriceSaleOld,sales.DiscriptionSale,sales.TypeSale,sales.SelledSale,sales.FavStatusSale,checkFav,requireContext())
         showMessage("Đã thêm vào danh sách yêu thích !")
     }
 
@@ -143,8 +142,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
     override fun onClickInsertToFavorite(news : New) {
         val priceOld = 0f
         val checkFav = "new"
-        val identifier = 0
-        viewModel.onInsertFavoriteToSQLite(news.IdNew,news.ImageNew,news.NameNew,news.PriceNew, priceOld,news.DiscriptionNew,news.TypeNew,news.SelledNew,news.FavStatus,checkFav,identifier,requireContext())
+        viewModel.onInsertFavoriteToSQLite(news.IdNew,news.ImageNew,news.NameNew,news.PriceNew, priceOld,news.DiscriptionNew,news.TypeNew,news.SelledNew,news.FavStatus,checkFav,requireContext())
         showMessage("Đã thêm vào danh sách yêu thích !")
     }
 

@@ -78,26 +78,25 @@ class HomeViewModel : BaseViewModel() {
             })
     }
 
-    fun onInsertFavoriteToSQLite(idFav : Int, imgFav : String , nameFav : String ,priceNew : Float , priceOld : Float, discription : String , type : String , selled : Int, status : Int , checkFav : String,identifier: Int, context : Context){
+    fun onInsertFavoriteToSQLite(idFav : String, imgFav : String , nameFav : String ,priceNew : Float , priceOld : Float, discription : String , type : String , selled : Int, status : Int , checkFav : String, context : Context){
         firebaseUser = FirebaseAuth.getInstance().currentUser
         idAccount = firebaseUser!!.uid
         sqLiteHelper = SQLiteHelper(context,"Shopping1.db",null,2)
-        sqLiteHelper!!.QueryData("INSERT INTO FAVORITE1 VALUES(null, '$idAccount' , '$idFav' , '$imgFav','$nameFav' ,'$priceNew','$priceOld','$discription','$type','$selled','$status','$checkFav','$identifier')")
+        sqLiteHelper!!.QueryData("INSERT INTO FAVORITE2 VALUES(null, '$idAccount' , '$idFav' , '$imgFav','$nameFav' ,'$priceNew','$priceOld','$discription','$type','$selled','$status','$checkFav')")
     }
-    fun onDeleteFavoriteToSQLite(id : Int, context: Context){
+    fun onDeleteFavoriteToSQLite(id : String, context: Context){
         sqLiteHelper = SQLiteHelper(context,"Shopping1.db",null,2)
-        sqLiteHelper!!.QueryData("DELETE FROM FAVORITE1 WHERE IdSP = '$id' ")
+        sqLiteHelper!!.QueryData("DELETE FROM FAVORITE2 WHERE IdSP = '$id' ")
     }
     fun onGetStatus(news: New,context: Context,img :ImageView) {
         sqLiteHelper = SQLiteHelper(context, "Shopping1.db", null, 2)
         firebaseUser = FirebaseAuth.getInstance().currentUser
         idAccount = firebaseUser!!.uid
-        val data = sqLiteHelper!!.getData("SELECT * FROM FAVORITE1 WHERE IdAccount = '$idAccount' AND IdSP = '${news.IdNew}'")
+        val data = sqLiteHelper!!.getData("SELECT * FROM FAVORITE2 WHERE IdAccount = '$idAccount' AND IdSP = '${news.IdNew}'")
         while (data.moveToNext()) {
             val favStatus = data.getInt(10)
-            val identifier = data.getInt(12)
             news.FavStatus = favStatus
-            if (favStatus == 1 && identifier == 0){
+            if (favStatus == 1){
                 img.setImageResource(R.drawable.baseline_favorite_24)
             }else{
                 img.setImageResource(R.drawable.no_favorite)
@@ -108,12 +107,11 @@ class HomeViewModel : BaseViewModel() {
         sqLiteHelper = SQLiteHelper(context, "Shopping1.db", null, 2)
         firebaseUser = FirebaseAuth.getInstance().currentUser
         idAccount = firebaseUser!!.uid
-        val data = sqLiteHelper!!.getData("SELECT * FROM FAVORITE1 WHERE IdAccount = '$idAccount' AND IdSP = '${sales.IdSale}'")
+        val data = sqLiteHelper!!.getData("SELECT * FROM FAVORITE2 WHERE IdAccount = '$idAccount' AND IdSP = '${sales.IdSale}'")
         while (data.moveToNext()) {
             val favStatus = data.getInt(10)
-            val identifier = data.getInt(12)
             sales.FavStatusSale = favStatus
-            if (favStatus == 1 && identifier == 1){
+            if (favStatus == 1){
                 img.setImageResource(R.drawable.baseline_favorite_24)
             }else{
                 img.setImageResource(R.drawable.no_favorite)

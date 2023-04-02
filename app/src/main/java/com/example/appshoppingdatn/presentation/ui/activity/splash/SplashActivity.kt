@@ -42,9 +42,9 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
 
     private fun createTableSQLite() {
         sqliteHelper = SQLiteHelper(this,"Shopping1.db",null,2)
-        sqliteHelper!!.QueryData("CREATE TABLE IF NOT EXISTS FAVORITE1 (Id INTEGER PRIMARY KEY AUTOINCREMENT," +
+        sqliteHelper!!.QueryData("CREATE TABLE IF NOT EXISTS FAVORITE2 (Id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "IdAccount VARCHAR(100)," +
-                "IdSP INTEGER," +
+                "IdSP NVARCHAR(50)," +
                 "Image NVARCHAR(100)," +
                 "NameSP NVARCHAR(100)," +
                 "PriceNow FLOAT,"+
@@ -53,8 +53,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
                 "Type NVARCHAR(50),"+
                 "Selled INTEGER ,"+
                 "StatusFav INTEGER ," +
-                "CheckFav NVARCHAR(50),"+
-                "Identifier INTEGER)")
+                "CheckFav NVARCHAR(50))")
     }
 
 

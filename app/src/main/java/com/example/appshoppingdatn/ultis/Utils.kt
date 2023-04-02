@@ -10,7 +10,6 @@ class Utils {
     companion object{
         var listSalesMode :SaleModel ?= null
         var listNewsModel  : NewModel ?= null
-        var count =0
     }
 
 }

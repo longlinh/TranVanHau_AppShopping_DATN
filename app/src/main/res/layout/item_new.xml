@@ -24,10 +24,12 @@
                         android:layout_margin="7dp"
                         android:id="@+id/imgFavorite"/>
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="95dp"
+                        android:layout_height="100dp"
                         android:layout_marginTop="5sp"
+                        android:scaleType="fitCenter"
                         android:id="@+id/imgNew"
+                        android:layout_centerHorizontal="true"
                         android:src="@drawable/iphone14"/>
                     <ImageView
                         android:layout_width="45dp"
