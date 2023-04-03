@@ -7,6 +7,7 @@ import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -34,6 +35,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
         return R.layout.fragment_home
     }
 
+    @SuppressLint("WrongConstant")
     override fun initControls(view: View, savedInstanceState: Bundle?) {
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         viewModel.uiEventLiveData.observe(this){
@@ -41,9 +43,21 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
 
             }
         }
+        viewModel.isLoading.observe(this, Observer {
+            if (it){
+                binding.layoutLoadingNew.visibility = View.VISIBLE
+                binding.layoutLoadingSale.visibility = View.VISIBLE
+            }else{
+                binding.layoutLoadingNew.visibility = View.GONE
+                binding.layoutLoadingSale.visibility = View.GONE
+                binding.recylerNew.visibility = View.VISIBLE
+                binding.recylerFlashSale.visibility = View.VISIBLE
+            }
+        })
         customViewpager()
         newAdapter = NewAdapter(this@HomeFragment)
         saleAdapter = SaleAdapter(this@HomeFragment)
+
         onDemoDataSale()
         onShowDataNew()
 
@@ -70,7 +84,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
                 binding.recylerFlashSale.layoutManager = LinearLayoutManager(context,linearLayoutManager,false)
                 binding.recylerFlashSale.adapter = saleAdapter
             }
-            Log.d("new",viewModel.listSaleModel.toString())
         }else{
             showMessage("No internet !")
         }
@@ -124,6 +137,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
     }
 
     override fun onStatusSaleFav(sales: Sale, img: ImageView) {
+        Log.d("onStatusSaleFav",sales.toString())
         viewModel.onGetStatusSale(sales,requireContext(),img)
     }
 

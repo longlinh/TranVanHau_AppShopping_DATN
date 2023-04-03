@@ -2,6 +2,7 @@ package com.example.appshoppingdatn.presentation.ui.fragment.home.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -44,10 +45,12 @@ class SaleAdapter(private val inters : ISale) : RecyclerView.Adapter<SaleAdapter
         holder.binding.txtPriceSaleOld.text = decimalFormat.format(saler.PriceSaleOld)+"đ"
         holder.binding.txtPriceSaleNew.text = decimalFormat.format(saler.PriceSaleNow)+"đ"
         holder.binding.txtSelled.text = "Đã bán " + saler.SelledSale
+        Log.d("listSale",saler.toString())
 
         inters.onStatusSaleFav(saler,holder.binding.imgFavorite)
 
         holder.binding.imgFavorite.setOnClickListener {
+            Log.d("sale",saler.toString())
             if (saler.FavStatusSale == 0){
                 saler.FavStatusSale = 1
                 holder.binding.imgFavorite.setImageResource(R.drawable.baseline_favorite_24)

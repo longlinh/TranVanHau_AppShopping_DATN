@@ -32,47 +32,59 @@ class HomeViewModel : BaseViewModel() {
     private  var apiService : APIService ?= null
     private var compositeDisposable = CompositeDisposable()
 
+
     init {
         apiService = RetrofitClient.instance.create(APIService::class.java)
         if (Utils.listNewsModel != null){
             listNewModel.value = Utils.listNewsModel
+            isLoading.value = false
         }else{
             getSPNew()
         }
         if (Utils.listSalesMode != null){
             listSaleModel.value = Utils.listSalesMode
+            isLoading.value = false
         }else{
             getSPSale()
-
         }
 
     }
 
     private fun getSPSale() {
+        isLoading.value = true
         compositeDisposable.addAll(apiService!!.getSPSale()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe{
                 saleModel ->
                 run {
+                    isLoading.value = false
                     if (saleModel.success) {
-                        listSaleModel.value = SaleModel(saleModel.success, saleModel.message, saleModel.result)
-                        Utils.listSalesMode = saleModel
+                        if (saleModel.result != null){
+                            listSaleModel.value = SaleModel(saleModel.success, saleModel.message, saleModel.result)
+                            Utils.listSalesMode = saleModel
+
+                        }
                     }
                 }
             })
     }
 
     private fun getSPNew() {
+        isLoading.value = true
         compositeDisposable.addAll(apiService!!.getSPNew()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe{
                     newModel ->
                 run {
+                    isLoading.value = false
                     if (newModel.success) {
-                        listNewModel.value = NewModel(newModel.success,newModel.message,newModel.result)
-                        Utils.listNewsModel = newModel
+                        if (newModel.result != null){
+                            listNewModel.value = NewModel(newModel.success,newModel.message,newModel.result)
+                            Utils.listNewsModel = newModel
+
+                        }
                     }
                 }
             })
@@ -109,7 +121,10 @@ class HomeViewModel : BaseViewModel() {
         idAccount = firebaseUser!!.uid
         val data = sqLiteHelper!!.getData("SELECT * FROM FAVORITE2 WHERE IdAccount = '$idAccount' AND IdSP = '${sales.IdSale}'")
         while (data.moveToNext()) {
+            Log.d("onGetStatusSale: ", "$data.")
             val favStatus = data.getInt(10)
+            val id = data.getString(2)
+            Log.d("idsp , fav ",id+"$favStatus")
             sales.FavStatusSale = favStatus
             if (favStatus == 1){
                 img.setImageResource(R.drawable.baseline_favorite_24)

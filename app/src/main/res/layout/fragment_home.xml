@@ -242,12 +242,37 @@
                         android:layout_height="40dp"
                         android:src="@drawable/flash_sale"/>
                 </LinearLayout>
-                <androidx.recyclerview.widget.RecyclerView
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="5sp"
-                    android:id="@+id/recylerFlashSale"/>
+                    android:layout_height="wrap_content">
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/layoutLoadingSale"
+                        android:layout_centerInParent="true"
+                        android:padding="10dp">
+                        <ProgressBar
+                            android:id="@+id/progressBar"
+                            android:layout_width="50dp"
+                            android:progressTint="@color/backgound_main"
+                            android:progressBackgroundTint="@color/backgound_main"
+                            android:layout_height="50dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Loading..."
+                            android:layout_below="@id/progressBar"/>
+                    </RelativeLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="5sp"
+                        android:visibility="invisible"
+                        android:id="@+id/recylerFlashSale"/>
+                </RelativeLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -268,13 +293,37 @@
                         android:layout_marginStart="5dp"
                         android:src="@drawable/sp_new"/>
                 </LinearLayout>
-                <androidx.recyclerview.widget.RecyclerView
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="5sp"
-                    android:layout_marginBottom="10dp"
-                    android:id="@+id/recylerNew"/>
+                    android:layout_height="wrap_content">
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/layoutLoadingNew"
+                        android:layout_centerInParent="true"
+                        android:padding="10dp">
+                        <ProgressBar
+                            android:id="@+id/progressBarNew"
+                            android:layout_width="50dp"
+                            android:progressTint="@color/backgound_main"
+                            android:progressBackgroundTint="@color/backgound_main"
+                            android:layout_height="50dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Loading..."
+                            android:layout_below="@id/progressBarNew"/>
+                    </RelativeLayout>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:visibility="invisible"
+                        android:layout_marginTop="5sp"
+                        android:layout_marginBottom="10dp"
+                        android:id="@+id/recylerNew"/>
+                </RelativeLayout>
+
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </RelativeLayout>
