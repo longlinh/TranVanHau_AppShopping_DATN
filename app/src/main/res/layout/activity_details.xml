@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.ui.activity.detail.DetailsActivity">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gui1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="366dp" />
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/gui2"
+            app:layout_constraintGuide_percent="0.45"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:elevation="5dp"
+            android:background="@drawable/custom_border_detail"
+            app:layout_constraintBottom_toBottomOf="@+id/gui1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+
+            <ImageView
+                android:id="@+id/imgDetails"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/iphone14" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            app:top="@+id/gui1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@id/gui2"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:top="@+id/gui1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@id/gui1">
+            <RelativeLayout
+                android:layout_width="150dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/custom_layout_number_oder_detail">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/minus"
+                    android:layout_marginStart="15dp"
+                    android:layout_centerVertical="true"/>
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/plus"
+                    android:layout_marginEnd="15dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"/>
+                <RelativeLayout
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/custom_circle_white">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textSize="17dp"
+                        android:textColor="@color/black"
+                        android:layout_centerInParent="true" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

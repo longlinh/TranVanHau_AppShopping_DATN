@@ -24,12 +24,9 @@ class CategoryViewModel : BaseViewModel() {
     init {
         apiService = RetrofitClient.instance.create(APIService::class.java)
         Log.d("type", type)
-
     }
 
     fun getDataCategory(type : String) {
-        Log.d("check",type)
-        Log.d("compo",compositeDisposable.isDisposed.toString())
         compositeDisposable.add(apiService!!.getCategory(type)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -37,7 +34,6 @@ class CategoryViewModel : BaseViewModel() {
                 {
                     productModel ->
                     run {
-                        Log.d("hau","ok")
                         if (productModel.success){
                             listProductModel.value = ProductModel(productModel.success,productModel.message,productModel.result)
                             Log.d("data",productModel.result.toString())
