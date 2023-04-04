@@ -17,6 +17,8 @@ import com.example.appshoppingdatn.model.Banner
 import com.example.appshoppingdatn.model.New
 import com.example.appshoppingdatn.model.Sale
 import com.example.appshoppingdatn.presentation.ui.base.fragment.BaseFragment
+import com.example.appshoppingdatn.presentation.ui.fragment.category.CategoryFragment
+import com.example.appshoppingdatn.presentation.ui.fragment.category.CategoryViewModel
 import com.example.appshoppingdatn.presentation.ui.fragment.home.adapter.NewAdapter
 import com.example.appshoppingdatn.presentation.ui.fragment.home.adapter.SaleAdapter
 import com.example.appshoppingdatn.presentation.ui.fragment.home.adapter.ViewPagerAdapter
@@ -40,7 +42,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         viewModel.uiEventLiveData.observe(this){
             when(it){
-
+                HomeViewModel.SHOW_MESSAGE_EROR -> onShowError()
             }
         }
         viewModel.isLoading.observe(this, Observer {
@@ -57,10 +59,21 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
         customViewpager()
         newAdapter = NewAdapter(this@HomeFragment)
         saleAdapter = SaleAdapter(this@HomeFragment)
-
         onDemoDataSale()
         onShowDataNew()
+        onClickCategory()
 
+    }
+
+    private fun onClickCategory() {
+        binding.layoutLaptop.setOnClickListener {
+            CategoryViewModel.type = "laptop"
+            replaceFragment(CategoryFragment())
+        }
+    }
+
+    private fun onShowError() {
+        showMessage("Can't load data")
     }
 
     private fun onShowDataNew() {

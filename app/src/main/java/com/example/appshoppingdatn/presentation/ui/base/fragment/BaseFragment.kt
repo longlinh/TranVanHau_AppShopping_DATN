@@ -33,9 +33,11 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
     }
     open fun replaceFragment(fragment: Fragment) {
         requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.frame, fragment, Fragment::class.java.name)
+            .replace(R.id.frame, fragment)
+            .addToBackStack(Fragment::class.java.name)
             .commit()
     }
+
     abstract fun getLayoutResId(): Int
 
     abstract fun initControls(view: View, savedInstanceState: Bundle?)

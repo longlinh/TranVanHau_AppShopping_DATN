@@ -48,7 +48,11 @@ class SaleAdapter(private val inters : ISale) : RecyclerView.Adapter<SaleAdapter
         Log.d("listSale",saler.toString())
 
         inters.onStatusSaleFav(saler,holder.binding.imgFavorite)
-
+        if (saler.FavStatusSale == 1){
+            holder.binding.imgFavorite.setImageResource(R.drawable.baseline_favorite_24)
+        }else{
+            holder.binding.imgFavorite.setImageResource(R.drawable.no_favorite)
+        }
         holder.binding.imgFavorite.setOnClickListener {
             Log.d("sale",saler.toString())
             if (saler.FavStatusSale == 0){

@@ -17,6 +17,6 @@ interface APIService {
     @POST("getcategory.php")
     @FormUrlEncoded
     fun getCategory(
-        @Field("TypeProduct") type : Int
+        @Field("TypeProduct") type : String
     ) : Observable<ProductModel>
 }

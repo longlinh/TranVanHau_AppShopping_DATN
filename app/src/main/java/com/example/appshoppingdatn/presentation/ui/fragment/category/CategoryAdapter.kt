@@ -11,6 +11,7 @@ import com.example.appshoppingdatn.model.Product
 import java.text.DecimalFormat
 
 class CategoryAdapter(private val inters : ICategory) : RecyclerView.Adapter<CategoryAdapter.Companion.CategoryViewHolder>() {
+
     companion object{
         class CategoryViewHolder(val binding : ItemCategoryBinding) : RecyclerView.ViewHolder(binding.root)
     }

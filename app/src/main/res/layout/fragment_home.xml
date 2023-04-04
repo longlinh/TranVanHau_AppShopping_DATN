@@ -96,6 +96,7 @@
                                 android:background="@drawable/custom_layout_category"
                                 android:layout_height="80dp"
                                 android:gravity="center"
+                                android:id="@+id/layout_Laptop"
                                 android:layout_margin="10dp"
                                 android:orientation="vertical">
                                 <ImageView
@@ -117,6 +118,7 @@
                                 android:background="@drawable/custom_layout_category"
                                 android:layout_height="80dp"
                                 android:layout_margin="10dp"
+                                android:id="@+id/layout_Watch"
                                 android:gravity="center"
                                 android:orientation="vertical">
                                 <ImageView
@@ -139,6 +141,7 @@
                                 android:layout_height="80dp"
                                 android:gravity="center"
                                 android:layout_margin="10dp"
+                                android:id="@+id/layout_Phone"
                                 android:orientation="vertical">
                                 <ImageView
                                     android:layout_width="45dp"

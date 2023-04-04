@@ -32,7 +32,11 @@ class HomeViewModel : BaseViewModel() {
     private  var apiService : APIService ?= null
     private var compositeDisposable = CompositeDisposable()
 
+    companion object{
 
+        const val SHOW_MESSAGE_EROR = 1
+
+    }
     init {
         apiService = RetrofitClient.instance.create(APIService::class.java)
         if (Utils.listNewsModel != null){
@@ -55,7 +59,7 @@ class HomeViewModel : BaseViewModel() {
         compositeDisposable.addAll(apiService!!.getSPSale()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe{
+            .subscribe(){
                 saleModel ->
                 run {
                     isLoading.value = false
@@ -88,6 +92,7 @@ class HomeViewModel : BaseViewModel() {
                     }
                 }
             })
+
     }
 
     fun onInsertFavoriteToSQLite(idFav : String, imgFav : String , nameFav : String ,priceNew : Float , priceOld : Float, discription : String , type : String , selled : Int, status : Int , checkFav : String, context : Context){
@@ -119,18 +124,10 @@ class HomeViewModel : BaseViewModel() {
         sqLiteHelper = SQLiteHelper(context, "Shopping1.db", null, 2)
         firebaseUser = FirebaseAuth.getInstance().currentUser
         idAccount = firebaseUser!!.uid
-        val data = sqLiteHelper!!.getData("SELECT * FROM FAVORITE2 WHERE IdAccount = '$idAccount' AND IdSP = '${sales.IdSale}'")
+        val data = sqLiteHelper!!.getData("SELECT * FROM FAVORITE2 WHERE IdAccount = '$idAccount' AND IdSP = '${sales.IdSale}' AND StatusFav = 1")
         while (data.moveToNext()) {
-            Log.d("onGetStatusSale: ", "$data.")
             val favStatus = data.getInt(10)
-            val id = data.getString(2)
-            Log.d("idsp , fav ",id+"$favStatus")
             sales.FavStatusSale = favStatus
-            if (favStatus == 1){
-                img.setImageResource(R.drawable.baseline_favorite_24)
-            }else{
-                img.setImageResource(R.drawable.no_favorite)
-            }
         }
     }
 }
