@@ -14,9 +14,7 @@ interface APIService {
     fun getSPNew() : Observable<NewModel>
     @GET("getspsale.php")
     fun getSPSale() : Observable<SaleModel>
-    @POST("getcategory.php")
-    @FormUrlEncoded
+    @GET("getcategory.php")
     fun getCategory(
-        @Field("TypeProduct") type : String
     ) : Observable<ProductModel>
 }

@@ -70,6 +70,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
             CategoryViewModel.type = "laptop"
             replaceFragment(CategoryFragment())
         }
+        binding.layoutWatch.setOnClickListener {
+            CategoryViewModel.type = "watch"
+            replaceFragment(CategoryFragment())
+        }
+        binding.layoutPhone.setOnClickListener {
+            CategoryViewModel.type = "phone"
+            replaceFragment(CategoryFragment())
+        }
     }
 
     private fun onShowError() {

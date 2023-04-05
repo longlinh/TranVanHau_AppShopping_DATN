@@ -18,22 +18,24 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="366dp" />
+
         <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gui2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:id="@+id/gui2"
-            app:layout_constraintGuide_percent="0.45"/>
+            app:layout_constraintGuide_percent="0.45" />
 
         <RelativeLayout
+            android:id="@+id/layout_product"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:elevation="5dp"
             android:background="@drawable/custom_border_detail"
+            android:elevation="5dp"
             app:layout_constraintBottom_toBottomOf="@+id/gui1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" >
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/imgDetails"
@@ -42,57 +44,55 @@
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/iphone14" />
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@color/white"
-            app:top="@+id/gui1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="@id/gui2"/>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:top="@+id/gui1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="@id/gui1">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_product">
+
             <RelativeLayout
                 android:layout_width="150dp"
-                android:layout_marginTop="10dp"
                 android:layout_height="40dp"
                 android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/custom_layout_number_oder_detail">
+
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/minus"
+                    android:layout_centerVertical="true"
                     android:layout_marginStart="15dp"
-                    android:layout_centerVertical="true"/>
+                    android:src="@drawable/minus" />
+
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/plus"
-                    android:layout_marginEnd="15dp"
                     android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"/>
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="15dp"
+                    android:src="@drawable/plus" />
+
                 <RelativeLayout
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:background="@drawable/custom_circle_white">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
                         android:text="1"
-                        android:textSize="17dp"
                         android:textColor="@color/black"
-                        android:layout_centerInParent="true" />
+                        android:textSize="17dp" />
                 </RelativeLayout>
             </RelativeLayout>
+
         </RelativeLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

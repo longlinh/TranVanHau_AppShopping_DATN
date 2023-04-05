@@ -27,12 +27,12 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>() , CategoryAdapt
             }
         }
         categoryAdapter = CategoryAdapter(this@CategoryFragment)
-        if (Utils.listProductModel != null){
-            viewModel.listProductModel.value = Utils.listProductModel
-        }else{
+//        if (Utils.listProductModel != null){
+//            viewModel.listProductModel.value = Utils.listProductModel
+//        }else{
 
             viewModel.getDataCategory(CategoryViewModel.type)
-        }
+//        }
         onShowDataCategory()
     }
 
