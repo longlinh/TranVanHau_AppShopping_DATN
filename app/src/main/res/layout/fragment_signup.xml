@@ -99,7 +99,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:background="@drawable/custom_btn_login"
-            android:text="Login"
+            android:text="Signup"
             android:textAllCaps="false"
             android:id="@+id/btnLogin"
             android:textStyle="bold"
