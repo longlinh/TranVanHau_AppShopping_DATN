@@ -9,4 +9,4 @@ data class Product(
     val TypeProduct : String,
     val SelledProduct : Int,
     var FavStatusProduct : Int
-)
+) : java.io.Serializable

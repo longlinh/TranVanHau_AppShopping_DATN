@@ -27,6 +27,7 @@ class NewAdapter(private val inter : INew) : RecyclerView.Adapter<NewAdapter.Com
         fun onClickRemoveFavorite(news: New)
         fun getContextNew() : Context
         fun onStatusFav(news : New , img : ImageView)
+        fun onClickItemNew(position: Int)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewViewHolder {
@@ -59,6 +60,9 @@ class NewAdapter(private val inter : INew) : RecyclerView.Adapter<NewAdapter.Com
                 holder.binding.imgFavorite.setImageResource(R.drawable.no_favorite)
                 inter.onClickRemoveFavorite(news)
             }
+        }
+        holder.itemView.setOnClickListener {
+            inter.onClickItemNew(position)
         }
 
     }

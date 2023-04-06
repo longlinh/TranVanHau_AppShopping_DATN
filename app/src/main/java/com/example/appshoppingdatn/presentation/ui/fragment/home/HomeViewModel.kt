@@ -3,6 +3,7 @@ package com.example.appshoppingdatn.presentation.ui.fragment.home
 import android.content.Context
 import android.util.Log
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.example.appshoppingdatn.R
 import com.example.appshoppingdatn.data.api.APIService
@@ -20,6 +21,7 @@ import com.google.firebase.auth.FirebaseUser
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import org.xml.sax.ErrorHandler
 import java.util.ArrayList
 
 class HomeViewModel : BaseViewModel() {
@@ -34,8 +36,8 @@ class HomeViewModel : BaseViewModel() {
 
     companion object{
 
-        const val SHOW_MESSAGE_EROR = 1
-
+        const val SHOW_MESSAGE_EROR_SALE = 1
+        const val SHOW_MESSAGE_EROR_NEW = 2
     }
     init {
         apiService = RetrofitClient.instance.create(APIService::class.java)
@@ -54,13 +56,13 @@ class HomeViewModel : BaseViewModel() {
 
     }
 
-    private fun getSPSale() {
+     fun getSPSale() {
         isLoading.value = true
         compositeDisposable.addAll(apiService!!.getSPSale()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(){
-                saleModel ->
+            .subscribe({
+                    saleModel ->
                 run {
                     isLoading.value = false
                     if (saleModel.success) {
@@ -71,15 +73,18 @@ class HomeViewModel : BaseViewModel() {
                         }
                     }
                 }
+            },{
+               uiEventLiveData.value = SHOW_MESSAGE_EROR_SALE
             })
+        )
     }
 
-    private fun getSPNew() {
+     fun getSPNew() {
         isLoading.value = true
         compositeDisposable.addAll(apiService!!.getSPNew()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe{
+            .subscribe({
                     newModel ->
                 run {
                     isLoading.value = false
@@ -91,7 +96,10 @@ class HomeViewModel : BaseViewModel() {
                         }
                     }
                 }
+            },{
+                uiEventLiveData.value = SHOW_MESSAGE_EROR_NEW
             })
+        )
 
     }
 

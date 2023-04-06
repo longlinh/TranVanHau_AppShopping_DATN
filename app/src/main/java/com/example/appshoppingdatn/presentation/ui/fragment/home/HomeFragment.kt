@@ -2,6 +2,7 @@ package com.example.appshoppingdatn.presentation.ui.fragment.home
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -16,13 +17,13 @@ import com.example.appshoppingdatn.databinding.FragmentHomeBinding
 import com.example.appshoppingdatn.model.Banner
 import com.example.appshoppingdatn.model.New
 import com.example.appshoppingdatn.model.Sale
+import com.example.appshoppingdatn.presentation.ui.activity.detail.DetailsActivity
 import com.example.appshoppingdatn.presentation.ui.base.fragment.BaseFragment
 import com.example.appshoppingdatn.presentation.ui.fragment.category.CategoryFragment
 import com.example.appshoppingdatn.presentation.ui.fragment.category.CategoryViewModel
 import com.example.appshoppingdatn.presentation.ui.fragment.home.adapter.NewAdapter
 import com.example.appshoppingdatn.presentation.ui.fragment.home.adapter.SaleAdapter
 import com.example.appshoppingdatn.presentation.ui.fragment.home.adapter.ViewPagerAdapter
-import com.example.appshoppingdatn.ultis.Utils
 import java.util.ArrayList
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , NewAdapter.INew {
@@ -42,7 +43,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         viewModel.uiEventLiveData.observe(this){
             when(it){
-                HomeViewModel.SHOW_MESSAGE_EROR -> onShowError()
+                HomeViewModel.SHOW_MESSAGE_EROR_SALE -> onShowError()
+                HomeViewModel.SHOW_MESSAGE_EROR_NEW -> onShowErrorNew()
             }
         }
         viewModel.isLoading.observe(this, Observer {
@@ -65,6 +67,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
 
     }
 
+    private fun onShowErrorNew() {
+        showMessage("Can't load data new")
+        viewModel.getSPNew()
+    }
+
     private fun onClickCategory() {
         binding.layoutLaptop.setOnClickListener {
             CategoryViewModel.type = "laptop"
@@ -81,7 +88,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
     }
 
     private fun onShowError() {
-        showMessage("Can't load data")
+        showMessage("Can't load data sale")
+        viewModel.getSPSale()
     }
 
     private fun onShowDataNew() {
@@ -162,6 +170,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
         viewModel.onGetStatusSale(sales,requireContext(),img)
     }
 
+    override fun onClickItemSale(position: Int) {
+        val intent = Intent(context, DetailsActivity::class.java)
+        val dataSale = viewModel.listSaleModel.value!!.result[position]
+        intent.putExtra("id",dataSale.IdSale)
+        intent.putExtra("img",dataSale.ImageSale)
+        intent.putExtra("name",dataSale.NameSale)
+        intent.putExtra("price",dataSale.PriceSaleNow)
+        intent.putExtra("des",dataSale.DiscriptionSale)
+        intent.putExtra("sell",dataSale.SelledSale)
+        startActivity(intent)
+    }
+
 
     override fun getCountNew(): Int {
         if (viewModel.listNewModel.value == null){
@@ -192,5 +212,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
 
     override fun onStatusFav(news: New, img: ImageView) {
         viewModel.onGetStatus(news,requireContext(),img)
+    }
+
+    override fun onClickItemNew(position: Int) {
+        val intent = Intent(context,DetailsActivity::class.java)
+        val dataNew = viewModel.listNewModel.value!!.result[position]
+        intent.putExtra("id",dataNew.IdNew)
+        intent.putExtra("img",dataNew.ImageNew)
+        intent.putExtra("name",dataNew.NameNew)
+        intent.putExtra("price",dataNew.PriceNew)
+        intent.putExtra("des",dataNew.DiscriptionNew)
+        intent.putExtra("sell",dataNew.SelledNew)
+        startActivity(intent)
     }
 }

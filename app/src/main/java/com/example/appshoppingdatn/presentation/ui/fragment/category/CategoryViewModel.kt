@@ -1,6 +1,5 @@
 package com.example.appshoppingdatn.presentation.ui.fragment.category
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.appshoppingdatn.data.api.APIService
 import com.example.appshoppingdatn.data.api.RetrofitClient
@@ -24,10 +23,10 @@ class CategoryViewModel : BaseViewModel() {
     }
     init {
         apiService = RetrofitClient.instance.create(APIService::class.java)
-        Log.d("type", type)
     }
 
     fun getDataCategory(type : String) {
+        isLoading.value = true
         compositeDisposable.add(apiService!!.getCategory()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -35,6 +34,7 @@ class CategoryViewModel : BaseViewModel() {
                 {
                     productModel ->
                     run {
+                        isLoading.value = false
                         if (productModel.success){
 //                            listProductModel.value = ProductModel(productModel.success,productModel.message,productModel.result)
                             val listProduct = mutableListOf<Product>()

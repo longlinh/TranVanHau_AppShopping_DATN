@@ -28,6 +28,17 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>() , CategoryAdapt
         }
         categoryAdapter = CategoryAdapter(this@CategoryFragment)
         viewModel.getDataCategory(CategoryViewModel.type)
+        viewModel.isLoading.observe(this) {
+            if (it) {
+                binding.layoutLoadingCategory.visibility = View.VISIBLE
+                binding.layoutLoadingCategory.visibility = View.VISIBLE
+            } else {
+                binding.layoutLoadingCategory.visibility = View.GONE
+                binding.layoutLoadingCategory.visibility = View.GONE
+                binding.recylerCategory.visibility = View.VISIBLE
+                binding.recylerCategory.visibility = View.VISIBLE
+            }
+        }
         onShowDataCategory()
     }
 

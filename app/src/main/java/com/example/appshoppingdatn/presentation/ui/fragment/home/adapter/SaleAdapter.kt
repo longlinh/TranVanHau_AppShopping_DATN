@@ -24,6 +24,7 @@ class SaleAdapter(private val inters : ISale) : RecyclerView.Adapter<SaleAdapter
         fun onClickInsertSaleToFavorite(sales : Sale)
         fun onClickRemoveSaleFavorite(sales : Sale)
         fun onStatusSaleFav(sales : Sale , img : ImageView)
+        fun onClickItemSale(position: Int)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SaleViewHolder {
@@ -64,6 +65,9 @@ class SaleAdapter(private val inters : ISale) : RecyclerView.Adapter<SaleAdapter
                 holder.binding.imgFavorite.setImageResource(R.drawable.no_favorite)
                 inters.onClickRemoveSaleFavorite(saler)
             }
+        }
+        holder.itemView.setOnClickListener {
+            inters.onClickItemSale(position)
         }
     }
 }

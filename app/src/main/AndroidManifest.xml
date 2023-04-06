@@ -16,7 +16,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".DetailsActivity"
+            android:name=".presentation.ui.activity.detail.DetailsActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.ui.activity.login.LoginActivity"
