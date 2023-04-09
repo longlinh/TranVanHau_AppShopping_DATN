@@ -27,12 +27,13 @@
                 android:layout_height="170dp"
                 android:layout_marginTop="30dp"
                android:layout_centerHorizontal="true">
+
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgAvatar"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:id="@+id/imgAvatar"
                     android:layout_centerInParent="true"
-                    android:src="@drawable/avatar"/>
+                    android:src="@drawable/avatar" />
                 <ImageView
                     android:layout_width="25dp"
                     android:layout_height="25dp"
@@ -159,7 +160,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text=""
+                    android:text="xxxxxx"
                     android:id="@+id/txtName"
                     android:textColor="@color/black"
                     android:textSize="16sp"
@@ -190,7 +191,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text=""
+                    android:text="xxxxxx"
                     android:textColor="@color/black"
                     android:id="@+id/txtemail"
                     android:textSize="16sp"
@@ -221,7 +222,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text=""
+                    android:text="xxxxxx"
                     android:id="@+id/txtPhone"
                     android:textColor="@color/black"
                     android:textSize="16sp"
@@ -261,6 +262,7 @@
                         android:layout_height="25dp"
                         android:layout_gravity="center"
                         android:layout_marginEnd="8dp"
+                        android:text="xxxxx"
                         android:background="@null"
                         android:enabled="false"
                         android:inputType="textPassword"
@@ -309,17 +311,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/layoutInfo">
+
             <Button
+                android:id="@+id/btnEditProfile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/custom_btn_login"
-                android:layout_marginHorizontal="30dp"
                 android:layout_centerInParent="true"
+                android:layout_marginHorizontal="30dp"
+                android:background="@drawable/custom_btn_login"
                 android:text="Edit Profile"
                 android:textColor="@color/white"
-                android:id="@+id/btnEdit"
-                android:textStyle="bold"
-                android:textSize="18sp"/>
+                android:textSize="18sp"
+                android:textStyle="bold" />
         </RelativeLayout>
 
     </RelativeLayout>
