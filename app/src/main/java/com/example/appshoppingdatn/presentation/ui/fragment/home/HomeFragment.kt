@@ -68,7 +68,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
     }
 
     private fun onShowErrorNew() {
-        showMessage("Can't load data new")
+        showMessage("Unable to load data from server.Please wait !!")
         viewModel.getSPNew()
     }
 
@@ -88,7 +88,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
     }
 
     private fun onShowError() {
-        showMessage("Can't load data sale")
+        showMessage("Unable to load data from server.Please wait !!")
         viewModel.getSPSale()
     }
 
@@ -165,9 +165,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
         showMessage("Đã bỏ thích !")
     }
 
-    override fun onStatusSaleFav(sales: Sale, img: ImageView) {
+    override fun onStatusSaleFav(sales: Sale) {
         Log.d("onStatusSaleFav",sales.toString())
-        viewModel.onGetStatusSale(sales,requireContext(),img)
+        viewModel.onGetStatusSale(sales,requireContext())
     }
 
     override fun onClickItemSale(position: Int) {

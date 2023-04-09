@@ -128,7 +128,7 @@ class HomeViewModel : BaseViewModel() {
             }
         }
     }
-    fun onGetStatusSale(sales: Sale,context: Context,img :ImageView) {
+    fun onGetStatusSale(sales: Sale,context: Context) {
         sqLiteHelper = SQLiteHelper(context, "Shopping1.db", null, 2)
         firebaseUser = FirebaseAuth.getInstance().currentUser
         idAccount = firebaseUser!!.uid

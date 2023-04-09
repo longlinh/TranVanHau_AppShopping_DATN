@@ -23,7 +23,7 @@ class SaleAdapter(private val inters : ISale) : RecyclerView.Adapter<SaleAdapter
         fun getContextSale() : Context
         fun onClickInsertSaleToFavorite(sales : Sale)
         fun onClickRemoveSaleFavorite(sales : Sale)
-        fun onStatusSaleFav(sales : Sale , img : ImageView)
+        fun onStatusSaleFav(sales : Sale)
         fun onClickItemSale(position: Int)
     }
 
@@ -48,7 +48,7 @@ class SaleAdapter(private val inters : ISale) : RecyclerView.Adapter<SaleAdapter
         holder.binding.txtSelled.text = "Đã bán " + saler.SelledSale
         Log.d("listSale",saler.toString())
 
-        inters.onStatusSaleFav(saler,holder.binding.imgFavorite)
+        inters.onStatusSaleFav(saler)
         if (saler.FavStatusSale == 1){
             holder.binding.imgFavorite.setImageResource(R.drawable.baseline_favorite_24)
         }else{

@@ -50,13 +50,13 @@ class SignupFragment : BaseFragment<FragmentSignupBinding>() {
     }
 
     private fun onSignup() {
-        binding.btnLogin.setOnClickListener {
+        binding.btnSignup.setOnClickListener {
             val email = binding.edtEmail.text.toString().trim()
-            val user = binding.edtUser.text.toString().trim()
+            val name = binding.edtUser.text.toString().trim()
             val confirmPassword = binding.edtConfirmPassword.text.toString().trim()
             val passWord = binding.edtPassword.text.toString().trim()
             val phone = binding.edtPhone.text.toString().trim()
-            viewModel.onSignup(email,user,passWord,confirmPassword,phone,binding.edtEmail,binding.edtUser,binding.edtPassword,binding.edtConfirmPassword,binding.edtPhone)
+            viewModel.onSignup(email,name,passWord,confirmPassword,phone,binding.edtEmail,binding.edtUser,binding.edtPassword,binding.edtConfirmPassword,binding.edtPhone,requireContext())
         }
 
     }

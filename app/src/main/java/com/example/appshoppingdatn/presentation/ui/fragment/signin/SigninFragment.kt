@@ -19,6 +19,7 @@ import com.example.appshoppingdatn.databinding.FragmentSigninBinding
 import com.example.appshoppingdatn.presentation.ui.activity.home.HomeActivity
 import com.example.appshoppingdatn.presentation.ui.base.fragment.BaseFragment
 import com.example.appshoppingdatn.ultis.CustomProgressDialog
+import com.example.appshoppingdatn.ultis.Utils
 
 class SigninFragment : BaseFragment<FragmentSigninBinding>() {
     private var progressdialog: CustomProgressDialog? = null

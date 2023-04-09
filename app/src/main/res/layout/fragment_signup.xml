@@ -101,7 +101,7 @@
             android:background="@drawable/custom_btn_login"
             android:text="Signup"
             android:textAllCaps="false"
-            android:id="@+id/btnLogin"
+            android:id="@+id/btnSignup"
             android:textStyle="bold"
             android:padding="10dp"
             android:textColor="@color/white"

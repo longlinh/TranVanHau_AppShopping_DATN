@@ -54,6 +54,12 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
                 "Selled INTEGER ,"+
                 "StatusFav INTEGER ," +
                 "CheckFav NVARCHAR(50))")
+        sqliteHelper!!.QueryData("CREATE TABLE IF NOT EXISTS USER (Id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "UserID VARCHAR(100)," +
+                "UserName VARCHAR(100),"+
+                "Email VARCHAR(100),"+
+                "PASS VARCHAR(100),"+
+                "PHONE VARCHAR(100))")
     }
 
 

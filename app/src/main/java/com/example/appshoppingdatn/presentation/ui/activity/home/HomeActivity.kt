@@ -1,6 +1,7 @@
 package com.example.appshoppingdatn.presentation.ui.activity.home
 
 import android.os.Bundle
+import android.widget.Toast
 import com.example.appshoppingdatn.R
 import com.example.appshoppingdatn.databinding.ActivityHomeBinding
 import com.example.appshoppingdatn.presentation.ui.base.activity.BaseActivity
@@ -10,7 +11,7 @@ import com.example.appshoppingdatn.presentation.ui.fragment.home.HomeFragment
 import com.example.appshoppingdatn.presentation.ui.fragment.profile.ProfileFragment
 
 class HomeActivity : BaseActivity<ActivityHomeBinding>(){
-
+    private var backPressTime: Long = 0
     override fun getLayoutResourceId(): Int {
         return R.layout.activity_home
     }
@@ -46,5 +47,15 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(){
         }
     }
 
+    override fun onBackPressed() {
+        if (backPressTime + 2000 > System.currentTimeMillis()) {
+            finishAffinity()
+            System.exit(0)
+            return
+        } else {
+            Toast.makeText(this, "Click back 1 lần nữa để thoát app", Toast.LENGTH_SHORT).show()
+        }
+        backPressTime = System.currentTimeMillis()
+    }
 
 }

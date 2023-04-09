@@ -37,7 +37,9 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
             .addToBackStack(Fragment::class.java.name)
             .commit()
     }
-
+    open fun onBackStack(){
+        requireActivity().supportFragmentManager.popBackStack()
+    }
     abstract fun getLayoutResId(): Int
 
     abstract fun initControls(view: View, savedInstanceState: Bundle?)
