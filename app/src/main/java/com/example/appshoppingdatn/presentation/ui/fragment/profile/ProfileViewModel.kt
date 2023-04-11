@@ -37,6 +37,7 @@ class ProfileViewModel : BaseViewModel() {
         const val DISS_PROGRESS_DIALOG = 4
         const val CHANGE_SUCCESS = 5
         const val CHANGE_FAILD = 6
+        const val DISS_DIALOG_CHANGE = 7
     }
     fun updateInfor(txtEmail : TextView , txtName : TextView,txtPassword : EditText,txtPhone :TextView,context: Context,imgAvatar : ImageView){
 
@@ -90,29 +91,45 @@ class ProfileViewModel : BaseViewModel() {
            uiEventLiveData.value = CHANGE_FAILD
         }
     }
-    fun changePassword(edtOldPass : EditText , edtNewPass : EditText , edtConfirmPass : EditText,context: Context){
+    fun changePassword(passwordNow : String , edtOldPass : EditText , edtNewPass : EditText , edtConfirmPass : EditText,context: Context){
         val oldPass = edtOldPass.text.toString().trim()
         val newPass = edtNewPass.text.toString().trim()
         val confimPass = edtConfirmPass.text.toString().trim()
 
-        if (TextUtils.isEmpty(oldPass)){
-            edtOldPass.error = "Old Password can't be empty"
+        if (oldPass.isEmpty()){
+            edtOldPass.error = "Old password can't be empty"
             edtOldPass.requestFocus()
-        }else if (TextUtils.isEmpty(newPass)){
-            edtNewPass.error = "New Password can't be empty"
+        }
+        else if (oldPass != passwordNow){
+            edtOldPass.error = "Current password is not correct"
+            edtOldPass.requestFocus()
+        }
+        else if (newPass.isEmpty()){
+            edtNewPass.error = "New password can't be empty"
             edtNewPass.requestFocus()
-        }else if (TextUtils.isEmpty(confimPass)){
-            edtConfirmPass.error = "New Password can't be empty"
+        }
+        else if (newPass.length < 6){
+            edtNewPass.error = "New password is too short"
+            edtNewPass.requestFocus()
+        }
+        else if (TextUtils.isEmpty(confimPass)){
+            edtConfirmPass.error = "Confirm password can't be empty"
             edtConfirmPass.requestFocus()
-        }else if (oldPass != confimPass){
+        }
+        else if (newPass != confimPass){
             Toast.makeText(context, "Password was wrong !", Toast.LENGTH_SHORT).show()
-        }else{
+        }
+        else{
             uiEventLiveData.value = SHOW_PROGRESS_DIALOG
             firebaseUser!!.updatePassword(newPass).addOnCompleteListener {
-                uiEventLiveData.value = DISS_PROGRESS_DIALOG
                 if (it.isSuccessful){
-//                    changePasswordToRealTimeDb(edtNewPass)
+                    uiEventLiveData.value = DISS_PROGRESS_DIALOG
+                    changePasswordToRealTimeDb(edtNewPass)
+                    uiEventLiveData.value = DISS_DIALOG_CHANGE
                 }
+            }.addOnFailureListener {
+                uiEventLiveData.value = DISS_PROGRESS_DIALOG
+                uiEventLiveData.value = CHANGE_FAILD
             }
         }
     }

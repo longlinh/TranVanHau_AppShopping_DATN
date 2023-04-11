@@ -57,10 +57,11 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
             when(it){
                 ProfileViewModel.UPDATE_SUCCESS -> onShowMessageUpdateSuccess()
                 ProfileViewModel.UPDATE_FAILD -> onShowMessageUpdateFailed()
-                ProfileViewModel.SHOW_PROGRESS_DIALOG ->onShowProgressDialog()
-                ProfileViewModel.DISS_PROGRESS_DIALOG -> onDissProgressDialog()
                 ProfileViewModel.CHANGE_SUCCESS -> onShowMessageChangeSuccess()
                 ProfileViewModel.CHANGE_FAILD -> onShowMessageChangeFaild()
+                ProfileViewModel.DISS_DIALOG_CHANGE -> onDisDialogChangePass()
+                ProfileViewModel.SHOW_PROGRESS_DIALOG -> onShowProgressDialog()
+                ProfileViewModel.DISS_PROGRESS_DIALOG -> onDisProgressDialog()
             }
         }
         progrssdialog = CustomProgressDialog(requireActivity())
@@ -72,15 +73,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         onClickChangePassword()
     }
 
-    private fun onShowMessageChangeFaild() {
-        Toast.makeText(context, "Change password successfully !", Toast.LENGTH_SHORT).show()
-    }
-
-    private fun onShowMessageChangeSuccess() {
-        Toast.makeText(context, "Change password failed !", Toast.LENGTH_SHORT).show()
-    }
-
-    private fun onDissProgressDialog() {
+    private fun onDisProgressDialog() {
         progrssdialog!!.dismiss()
     }
 
@@ -88,6 +81,16 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         progrssdialog!!.show()
     }
 
+    private fun onDisDialogChangePass() {
+        dialogChangePass!!.dismiss()
+    }
+
+    private fun onShowMessageChangeFaild() {
+        Toast.makeText(context, "Change password failed !", Toast.LENGTH_SHORT).show()
+    }
+    private fun onShowMessageChangeSuccess() {
+        Toast.makeText(context, "Change password successfully !", Toast.LENGTH_SHORT).show()
+    }
     private fun onClickChangePassword() {
         binding.layoutChangePassword.setOnClickListener {
             OpenDialogChangePass(Gravity.CENTER)
@@ -96,14 +99,13 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
             val edtPasswordConfirm = dialogChangePass!!.findViewById<EditText>(R.id.edtConfirmPass)
             val btnOK = dialogChangePass!!.findViewById<Button>(R.id.btnOKChange)
             val btnCancel = dialogChangePass!!.findViewById<Button>(R.id.btnCancleChange)
-
+            val passwordNoew = binding.txtPassword.text.toString()
             btnCancel.setOnClickListener {
                 dialogChangePass!!.dismiss()
             }
             btnOK.setOnClickListener {
-                viewModel.changePassword(edtPasswordOld,edtPasswordNew,edtPasswordConfirm,requireActivity())
-                binding.txtPassword.text = Editable.Factory.getInstance().newEditable(edtPasswordNew.toString())
-                dialogChangePass!!.dismiss()
+                viewModel.changePassword(passwordNoew,edtPasswordOld,edtPasswordNew,edtPasswordConfirm,requireActivity())
+                binding.txtPassword.text = Editable.Factory.getInstance().newEditable(edtPasswordNew.text.toString())
             }
         }
     }
