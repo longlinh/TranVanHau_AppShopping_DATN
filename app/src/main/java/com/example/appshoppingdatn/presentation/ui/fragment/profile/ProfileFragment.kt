@@ -41,6 +41,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     private lateinit var viewModel : ProfileViewModel
     private var dialogCamera : Dialog ?= null
     private var dialogEdit : Dialog ?= null
+    private var dialogChangePass : Dialog ?= null
     private var check: Int? = null
     private var progrssdialog: CustomProgressDialog? = null
     private val RESULT_LOAD_IMG = 123
@@ -56,6 +57,10 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
             when(it){
                 ProfileViewModel.UPDATE_SUCCESS -> onShowMessageUpdateSuccess()
                 ProfileViewModel.UPDATE_FAILD -> onShowMessageUpdateFailed()
+                ProfileViewModel.SHOW_PROGRESS_DIALOG ->onShowProgressDialog()
+                ProfileViewModel.DISS_PROGRESS_DIALOG -> onDissProgressDialog()
+                ProfileViewModel.CHANGE_SUCCESS -> onShowMessageChangeSuccess()
+                ProfileViewModel.CHANGE_FAILD -> onShowMessageChangeFaild()
             }
         }
         progrssdialog = CustomProgressDialog(requireActivity())
@@ -64,36 +69,72 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         onCLickVisiblitiPassword()
         onClickAvatar()
         onClickEditProfile()
+        onClickChangePassword()
+    }
+
+    private fun onShowMessageChangeFaild() {
+        Toast.makeText(context, "Change password successfully !", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun onShowMessageChangeSuccess() {
+        Toast.makeText(context, "Change password failed !", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun onDissProgressDialog() {
+        progrssdialog!!.dismiss()
+    }
+
+    private fun onShowProgressDialog() {
+        progrssdialog!!.show()
+    }
+
+    private fun onClickChangePassword() {
+        binding.layoutChangePassword.setOnClickListener {
+            OpenDialogChangePass(Gravity.CENTER)
+            val edtPasswordOld = dialogChangePass!!.findViewById<EditText>(R.id.edtPasswordOld)
+            val edtPasswordNew = dialogChangePass!!.findViewById<EditText>(R.id.edtNewPass)
+            val edtPasswordConfirm = dialogChangePass!!.findViewById<EditText>(R.id.edtConfirmPass)
+            val btnOK = dialogChangePass!!.findViewById<Button>(R.id.btnOKChange)
+            val btnCancel = dialogChangePass!!.findViewById<Button>(R.id.btnCancleChange)
+
+            btnCancel.setOnClickListener {
+                dialogChangePass!!.dismiss()
+            }
+            btnOK.setOnClickListener {
+                viewModel.changePassword(edtPasswordOld,edtPasswordNew,edtPasswordConfirm,requireActivity())
+                binding.txtPassword.text = Editable.Factory.getInstance().newEditable(edtPasswordNew.toString())
+                dialogChangePass!!.dismiss()
+            }
+        }
     }
 
     private fun onShowMessageUpdateFailed() {
-        showMessage("Updated successfully !")
+        showMessage("Failed to update !")
     }
 
     private fun onShowMessageUpdateSuccess() {
-        showMessage("Failed to update !")
+        showMessage("Updated successfully !")
     }
 
     private fun onClickEditProfile() {
         binding.btnEditProfile.setOnClickListener {
             OpenDialogEdit(Gravity.CENTER)
-            val edtEmail = dialogEdit!!.findViewById<EditText>(R.id.edtEmailEdit)
+
             val edtName = dialogEdit!!.findViewById<EditText>(R.id.edtNameEdit)
             val edtPhone= dialogEdit!!.findViewById<EditText>(R.id.edtPhoneEdit)
             val btnCancel = dialogEdit!!.findViewById<Button>(R.id.btnCancleEidt)
             val btnOK = dialogEdit!!.findViewById<Button>(R.id.btnOKEdit)
 
-            edtEmail.text = Editable.Factory.getInstance().newEditable(binding.txtemail.text.toString())
+
             edtName.text = Editable.Factory.getInstance().newEditable(binding.txtName.text.toString())
             edtPhone.text = Editable.Factory.getInstance().newEditable(binding.txtPhone.text.toString())
             btnCancel.setOnClickListener {
                 dialogEdit!!.dismiss()
             }
             btnOK.setOnClickListener {
-                val email = binding.txtemail.text.toString()
-                val name = binding.txtName.text.toString()
-                val phone = binding.txtPhone.text.toString()
-                viewModel.updateData(email,name,phone,edtEmail,edtName,edtPhone)
+                viewModel.updateData(edtName,edtPhone)
+                binding.txtName.text = edtName.text.toString()
+                binding.txtPhone.text = edtPhone.text.toString()
                 dialogEdit!!.dismiss()
             }
         }
@@ -257,5 +298,25 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
             dialogEdit!!.setCancelable(false)
         }
         dialogEdit!!.show()
+    }
+    private fun OpenDialogChangePass(gravity: Int) {
+        dialogChangePass = Dialog(requireContext())
+        dialogChangePass!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialogChangePass!!.setContentView(R.layout.dialog_change_password)
+        val window = dialogChangePass!!.window ?: return
+        window.setLayout(
+            WindowManager.LayoutParams.MATCH_PARENT,
+            WindowManager.LayoutParams.WRAP_CONTENT
+        )
+        window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        val windowAtributes = window.attributes
+        windowAtributes.gravity = gravity
+        window.attributes = windowAtributes
+        if (Gravity.CENTER == gravity) {
+            dialogChangePass!!.setCancelable(true)
+        } else {
+            dialogChangePass!!.setCancelable(false)
+        }
+        dialogChangePass!!.show()
     }
 }
