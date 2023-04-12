@@ -31,8 +31,8 @@
     <string name="txtPasswordWrong">Mật khẩu sai !</string>
 
     ---------------------LoginActivity----------------
-    <string name="txtSignup">Signup</string>
-    <string name="txtSignin">Signin</string>
+    <string name="txtSignup">Đăng ký</string>
+    <string name="txtSignin">Đăng nhập</string>
 
     ---------------------HomeActivity-------------------------
     <string name="txtShowDupliBack">Click back 1 lần nữa để thoát app</string>
@@ -87,10 +87,13 @@
     <string name="updateSuccess">Cập nhật thành công !</string>
     <string name="changepasswordFaild">Thay đổi mật khẩu thất bại !</string>
     <string name="changepasswordSuccess">Thay đổi mật khẩu thành công !</string>
-    <string name="oldPassEmpty">Mật khẩu không được để trống !</string>
-    <string name="currentPass">Mật khẩu hiện tại không chính xác !</string>
-    <string name="newPasswordEmpty">Mật khẩu mới không được để trống !</string>
-    <string name="newPassShort">Mật khẩu mới quá ngắn </string>
-    <string name="confirmPassEmpty">Xác nhận mật khẩu không được để trống !</string>
+    <string name="oldPassEmpty">Mật khẩu không được để trống</string>
+    <string name="currentPass">Mật khẩu hiện tại không chính xác</string>
+    <string name="newPasswordEmpty">Mật khẩu mới không được để trống</string>
+    <string name="newPassShort">Mật khẩu mới quá ngắn</string>
+    <string name="confirmPassEmpty">Xác nhận mật khẩu không được để trống</string>
+    <string name="langeuageTitle">Ngôn Ngữ</string>
+    <string name="txtVietName">Tiếng Việt</string>
+    <string name="txtEnglish">Tiếng Anh</string>
 
 </resources>

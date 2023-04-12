@@ -47,7 +47,7 @@ class NewAdapter(private val inter : INew) : RecyclerView.Adapter<NewAdapter.Com
         Glide.with(inter.getContextNew()).load(news.ImageNew).into(holder.binding.imgNew)
         holder.binding.txtNameNew.text = news.DiscriptionNew
         holder.binding.txtPriceNew.text = decimalFormat.format(news.PriceNew)+"đ"
-        holder.binding.txtSelledNew.text = inter.getContextNew().getString(R.string.txtSelled) + news.SelledNew
+        holder.binding.txtSelledNew.text = inter.getContextNew().getString(R.string.txtSelled) +" " +news.SelledNew
 
         inter.onStatusFav(news,holder.binding.imgFavorite)
 

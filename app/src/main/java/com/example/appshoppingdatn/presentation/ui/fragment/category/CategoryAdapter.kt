@@ -43,7 +43,7 @@ class CategoryAdapter(private val inters : ICategory) : RecyclerView.Adapter<Cat
         Glide.with(inters.getContext()).load(category.ImageProduct).into(holder.binding.imgProduct)
         holder.binding.txtNameProduct.text = category.DescriptionProduct
         holder.binding.txtPriceProduct.text = decimalFormat.format(category.PriceProduct)+"đ"
-        holder.binding.txtSelledProduct.text = inters.getContext().getString(R.string.txtSelled) + category.SelledProduct
+        holder.binding.txtSelledProduct.text = inters.getContext().getString(R.string.txtSelled) +" "+ category.SelledProduct
 
         inters.onStatusCategoryFav(category)
         if (category.FavStatusProduct == 1){

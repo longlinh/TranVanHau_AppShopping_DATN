@@ -86,10 +86,13 @@
     <string name="updateSuccess">Updated successfully !</string>
     <string name="changepasswordFaild">Change password failed !</string>
     <string name="changepasswordSuccess">Change password successfully !</string>
-    <string name="oldPassEmpty">Old password cant be empty</string>
+    <string name="oldPassEmpty">Old password cannot be empty</string>
     <string name="currentPass">Current password is not correct</string>
-    <string name="newPasswordEmpty">New password cant be empty</string>
+    <string name="newPasswordEmpty">New password cannot be empty</string>
     <string name="newPassShort">New password is too short</string>
-    <string name="confirmPassEmpty">Confirm password cant be empty</string>
+    <string name="confirmPassEmpty">Confirm password cannot be empty</string>
+    <string name="langeuageTitle">Language</string>
+    <string name="txtVietName">Vietnamese</string>
+    <string name="txtEnglish">English</string>
 
 </resources>

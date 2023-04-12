@@ -13,6 +13,7 @@
         tools:ignore="ScopedStorage" />
     <uses-feature android:name="android.hardware.camera"
         android:required="true"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -41,7 +42,9 @@
         <activity
             android:name=".presentation.ui.activity.home.HomeActivity"
             android:exported="false"
-            android:theme="@style/CustomNavigation" />
+            android:theme="@style/CustomNavigation"
+            android:configChanges="locale"/>
+
     </application>
 
 

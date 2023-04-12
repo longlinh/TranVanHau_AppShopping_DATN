@@ -29,12 +29,15 @@ import com.bumptech.glide.Glide
 import com.example.appshoppingdatn.R
 import com.example.appshoppingdatn.databinding.FragmentProfileBinding
 import com.example.appshoppingdatn.presentation.ui.activity.login.LoginActivity
+import com.example.appshoppingdatn.presentation.ui.activity.splash.SplashActivity
 import com.example.appshoppingdatn.presentation.ui.base.fragment.BaseFragment
+import com.example.appshoppingdatn.ultis.ContextUtils
 import com.example.appshoppingdatn.ultis.CustomProgressDialog
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import java.io.ByteArrayOutputStream
+import java.util.*
 
 
 class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
@@ -42,6 +45,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     private var dialogCamera : Dialog ?= null
     private var dialogEdit : Dialog ?= null
     private var dialogChangePass : Dialog ?= null
+    private var dialogLanguage : Dialog ?= null
     private var check: Int? = null
     private var progrssdialog: CustomProgressDialog? = null
     private val RESULT_LOAD_IMG = 123
@@ -71,7 +75,9 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         onClickAvatar()
         onClickEditProfile()
         onClickChangePassword()
+        onClickLanguage()
     }
+
 
     private fun onDisProgressDialog() {
         progrssdialog!!.dismiss()
@@ -90,6 +96,31 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     }
     private fun onShowMessageChangeSuccess() {
         Toast.makeText(context, getString(R.string.changepasswordSuccess), Toast.LENGTH_SHORT).show()
+    }
+
+    private fun onClickLanguage() {
+        binding.layoutLanguage.setOnClickListener {
+            OpenDialogChangeLanguage(Gravity.CENTER)
+            val btnVietNam = dialogLanguage!!.findViewById<LinearLayout>(R.id.btnVietName)
+            val btnEnglish = dialogLanguage!!.findViewById<LinearLayout>(R.id.btnEnglish)
+
+            btnVietNam.setOnClickListener {
+                ContextUtils.language = "vi"
+                dialogLanguage!!.dismiss()
+            }
+            btnEnglish.setOnClickListener {
+                ContextUtils.language = "en"
+                dialogLanguage!!.dismiss()
+            }
+        }
+    }
+
+    override fun onAttach(context: Context) {
+        val localeToSwith = Locale(ContextUtils.language)
+        val localeUpdateContext = context.let {
+            ContextUtils.updateLocale(it,localeToSwith)
+        }
+        super.onAttach(localeUpdateContext)
     }
     private fun onClickChangePassword() {
         binding.layoutChangePassword.setOnClickListener {
@@ -320,5 +351,25 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
             dialogChangePass!!.setCancelable(false)
         }
         dialogChangePass!!.show()
+    }
+    private fun OpenDialogChangeLanguage(gravity: Int) {
+        dialogLanguage = Dialog(requireContext())
+        dialogLanguage!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialogLanguage!!.setContentView(R.layout.dialog_change_language)
+        val window = dialogLanguage!!.window ?: return
+        window.setLayout(
+            WindowManager.LayoutParams.MATCH_PARENT,
+            WindowManager.LayoutParams.WRAP_CONTENT
+        )
+        window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        val windowAtributes = window.attributes
+        windowAtributes.gravity = gravity
+        window.attributes = windowAtributes
+        if (Gravity.CENTER == gravity) {
+            dialogLanguage!!.setCancelable(true)
+        } else {
+            dialogLanguage!!.setCancelable(false)
+        }
+        dialogLanguage!!.show()
     }
 }

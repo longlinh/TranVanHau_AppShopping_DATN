@@ -41,7 +41,7 @@ class DetailsActivity : BaseActivity<ActivityDetailsBinding>() {
             mBinding.txtNameDetail.text = nameDetail
             Glide.with(this).load(imgDetail).into(mBinding.imgDetails)
             mBinding.txtPriceDetail.text = "đ"+decimalFormat.format(priceDetail)
-            mBinding.txtSell.text =  getString(R.string.txtSelled)+"$sellDetail"
+            mBinding.txtSell.text =  getString(R.string.txtSelled)+" " +"$sellDetail"
             mBinding.txtDes.text = desDetail
         }
 
