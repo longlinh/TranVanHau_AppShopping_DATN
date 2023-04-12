@@ -1,4 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">ShoppBee</string>
+
+    ------------------FragmentSignin---------------------------
+    <string name="txtEmail">E-mail</string>
+    <string name="txtPassword">Mật khẩu</string>
+    <string name="txtRemember">Lưu tài khoản</string>
+    <string name="txtForgotPass">Quên mật khẩu ?</string>
+    <string name="btnLogin">Đăng nhập</string>
+    <string name="messageLoginError">Tài khoản đăng nhập không hợp lệ!</string>
+    <string name="showValidateEmail">Email không hợp lệ !</string>
+    <string name="showValidatePassword">Mật khẩu không được để trống !</string>
+    <string name="showEmailEmpty">Email không được để trống !</string>
+    <string name="showResetPasswordSuccess">Lấy lại mật khẩu thành công, vui lòng kiểm tra email của bạn !</string>
+
+    -------------------FragmentSignup--------------------------
+    <string name="txtUser">Tên người dùng</string>
+    <string name="txtConfirmPass">Xác nhận mật khẩu</string>
+    <string name="txtPhoneNumber">Số điện thoại</string>
+    <string name="btnSignup">Đăng ký</string>
+    <string name="txtRegisterFail">Định dạng email sai hoặc tài khoản đã tồn tại !</string>
+    <string name="txtRegisterSuccess">Đăng ký thành công</string>
+    <string name="txtEmailEmpty">Email không được để trống !</string>
+    <string name="txtValidateEmail">Email không hợp lệ !</string>
+    <string name="txtUserEmpty">Tên người dùng không được để trống !</string>
+    <string name="txtPasswordEmpty">Mật khẩu không được để trống !</string>
+    <string name="txtPasswordLength">Mật khẩu phải từ 6 ký tự trở lên !</string>
+    <string name="txtValidatePassword">Mật khẩu không hợp lệ !</string>
+    <string name="txtPhoneEmpty">Số điện thoại không được để trống !</string>
+    <string name="txtPasswordWrong">Mật khẩu sai !</string>
+
+    ---------------------LoginActivity----------------
+    <string name="txtSignup">Signup</string>
+    <string name="txtSignin">Signin</string>
+
+    ---------------------HomeActivity-------------------------
+    <string name="txtShowDupliBack">Click back 1 lần nữa để thoát app</string>
+    <string name="txtHome">Trang chủ</string>
+    <string name="txtFavorite">Yêu thích</string>
+    <string name="txtChat">Tin nhắn</string>
+    <string name="txtProfile">Hồ sơ</string>
+
+    --------------------FragmentHome--------------------------
+    <string name="onShowErrorLoadDataHome">Không thể tải dữ liệu từ máy chủ. Vui lòng đợi !!</string>
+    <string name="txtNoInternet">Không có mạng !</string>
+    <string name="txtAddToFavorite">Đã thêm vào danh sách yêu thích !</string>
+    <string name="txtDissToFavorite">Đã bỏ thích !</string>
+    <string name="txtSelled">Đã bán </string>
+    <string name="txtSearch">Tìm kiếm....</string>
+    <string name="txtSale">Giảm giá</string>
+    <string name="txtNew">Mới</string>
+    <string name="txtLaptop">Máy tính</string>
+    <string name="txtPhone">Điện thoại</string>
+    <string name="txtWatch">Đồng hồ</string>
+    <string name="txtMap">Bản đồ</string>
+    <string name="txtReport">Thống kê</string>
+    <string name="txtPurchased">Lịch sử</string>
+
+    ----------------------FragmentFavorite----------------------------
+    <string name="txtDsFavorite">Danh sách yêu thích</string>
+
+    -----------------DetailsActivity-----------------------
+    <string name="txtProductDescription">Mô tả sản phẩm</string>
+    <string name="btnBuyNow">Mua ngay</string>
+    <string name="btnAddtoCart">Thêm vào giỏ hàng</string>
+
+    ------------------FragmentProfile---------------------------
+    <string name="txtChangePass">Đổi mật khẩu</string>
+    <string name="txtNotification">Thông báo</string>
+    <string name="txtLanguage">Ngôn ngữ</string>
+    <string name="btnLogout">Đăng xuất</string>
+    <string name="btnEditProfile">Sửa thông tin</string>
+    <string name="txtNameProfile">Tên :</string>
+    <string name="txtName">Tên</string>
+    <string name="txtEmailProfile">E-mail :</string>
+    <string name="txtPhoneProfile">Điện thoại :</string>
+    <string name="txtPassProfile">Mật khẩu :</string>
+    <string name="btnOK">OK</string>
+    <string name="btnCancle">HỦY</string>
+    <string name="txtResetPass">Đặt lại mật khẩu</string>
+    <string name="txtChangePassword">Thay đổi mật khẩu</string>
+    <string name="txtOldPassword">Mật khẩu cũ</string>
+    <string name="txtNewPass">Mật khẩu mới</string>
+    <string name="uploadAvatarSuccess">Cập nhật ảnh đại diện thành công</string>
+    <string name="updateFailed">Cập nhật thất bại !</string>
+    <string name="updateSuccess">Cập nhật thành công !</string>
+    <string name="changepasswordFaild">Thay đổi mật khẩu thất bại !</string>
+    <string name="changepasswordSuccess">Thay đổi mật khẩu thành công !</string>
+    <string name="oldPassEmpty">Mật khẩu không được để trống !</string>
+    <string name="currentPass">Mật khẩu hiện tại không chính xác !</string>
+    <string name="newPasswordEmpty">Mật khẩu mới không được để trống !</string>
+    <string name="newPassShort">Mật khẩu mới quá ngắn </string>
+    <string name="confirmPassEmpty">Xác nhận mật khẩu không được để trống !</string>
+
 </resources>

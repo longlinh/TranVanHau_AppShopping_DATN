@@ -28,6 +28,7 @@ class NewAdapter(private val inter : INew) : RecyclerView.Adapter<NewAdapter.Com
         fun getContextNew() : Context
         fun onStatusFav(news : New , img : ImageView)
         fun onClickItemNew(position: Int)
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewViewHolder {
@@ -46,7 +47,7 @@ class NewAdapter(private val inter : INew) : RecyclerView.Adapter<NewAdapter.Com
         Glide.with(inter.getContextNew()).load(news.ImageNew).into(holder.binding.imgNew)
         holder.binding.txtNameNew.text = news.DiscriptionNew
         holder.binding.txtPriceNew.text = decimalFormat.format(news.PriceNew)+"đ"
-        holder.binding.txtSelledNew.text = "Đã bán " + news.SelledNew
+        holder.binding.txtSelledNew.text = inter.getContextNew().getString(R.string.txtSelled) + news.SelledNew
 
         inter.onStatusFav(news,holder.binding.imgFavorite)
 

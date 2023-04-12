@@ -53,7 +53,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(){
             System.exit(0)
             return
         } else {
-            Toast.makeText(this, "Click back 1 lần nữa để thoát app", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.txtShowDupliBack), Toast.LENGTH_SHORT).show()
         }
         backPressTime = System.currentTimeMillis()
     }

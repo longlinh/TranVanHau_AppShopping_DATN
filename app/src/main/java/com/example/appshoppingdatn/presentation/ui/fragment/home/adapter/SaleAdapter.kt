@@ -45,7 +45,7 @@ class SaleAdapter(private val inters : ISale) : RecyclerView.Adapter<SaleAdapter
         holder.binding.txtNameSale.text = saler.DiscriptionSale
         holder.binding.txtPriceSaleOld.text = decimalFormat.format(saler.PriceSaleOld)+"đ"
         holder.binding.txtPriceSaleNew.text = decimalFormat.format(saler.PriceSaleNow)+"đ"
-        holder.binding.txtSelled.text = "Đã bán " + saler.SelledSale
+        holder.binding.txtSelled.text = inters.getContextSale().getString(R.string.txtSelled) + saler.SelledSale
         Log.d("listSale",saler.toString())
 
         inters.onStatusSaleFav(saler)

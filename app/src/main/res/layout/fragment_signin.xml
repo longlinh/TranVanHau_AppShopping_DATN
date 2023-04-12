@@ -22,7 +22,7 @@
             android:background="@drawable/custom_editext_login"
             android:drawableStart="@drawable/baseline_email_24"
             android:drawablePadding="15dp"
-            android:hint="Email"
+            android:hint="@string/txtEmail"
             android:inputType="textEmailAddress"
             android:maxLength="30"
             android:maxLines="1"
@@ -46,7 +46,7 @@
                 android:drawablePadding="15dp"
                 android:textColor="@color/black"
                 android:background="@drawable/custom_editext_login"
-                android:hint="Password"
+                android:hint="@string/txtPassword"
                 android:padding="15dp" />
             <ImageView
                 android:id="@+id/imgCheckPass"
@@ -70,13 +70,13 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginBottom="10dp"
                 android:buttonTint="@color/backgound_main"
-                android:text="Remember"
+                android:text="@string/txtRemember"
                 android:textColor="@color/backgound_main"
                 android:textSize="18sp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Forgot password ?"
+                android:text="@string/txtForgotPass"
                 android:textSize="18sp"
                 android:id="@+id/txtForgotPassword"
                 android:layout_alignParentEnd="true"
@@ -89,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:background="@drawable/custom_btn_login"
-            android:text="Login"
+            android:text="@string/btnLogin"
             android:textAllCaps="false"
             android:id="@+id/btnLogin"
             android:textStyle="bold"

@@ -68,7 +68,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
     }
 
     private fun onShowErrorNew() {
-        showMessage("Unable to load data from server.Please wait !!")
+        showMessage(getString(R.string.onShowErrorLoadDataHome))
         viewModel.getSPNew()
     }
 
@@ -88,7 +88,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
     }
 
     private fun onShowError() {
-        showMessage("Unable to load data from server.Please wait !!")
+        showMessage(getString(R.string.onShowErrorLoadDataHome))
         viewModel.getSPSale()
     }
 
@@ -101,7 +101,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
             }
             Log.d("new",viewModel.listNewModel.toString())
         }else{
-            showMessage("No internet !")
+            showMessage(getString(R.string.txtNoInternet))
         }
     }
 
@@ -114,7 +114,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
                 binding.recylerFlashSale.adapter = saleAdapter
             }
         }else{
-            showMessage("No internet !")
+            showMessage(getString(R.string.txtNoInternet))
         }
     }
 
@@ -157,12 +157,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
     override fun onClickInsertSaleToFavorite(sales: Sale) {
         val checkFav = "sale"
         viewModel.onInsertFavoriteToSQLite(sales.IdSale,sales.ImageSale,sales.NameSale,sales.PriceSaleNow,sales.PriceSaleOld,sales.DiscriptionSale,sales.TypeSale,sales.SelledSale,sales.FavStatusSale,checkFav,requireContext())
-        showMessage("Đã thêm vào danh sách yêu thích !")
+        showMessage(getString(R.string.txtAddToFavorite))
     }
 
     override fun onClickRemoveSaleFavorite(sales: Sale) {
         viewModel.onDeleteFavoriteToSQLite(sales.IdSale,requireContext())
-        showMessage("Đã bỏ thích !")
+        showMessage(getString(R.string.txtDissToFavorite))
     }
 
     override fun onStatusSaleFav(sales: Sale) {
@@ -198,12 +198,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
         val priceOld = 0f
         val checkFav = "new"
         viewModel.onInsertFavoriteToSQLite(news.IdNew,news.ImageNew,news.NameNew,news.PriceNew, priceOld,news.DiscriptionNew,news.TypeNew,news.SelledNew,news.FavStatus,checkFav,requireContext())
-        showMessage("Đã thêm vào danh sách yêu thích !")
+        showMessage(getString(R.string.txtAddToFavorite))
     }
 
     override fun onClickRemoveFavorite(news : New) {
         viewModel.onDeleteFavoriteToSQLite(news.IdNew,requireContext())
-        showMessage("Đã bỏ thích !")
+        showMessage(getString(R.string.txtDissToFavorite))
     }
 
     override fun getContextNew(): Context {

@@ -1,5 +1,6 @@
 package com.example.appshoppingdatn.presentation.ui.fragment.signin
 
+import android.content.Context
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.Gravity
@@ -27,16 +28,16 @@ class SigninViewModel : BaseViewModel() {
     init {
         auth = FirebaseAuth.getInstance()
     }
-    fun onSignin(email : String, passWord : String , edtEmail : EditText , edtPassword : EditText){
+    fun onSignin(email : String, passWord : String , edtEmail : EditText , edtPassword : EditText,context:Context){
 
         if (email.isEmpty()){
-            showMessageValidate(edtEmail,"Email is not empty !")
+            showMessageValidate(edtEmail,context.getString(R.string.showEmailEmpty))
         }
         else if (!emailValidator(email)){
-            showMessageValidate(edtEmail,"Invalid email !")
+            showMessageValidate(edtEmail,context.getString(R.string.showValidateEmail))
         }
         else if (passWord.isEmpty()){
-            showMessageValidate(edtPassword,"Password is not empty !")
+            showMessageValidate(edtPassword,context.getString(R.string.showValidatePassword))
         }
         else{
             uiEventLiveData.value = DIALOG_LOGIN_SHOW
@@ -50,11 +51,11 @@ class SigninViewModel : BaseViewModel() {
             }
         }
     }
-    fun onResetPassword(email: String , edtEmail : EditText){
+    fun onResetPassword(email: String , edtEmail : EditText,context: Context){
         if (email.isEmpty()){
-            showMessageValidate(edtEmail,"Email is not empty !")
+            showMessageValidate(edtEmail, context.getString(R.string.showEmailEmpty))
         }else if (!emailValidator(email)){
-            showMessageValidate(edtEmail,"Invalid email !")
+            showMessageValidate(edtEmail,context.getString(R.string.showValidateEmail))
         }else{
             uiEventLiveData.value = DIALOG_LOGIN_SHOW
             auth!!.sendPasswordResetEmail(email)

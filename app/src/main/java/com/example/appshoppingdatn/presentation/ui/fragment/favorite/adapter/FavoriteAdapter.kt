@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.appshoppingdatn.R
 import com.example.appshoppingdatn.databinding.ItemFavoriteBinding
 import com.example.appshoppingdatn.model.Favorite
 import com.example.appshoppingdatn.ultis.Utils
@@ -47,7 +48,7 @@ class FavoriteAdapter (private val inters : IFav) : RecyclerView.Adapter<Favorit
         Glide.with(inters.getContextFav()).load(fav.imgFav).into(holder.binding.imgFavorite)
         holder.binding.txtNameFav.text = fav.discriptionFav
         holder.binding.txtPriceFavNew.text = decimalFormat.format(fav.priceFavNow)+"đ"
-        holder.binding.txtSelledFav.text = "Đã bán " + fav.selledFav
+        holder.binding.txtSelledFav.text = inters.getContextFav().getString(R.string.txtSelled) + fav.selledFav
 
         holder.binding.imgLove.setOnClickListener {
             inters.onCLickRemove(position)

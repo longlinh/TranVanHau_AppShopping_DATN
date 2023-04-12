@@ -3,6 +3,7 @@ package com.example.appshoppingdatn.presentation.ui.fragment.signup
 
 import android.content.Context
 import android.widget.EditText
+import com.example.appshoppingdatn.R
 import com.example.appshoppingdatn.model.User
 import com.example.appshoppingdatn.presentation.ui.base.SingleLiveData
 import com.example.appshoppingdatn.presentation.ui.base.viewmodel.BaseViewModel
@@ -20,7 +21,6 @@ class SignupViewModel : BaseViewModel(){
     val uiEventLiveData = SingleLiveData<Int>()
     var idAccount : String ?= null
 
-    private var user : User ?= null
     companion object{
         const val NAV_REGISTER_SUCCESS = 1
         const val DIALOG_REGISTER_SHOW = 2
@@ -37,28 +37,28 @@ class SignupViewModel : BaseViewModel(){
     fun onSignup(email : String,name : String,passWord : String,cofirmPassword : String,phoneNumber : String,
     edtEmail : EditText , edtUser : EditText , edtPassword : EditText , edtConfirmPass : EditText , edtPhone : EditText,context: Context){
         if (email.isEmpty()){
-            showMessageValidate(edtEmail,"Email is not empty !")
+            showMessageValidate(edtEmail,context.getString(R.string.txtEmailEmpty))
         }
         else if (!emailValidator(email)){
-            showMessageValidate(edtEmail,"Invalid email !")
+            showMessageValidate(edtEmail,context.getString(R.string.txtValidateEmail))
         }
         else if (name.isEmpty()){
-            showMessageValidate(edtUser,"User is not empty !")
+            showMessageValidate(edtUser,context.getString(R.string.txtUserEmpty))
         }
         else if (passWord.isEmpty()){
-            showMessageValidate(edtPassword,"Password is not empty !")
+            showMessageValidate(edtPassword,context.getString(R.string.txtPasswordEmpty))
         }
         else if (passWord.length < 6){
-            showMessageValidate(edtPassword,"Password must be 6 or more characters !")
+            showMessageValidate(edtPassword,context.getString(R.string.txtPasswordLength))
         }
         else if (cofirmPassword.isEmpty()){
-            showMessageValidate(edtConfirmPass,"Invalid password !")
+            showMessageValidate(edtConfirmPass,context.getString(R.string.txtValidatePassword))
         }
         else if (phoneNumber.isEmpty()){
-            showMessageValidate(edtPhone,"Phone number is not empty !")
+            showMessageValidate(edtPhone,context.getString(R.string.txtPhoneEmpty))
         }
         else if (cofirmPassword != passWord){
-            showMessageValidate(edtConfirmPass,"Password was wrong !")
+            showMessageValidate(edtConfirmPass,context.getString(R.string.txtPasswordWrong))
         }
         else{
             uiEventLiveData.value = DIALOG_REGISTER_SHOW

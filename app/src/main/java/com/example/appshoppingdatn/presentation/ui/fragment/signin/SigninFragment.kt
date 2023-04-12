@@ -49,7 +49,7 @@ class SigninFragment : BaseFragment<FragmentSigninBinding>() {
     }
 
     private fun onResetPasswordSuccess() {
-        showMessage("Password reset successfully, please check your email !")
+        showMessage(getString(R.string.showResetPasswordSuccess))
         dialog!!.dismiss()
     }
 
@@ -60,7 +60,7 @@ class SigninFragment : BaseFragment<FragmentSigninBinding>() {
             val dialogOK = dialog!!.findViewById<Button>(R.id.btnOK)
             dialogOK.setOnClickListener {
                 val strEmail = edtEmail.text.toString().trim()
-                viewModel.onResetPassword(strEmail,edtEmail)
+                viewModel.onResetPassword(strEmail,edtEmail,requireActivity())
             }
             val dialogCancel = dialog!!.findViewById<Button>(R.id.btnCancle)
             dialogCancel.setOnClickListener {
@@ -95,7 +95,7 @@ class SigninFragment : BaseFragment<FragmentSigninBinding>() {
             onSaveUser()
             val email = binding.edtEmail.text.toString().trim()
             val password = binding.edtPassword.text.toString().trim()
-            viewModel.onSignin(email,password,binding.edtEmail,binding.edtPassword)
+            viewModel.onSignin(email,password,binding.edtEmail,binding.edtPassword,requireActivity())
         }
     }
 
@@ -106,7 +106,7 @@ class SigninFragment : BaseFragment<FragmentSigninBinding>() {
     }
 
     private fun onLoginError() {
-        showMessage("Invalid login account !")
+        showMessage(getString(R.string.messageLoginError))
     }
 
     private fun onDisDialog() {

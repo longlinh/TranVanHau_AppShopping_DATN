@@ -32,7 +32,7 @@ class SignupFragment : BaseFragment<FragmentSignupBinding>() {
     }
 
     private fun onRegisterFail() {
-        showMessage("Wrong email format or already existing account !")
+        showMessage(getString(R.string.txtRegisterFail))
     }
 
     private fun onDisDialog() {
@@ -46,7 +46,7 @@ class SignupFragment : BaseFragment<FragmentSignupBinding>() {
     private fun onRegisterSuccess() {
         val intent = Intent(context, LoginActivity::class.java)
         context?.startActivity(intent)
-        showMessage("Signup Success")
+        showMessage(getString(R.string.txtRegisterSuccess))
     }
 
     private fun onSignup() {
@@ -56,7 +56,7 @@ class SignupFragment : BaseFragment<FragmentSignupBinding>() {
             val confirmPassword = binding.edtConfirmPassword.text.toString().trim()
             val passWord = binding.edtPassword.text.toString().trim()
             val phone = binding.edtPhone.text.toString().trim()
-            viewModel.onSignup(email,name,passWord,confirmPassword,phone,binding.edtEmail,binding.edtUser,binding.edtPassword,binding.edtConfirmPassword,binding.edtPhone,requireContext())
+            viewModel.onSignup(email,name,passWord,confirmPassword,phone,binding.edtEmail,binding.edtUser,binding.edtPassword,binding.edtConfirmPassword,binding.edtPhone,requireActivity())
         }
 
     }

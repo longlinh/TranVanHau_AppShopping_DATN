@@ -97,27 +97,27 @@ class ProfileViewModel : BaseViewModel() {
         val confimPass = edtConfirmPass.text.toString().trim()
 
         if (oldPass.isEmpty()){
-            edtOldPass.error = "Old password can't be empty"
+            edtOldPass.error = context.getString(R.string.oldPassEmpty)
             edtOldPass.requestFocus()
         }
         else if (oldPass != passwordNow){
-            edtOldPass.error = "Current password is not correct"
+            edtOldPass.error = context.getString(R.string.currentPass)
             edtOldPass.requestFocus()
         }
         else if (newPass.isEmpty()){
-            edtNewPass.error = "New password can't be empty"
+            edtNewPass.error = context.getString(R.string.newPasswordEmpty)
             edtNewPass.requestFocus()
         }
         else if (newPass.length < 6){
-            edtNewPass.error = "New password is too short"
+            edtNewPass.error = context.getString(R.string.newPassShort)
             edtNewPass.requestFocus()
         }
         else if (TextUtils.isEmpty(confimPass)){
-            edtConfirmPass.error = "Confirm password can't be empty"
+            edtConfirmPass.error = context.getString(R.string.confirmPassEmpty)
             edtConfirmPass.requestFocus()
         }
         else if (newPass != confimPass){
-            Toast.makeText(context, "Password was wrong !", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, context.getString(R.string.txtPasswordWrong), Toast.LENGTH_SHORT).show()
         }
         else{
             uiEventLiveData.value = SHOW_PROGRESS_DIALOG

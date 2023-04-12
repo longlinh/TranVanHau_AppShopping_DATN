@@ -24,8 +24,8 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
         mBinding.tabLayout.setupWithViewPager(mBinding.viewPager)
         mBinding.tabLayout.setSelectedTabIndicatorColor(Color.parseColor(getString(R.color.backgound_main)))
         viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
-        viewPagerAdapter!!.addFragment(SigninFragment(),"Signin")
-        viewPagerAdapter!!.addFragment(SignupFragment(),"Signup")
+        viewPagerAdapter!!.addFragment(SigninFragment(),getString(R.string.txtSignin))
+        viewPagerAdapter!!.addFragment(SignupFragment(),getString(R.string.txtSignup))
         mBinding.viewPager.adapter = viewPagerAdapter
     }
     class ViewPagerAdapter(fm: FragmentManager) :

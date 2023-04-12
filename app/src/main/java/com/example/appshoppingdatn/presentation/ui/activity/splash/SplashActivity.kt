@@ -1,5 +1,6 @@
 package com.example.appshoppingdatn.presentation.ui.activity.splash
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.animation.AnimationUtils
@@ -8,6 +9,8 @@ import com.example.appshoppingdatn.data.database.SQLiteHelper
 import com.example.appshoppingdatn.databinding.ActivitySplashBinding
 import com.example.appshoppingdatn.presentation.ui.activity.login.LoginActivity
 import com.example.appshoppingdatn.presentation.ui.base.activity.BaseActivity
+import com.example.appshoppingdatn.ultis.ContextUtils
+import java.util.*
 
 
 class SplashActivity : BaseActivity<ActivitySplashBinding>() {
@@ -60,6 +63,14 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
                 "Email VARCHAR(100),"+
                 "PASS VARCHAR(100),"+
                 "PHONE VARCHAR(100))")
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        val localeToSwith = Locale(ContextUtils.language)
+        val localeUpdateContext = newBase?.let {
+            ContextUtils.updateLocale(it,localeToSwith)
+        }
+        super.attachBaseContext(localeUpdateContext)
     }
 
 

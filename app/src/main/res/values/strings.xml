@@ -1,3 +1,95 @@
 <resources>
     <string name="app_name">ShoppBee</string>
+
+    ------------------FragmentSignin---------------------------
+    <string name="txtEmail">Email</string>
+    <string name="txtPassword">Password</string>
+    <string name="txtRemember">Remember</string>
+    <string name="txtForgotPass">Forgot password ?</string>
+    <string name="btnLogin">Login</string>
+    <string name="messageLoginError">Invalid login account !</string>
+    <string name="showValidateEmail">Invalid email !</string>
+    <string name="showValidatePassword">Password is not empty !</string>
+    <string name="showEmailEmpty">Email is not empty !</string>
+    <string name="showResetPasswordSuccess">Password reset successfully, please check your email !</string>
+
+    -------------------FragmentSignup--------------------------
+    <string name="txtUser">User</string>
+    <string name="txtConfirmPass">Confirm Password</string>
+    <string name="txtPhoneNumber">Phone number</string>
+    <string name="btnSignup">Signup</string>
+    <string name="txtRegisterFail">Wrong email format or already existing account !</string>
+    <string name="txtRegisterSuccess">Signup success</string>
+    <string name="txtEmailEmpty">Email is not empty !</string>
+    <string name="txtValidateEmail">Invalid email !</string>
+    <string name="txtUserEmpty">User is not empty !</string>
+    <string name="txtPasswordEmpty">Password is not empty !</string>
+    <string name="txtPasswordLength">Password must be 6 or more characters !</string>
+    <string name="txtValidatePassword">Invalid password !</string>
+    <string name="txtPhoneEmpty">Phone number is not empty !</string>
+    <string name="txtPasswordWrong">Password was wrong !</string>
+
+    ---------------------LoginActivity------------------------
+    <string name="txtSignup">Signup</string>
+    <string name="txtSignin">Signin</string>
+
+    ---------------------HomeActivity-------------------------
+    <string name="txtShowDupliBack">Click back again to exit the app</string>
+    <string name="txtHome">Home</string>
+    <string name="txtFavorite">Favorite</string>
+    <string name="txtChat">Chat</string>
+    <string name="txtProfile">Profile</string>
+
+    --------------------FragmentHome--------------------------
+    <string name="onShowErrorLoadDataHome">Unable to load data from server.Please wait !!</string>
+    <string name="txtNoInternet">No internet !</string>
+    <string name="txtAddToFavorite">Added to favorites !</string>
+    <string name="txtDissToFavorite">Disliked!</string>
+    <string name="txtSelled">Sold </string>
+    <string name="txtSearch">Searching for....</string>
+    <string name="txtSale">Flash Sale</string>
+    <string name="txtNew">New</string>
+    <string name="txtLaptop">Laptop</string>
+    <string name="txtPhone">Phone</string>
+    <string name="txtWatch">Watch</string>
+    <string name="txtMap">Location</string>
+    <string name="txtReport">Report</string>
+    <string name="txtPurchased">Purchased</string>
+
+    ----------------------FragmentFavorite----------------------------
+    <string name="txtDsFavorite">Favorites list</string>
+
+    -----------------DetailsActivity-----------------------
+    <string name="txtProductDescription">Product description</string>
+    <string name="btnBuyNow">Buy Now</string>
+    <string name="btnAddtoCart">Add To Cart</string>
+
+    ------------------FragmentProfile---------------------------
+    <string name="txtChangePass">Change pass</string>
+    <string name="txtNotification">Notification</string>
+    <string name="txtLanguage">Language</string>
+    <string name="btnLogout">Logout</string>
+    <string name="btnEditProfile">Edit Profile</string>
+    <string name="txtNameProfile">Name :</string>
+    <string name="txtName">Name</string>
+    <string name="txtEmailProfile">Email :</string>
+    <string name="txtPhoneProfile">Phone :</string>
+    <string name="txtPassProfile">Password :</string>
+    <string name="btnOK">OK</string>
+    <string name="btnCancle">CANCLE</string>
+    <string name="txtResetPass">Reset Password</string>
+    <string name="txtChangePassword">Change Password</string>
+    <string name="txtOldPassword">Old Password</string>
+    <string name="txtNewPass">New Password</string>
+    <string name="uploadAvatarSuccess">Upload avatar success</string>
+    <string name="updateFailed">Failed to update !</string>
+    <string name="updateSuccess">Updated successfully !</string>
+    <string name="changepasswordFaild">Change password failed !</string>
+    <string name="changepasswordSuccess">Change password successfully !</string>
+    <string name="oldPassEmpty">Old password cant be empty</string>
+    <string name="currentPass">Current password is not correct</string>
+    <string name="newPasswordEmpty">New password cant be empty</string>
+    <string name="newPassShort">New password is too short</string>
+    <string name="confirmPassEmpty">Confirm password cant be empty</string>
+
 </resources>

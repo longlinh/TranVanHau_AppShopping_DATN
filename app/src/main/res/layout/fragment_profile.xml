@@ -84,7 +84,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Change pass"
+                                android:text="@string/txtChangePass"
                                 android:textSize="12sp"
                                 android:textStyle="bold"
                                 android:layout_marginTop="5sp"
@@ -108,7 +108,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Notification"
+                                android:text="@string/txtNotification"
                                 android:textSize="12sp"
                                 android:textStyle="bold"
                                 android:layout_marginTop="5sp"
@@ -132,7 +132,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Language"
+                                android:text="@string/txtLanguage"
                                 android:textSize="12sp"
                                 android:textStyle="bold"
                                 android:layout_marginTop="5sp"
@@ -157,7 +157,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Name :"
+                            android:text="@string/txtNameProfile"
                             android:layout_gravity="center"
                             android:layout_marginStart="5dp"
                             android:textColor="@color/black"
@@ -188,7 +188,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Email :"
+                            android:text="@string/txtEmailProfile"
                             android:layout_gravity="center"
                             android:textColor="@color/black"
                             android:layout_marginStart="5dp"
@@ -219,7 +219,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Phone :"
+                            android:text="@string/txtPhoneProfile"
                             android:layout_marginStart="5dp"
                             android:layout_gravity="center_vertical"
                             android:textColor="@color/black"
@@ -250,7 +250,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Password :"
+                            android:text="@string/txtPassProfile"
                             android:layout_gravity="center"
                             android:layout_marginStart="5dp"
                             android:textColor="@color/black"
@@ -303,7 +303,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Logout"
+                            android:text="@string/btnLogout"
                             android:textSize="18sp"
                             android:textStyle="bold"
                             android:layout_marginEnd="10dp"
@@ -324,7 +324,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="30dp"
                         android:background="@drawable/custom_btn_login"
-                        android:text="Edit Profile"
+                        android:text="@string/btnEditProfile"
                         android:textColor="@color/white"
                         android:textSize="18sp"
                         android:textStyle="bold" />

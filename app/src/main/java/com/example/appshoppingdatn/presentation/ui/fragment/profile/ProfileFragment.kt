@@ -86,10 +86,10 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     }
 
     private fun onShowMessageChangeFaild() {
-        Toast.makeText(context, "Change password failed !", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, getString(R.string.changepasswordFaild), Toast.LENGTH_SHORT).show()
     }
     private fun onShowMessageChangeSuccess() {
-        Toast.makeText(context, "Change password successfully !", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, getString(R.string.changepasswordSuccess), Toast.LENGTH_SHORT).show()
     }
     private fun onClickChangePassword() {
         binding.layoutChangePassword.setOnClickListener {
@@ -111,11 +111,11 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     }
 
     private fun onShowMessageUpdateFailed() {
-        showMessage("Failed to update !")
+        showMessage(getString(R.string.updateFailed))
     }
 
     private fun onShowMessageUpdateSuccess() {
-        showMessage("Updated successfully !")
+        showMessage(getString(R.string.updateSuccess))
     }
 
     private fun onClickEditProfile() {
@@ -197,7 +197,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
                     progrssdialog!!.dismiss()
                     Glide.with(requireActivity()).load(firebaseUser.photoUrl).error(R.drawable.avatar).into(binding.imgAvatar)
                     binding.imgSave.visibility = View.GONE
-                    Toast.makeText(context, "Upload avatar success", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, getString(R.string.uploadAvatarSuccess), Toast.LENGTH_SHORT).show()
                 }
             }
     }

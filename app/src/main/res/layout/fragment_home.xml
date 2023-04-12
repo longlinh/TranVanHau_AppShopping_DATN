@@ -45,7 +45,7 @@
                         android:drawableStart="@drawable/baseline_search_24"
                         android:drawablePadding="15dp"
                         android:paddingStart="10dp"
-                        android:hint="Searching for...."
+                        android:hint="@string/txtSearch"
                         android:textSize="18sp"
                         android:textStyle="italic"
                         android:textColor="@color/black"/>
@@ -107,7 +107,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Laptop"
+                                    android:text="@string/txtLaptop"
                                     android:layout_marginTop="5sp"
                                     android:textColor="@color/black"
                                     android:layout_gravity="center_horizontal"/>
@@ -129,7 +129,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Watch"
+                                    android:text="@string/txtWatch"
                                     android:layout_marginTop="5sp"
                                     android:textColor="@color/black"
                                     android:layout_gravity="center_horizontal"/>
@@ -151,7 +151,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Phone"
+                                    android:text="@string/txtPhone"
                                     android:layout_marginTop="5sp"
                                     android:textColor="@color/black"
                                     android:layout_gravity="center_horizontal"/>
@@ -178,7 +178,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Location"
+                                    android:text="@string/txtMap"
                                     android:layout_marginTop="5sp"
                                     android:textColor="@color/black"
                                     android:layout_gravity="center_horizontal"/>
@@ -199,7 +199,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Report"
+                                    android:text="@string/txtReport"
                                     android:layout_marginTop="5sp"
                                     android:textColor="@color/black"
                                     android:layout_gravity="center_horizontal"/>
@@ -220,7 +220,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Purchased"
+                                    android:text="@string/txtPurchased"
                                     android:layout_marginTop="5sp"
                                     android:textColor="@color/black"
                                     android:layout_gravity="center_horizontal"/>
@@ -235,7 +235,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Flash Sale"
+                        android:text="@string/txtSale"
                         android:textColor="#F44336"
                         android:layout_gravity="center"
                         android:textStyle="bold"
@@ -285,7 +285,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="New"
+                        android:text="@string/txtNew"
                         android:textColor="#F44336"
                         android:layout_gravity="center"
                         android:textStyle="bold"

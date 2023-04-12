@@ -65,7 +65,7 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>() , CategoryAdapt
     }
 
     private fun onShowError() {
-        showMessage("Unable to load data from server.Please wait !!")
+        showMessage(getString(R.string.onShowErrorLoadDataHome))
         viewModel.getDataCategory(CategoryViewModel.type)
     }
 
@@ -77,7 +77,7 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>() , CategoryAdapt
                 binding.recylerCategory.adapter = categoryAdapter
             }
         }else{
-            showMessage("No internet !")
+            showMessage(getString(R.string.txtNoInternet))
         }
     }
 
@@ -108,7 +108,7 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>() , CategoryAdapt
             product.FavStatusProduct,
             checkFav,
             requireContext())
-        showMessage("Đã thêm vào danh sách yêu thích !")
+        showMessage(getString(R.string.txtAddToFavorite))
     }
 
     override fun onRemoveCategoryToFavorite(product: Product) {

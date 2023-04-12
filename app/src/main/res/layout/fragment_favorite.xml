@@ -19,7 +19,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Danh sách yêu thích"
+                android:text="@string/txtDsFavorite"
                 android:textColor="@color/white"
                 android:layout_gravity="center"
                 android:textStyle="bold"
