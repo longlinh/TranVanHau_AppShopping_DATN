@@ -11,6 +11,7 @@ import com.example.appshoppingdatn.presentation.ui.base.activity.BaseActivity
 import java.text.DecimalFormat
 
 class DetailsActivity : BaseActivity<ActivityDetailsBinding>() {
+    private var numberOder = 1
     override fun getLayoutResourceId(): Int {
         return R.layout.activity_details
     }
@@ -18,6 +19,41 @@ class DetailsActivity : BaseActivity<ActivityDetailsBinding>() {
     override fun initControls(savedInstanceState: Bundle?) {
         onGetDataDetail()
         onBack()
+        onClickMinus()
+        onClickPlus()
+        onClickAddToCart()
+        onClickBuyNow()
+    }
+
+    private fun onClickBuyNow() {
+        mBinding.btnBuyNow.setOnClickListener {
+
+        }
+    }
+
+    private fun onClickAddToCart() {
+        mBinding.btnAddtoCart.setOnClickListener {
+
+        }
+    }
+
+    private fun onClickPlus() {
+        mBinding.btnPlus.setOnClickListener {
+            numberOder += 1
+            mBinding.txtNumberOder.text = numberOder.toString()
+        }
+    }
+
+    private fun onClickMinus() {
+        mBinding.btnMinus.setOnClickListener {
+            val number = mBinding.txtNumberOder.text.toString().toInt()
+            if (number <= 1){
+                mBinding.btnMinus.isEnabled = false
+            }else{
+                numberOder = number - 1
+            }
+            mBinding.txtNumberOder.text = numberOder.toString()
+        }
     }
 
     private fun onBack() {

@@ -63,6 +63,15 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
                 "Email VARCHAR(100),"+
                 "PASS VARCHAR(100),"+
                 "PHONE VARCHAR(100))")
+        sqliteHelper!!.QueryData("CREATE TABLE IF NOT EXISTS CART (Id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "IdAccount VARCHAR(100)," +
+                "IdSP NVARCHAR(50),"+
+                "Image NVARCHAR(100),"+
+                "NameSP NVARCHAR(100),"+
+                "Price FLOAT,"+
+                "Description NVARCHAR(200),"+
+                "Selled INTEGER ,"+
+                "NumberOrder INTEGER)")
     }
 
     override fun attachBaseContext(newBase: Context?) {

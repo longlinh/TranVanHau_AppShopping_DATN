@@ -10,6 +10,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.example.appshoppingdatn.R
+import com.example.appshoppingdatn.ultis.ContextUtils
+import java.util.*
 
 
 abstract class BaseActivity<T : ViewDataBinding> :AppCompatActivity() {

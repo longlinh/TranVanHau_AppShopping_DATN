@@ -6,6 +6,7 @@ import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -17,19 +18,18 @@ import android.view.Gravity
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
-import android.widget.Button
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.appshoppingdatn.R
 import com.example.appshoppingdatn.databinding.FragmentProfileBinding
+import com.example.appshoppingdatn.presentation.ui.activity.home.HomeActivity
 import com.example.appshoppingdatn.presentation.ui.activity.login.LoginActivity
-import com.example.appshoppingdatn.presentation.ui.activity.splash.SplashActivity
 import com.example.appshoppingdatn.presentation.ui.base.fragment.BaseFragment
 import com.example.appshoppingdatn.ultis.ContextUtils
 import com.example.appshoppingdatn.ultis.CustomProgressDialog
@@ -106,15 +106,30 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
             btnVietNam.setOnClickListener {
                 ContextUtils.language = "vi"
+                setLocale( ContextUtils.language)
+                startActivity(Intent(requireActivity(),HomeActivity::class.java))
                 dialogLanguage!!.dismiss()
             }
             btnEnglish.setOnClickListener {
                 ContextUtils.language = "en"
+                setLocale( ContextUtils.language)
+                startActivity(Intent(requireActivity(),HomeActivity::class.java))
                 dialogLanguage!!.dismiss()
             }
+
         }
     }
-
+    private fun setLocale(code: String) {
+        val config = Configuration()
+        var locale: Locale? = null
+        locale = Locale(code)
+        Locale.setDefault(locale)
+        config.locale = locale
+        requireActivity().resources.updateConfiguration(
+            config,
+            requireActivity().resources.displayMetrics
+        )
+    }
     override fun onAttach(context: Context) {
         val localeToSwith = Locale(ContextUtils.language)
         val localeUpdateContext = context.let {

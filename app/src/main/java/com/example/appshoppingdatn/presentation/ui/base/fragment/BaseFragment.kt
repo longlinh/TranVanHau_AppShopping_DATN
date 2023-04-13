@@ -11,6 +11,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.example.appshoppingdatn.R
+import com.example.appshoppingdatn.ultis.ContextUtils
+import java.util.*
 
 abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
     lateinit var binding : T
@@ -27,6 +29,7 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initControls(view, savedInstanceState)
+
     }
     fun showMessage(message : String){
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
