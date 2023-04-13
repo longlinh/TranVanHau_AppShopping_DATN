@@ -64,6 +64,7 @@
     <string name="txtProductDescription">Mô tả sản phẩm</string>
     <string name="btnBuyNow">Mua ngay</string>
     <string name="btnAddtoCart">Thêm vào giỏ hàng</string>
+    <string name="messageAddToCartSuccess">Thêm vào giỏ hàng thành công</string>
 
     ------------------FragmentProfile---------------------------
     <string name="txtChangePass">Đổi mật khẩu</string>
@@ -96,4 +97,11 @@
     <string name="txtVietName">Tiếng Việt</string>
     <string name="txtEnglish">Tiếng Anh</string>
 
+    -------------------------CartActivity-----------------------
+    <string name="txtCart">Giỏ Hàng</string>
+    <string name="txtItemTotal">Tổng tiền hàng :</string>
+    <string name="txtDelivery">Phí vận chuyển :</string>
+    <string name="txtTotal">Tổng thanh toán :</string>
+    <string name="btnOrder">Đặt Hàng</string>
+    <string name="txtDiscountCode">Mã giảm giá :</string>
 </resources>

@@ -63,6 +63,7 @@
     <string name="txtProductDescription">Product description</string>
     <string name="btnBuyNow">Buy Now</string>
     <string name="btnAddtoCart">Add To Cart</string>
+    <string name="messageAddToCartSuccess">Add to cart successful</string>
 
     ------------------FragmentProfile---------------------------
     <string name="txtChangePass">Change pass</string>
@@ -94,5 +95,13 @@
     <string name="langeuageTitle">Language</string>
     <string name="txtVietName">Vietnamese</string>
     <string name="txtEnglish">English</string>
+
+    -------------------------CartActivity-----------------------
+    <string name="txtCart">Cart</string>
+    <string name="txtItemTotal">Items Total :</string>
+    <string name="txtDelivery">Delivery Service :</string>
+    <string name="txtTotal">Total :</string>
+    <string name="btnOrder">Order</string>
+    <string name="txtDiscountCode">Discount code :</string>
 
 </resources>

@@ -21,6 +21,7 @@
             android:layout_height="40dp"
             android:layout_margin="10dp"
             android:id="@+id/imgBack"
+            android:elevation="2dp"
             android:background="@drawable/custom_circle_white">
 
             <ImageView
