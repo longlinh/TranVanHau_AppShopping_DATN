@@ -1,11 +1,12 @@
 package com.example.appshoppingdatn.model
 
 data class Cart (
-    val idCart : String,
-    val imgCart : String,
-    val nameCart : String,
-    val priceCart : Float ,
-    val destionCart : String,
-    val selledCart : Int,
-    val numberOder : Int
+    var idCart : String,
+    var imgCart : String,
+    var nameCart : String,
+    var priceCart : Float,
+    var destionCart : String,
+    var selledCart : Int,
+    var numberOder : Int,
+    var sumPrice : Float
 )

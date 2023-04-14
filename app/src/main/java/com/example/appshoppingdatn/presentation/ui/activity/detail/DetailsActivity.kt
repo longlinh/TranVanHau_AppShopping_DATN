@@ -7,8 +7,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.appshoppingdatn.R
 import com.example.appshoppingdatn.databinding.ActivityDetailsBinding
-import com.example.appshoppingdatn.presentation.ui.activity.home.HomeActivity
+import com.example.appshoppingdatn.presentation.ui.activity.cart.CartActivity
 import com.example.appshoppingdatn.presentation.ui.base.activity.BaseActivity
+import com.example.appshoppingdatn.ultis.Utils
 import java.text.DecimalFormat
 
 class DetailsActivity : BaseActivity<ActivityDetailsBinding>() {
@@ -41,7 +42,9 @@ class DetailsActivity : BaseActivity<ActivityDetailsBinding>() {
 
     private fun onClickBuyNow() {
         mBinding.btnBuyNow.setOnClickListener {
-
+            val numberOder = mBinding.txtNumberOder.text.toString().toInt()
+            viewModel.buyNow(this, idDetail!!,imgDetail!!,nameDetail!!,priceDetail!!,desDetail!!,sellDetail!!,numberOder)
+            startActivity(Intent(this,CartActivity::class.java))
         }
     }
 
@@ -91,7 +94,7 @@ class DetailsActivity : BaseActivity<ActivityDetailsBinding>() {
             sellDetail =  intent.getIntExtra("sell",0)
             val decimalFormat = DecimalFormat("###,###,###")
             mBinding.txtNameDetail.text = nameDetail
-            Glide.with(this).load(imgDetail).into(mBinding.imgDetails)
+            Glide.with(this).load(imgDetail).error(R.drawable.load_img).into(mBinding.imgDetails)
             mBinding.txtPriceDetail.text = "đ"+decimalFormat.format(priceDetail)
             mBinding.txtSell.text =  getString(R.string.txtSelled)+" " +"$sellDetail"
             mBinding.txtDes.text = desDetail

@@ -12,7 +12,16 @@
         android:layout_height="match_parent"
         android:background="@color/gray"
         tools:context=".presentation.ui.activity.cart.CartActivity">
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txtCartEmpty"
+            android:textSize="25sp"
+            android:textColor="@color/backgound_main"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:id="@+id/txtCartEmpty"
+            android:textStyle="bold"/>
         <RelativeLayout
             android:id="@+id/title"
             android:layout_width="match_parent"
@@ -44,23 +53,35 @@
             </RelativeLayout>
         </RelativeLayout>
 
+
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:layout_below="@id/title"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recylerCart"
+            <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp" />
-
+                android:layout_above="@id/layout1"
+                android:layout_height="match_parent">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recylerCart"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp" />
+                </RelativeLayout>
+            </androidx.core.widget.NestedScrollView>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/recylerCart"
                 android:layout_margin="10dp"
+                android:id="@+id/layout1"
+                android:layout_above="@id/btnOrder"
                 android:background="@drawable/custom_border_white"
                 android:orientation="vertical">
 
@@ -74,7 +95,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="5dp"
                         android:text="@string/txtItemTotal"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
@@ -84,10 +105,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginEnd="10dp"
+                        android:layout_marginEnd="5dp"
                         android:gravity="end"
-                        android:text="35.000.000đ"
+                        android:text="0"
                         android:textColor="@color/black"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -101,7 +123,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="5dp"
                         android:text="@string/txtDelivery"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
@@ -111,10 +133,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginEnd="10dp"
+                        android:layout_marginEnd="5dp"
                         android:gravity="end"
-                        android:text="15.000đ"
+                        android:text="0"
                         android:textColor="@color/black"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -128,24 +151,29 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="5dp"
                         android:text="@string/txtDiscountCode"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
+
                     <Spinner
+                        android:id="@+id/sprinnerDiscount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:text="giảm 15k"
-                        android:id="@+id/sprinnerDiscount"/>
+                        tools:listitem="@layout/item_spinner" />
+
                     <TextView
                         android:id="@+id/txtDiscountCode"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginEnd="10dp"
+                        android:layout_marginEnd="5dp"
                         android:gravity="end"
-                        android:text="15.000đ"
+                        android:text="0"
                         android:textColor="@color/black"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -153,8 +181,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginStart="15dp"
-                    android:layout_marginEnd="15dp"
                     android:layout_marginTop="5dp"
+                    android:layout_marginEnd="15dp"
                     android:layout_marginBottom="5dp"
                     android:background="@color/black" />
 
@@ -181,13 +209,13 @@
                         android:layout_gravity="center"
                         android:layout_marginEnd="10dp"
                         android:gravity="end"
-                        android:text="15.000đ"
-                        android:textSize="18sp"
+                        android:text="0"
                         android:textColor="@color/red"
+                        android:textSize="22sp"
                         android:textStyle="bold" />
                 </LinearLayout>
-            </LinearLayout>
 
+            </LinearLayout>
             <Button
                 android:id="@+id/btnOrder"
                 android:layout_width="match_parent"

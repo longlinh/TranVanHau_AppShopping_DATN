@@ -1,10 +1,12 @@
 package com.example.appshoppingdatn.presentation.ui.activity.home
 
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Toast
 import com.example.appshoppingdatn.R
 import com.example.appshoppingdatn.databinding.ActivityHomeBinding
+import com.example.appshoppingdatn.presentation.ui.activity.cart.CartActivity
 import com.example.appshoppingdatn.presentation.ui.base.activity.BaseActivity
 import com.example.appshoppingdatn.presentation.ui.fragment.chat.ChatFragment
 import com.example.appshoppingdatn.presentation.ui.fragment.favorite.FavoriteFragment
@@ -48,6 +50,13 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(){
                 replaceFragment(ProfileFragment())
                 mBinding.bottomNavigation.menu.findItem(R.id.bottom_profile).isChecked = true
             }
+        }
+        onClickToCart()
+    }
+
+    private fun onClickToCart() {
+        mBinding.btnCart.setOnClickListener {
+            startActivity(Intent(this,CartActivity::class.java))
         }
     }
 

@@ -40,7 +40,7 @@ class CategoryAdapter(private val inters : ICategory) : RecyclerView.Adapter<Cat
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         val decimalFormat = DecimalFormat("###,###,###")
         val category = inters.getData(position)
-        Glide.with(inters.getContext()).load(category.ImageProduct).into(holder.binding.imgProduct)
+        Glide.with(inters.getContext()).load(category.ImageProduct).error(R.drawable.load_img).into(holder.binding.imgProduct)
         holder.binding.txtNameProduct.text = category.DescriptionProduct
         holder.binding.txtPriceProduct.text = decimalFormat.format(category.PriceProduct)+"đ"
         holder.binding.txtSelledProduct.text = inters.getContext().getString(R.string.txtSelled) +" "+ category.SelledProduct

@@ -45,7 +45,7 @@ class FavoriteAdapter (private val inters : IFav) : RecyclerView.Adapter<Favorit
         }else{
             holder.binding.txtPriceFavOld.text = decimalFormat.format(fav.priceFavOld)+"đ"
         }
-        Glide.with(inters.getContextFav()).load(fav.imgFav).into(holder.binding.imgFavorite)
+        Glide.with(inters.getContextFav()).load(fav.imgFav).error(R.drawable.load_img).into(holder.binding.imgFavorite)
         holder.binding.txtNameFav.text = fav.discriptionFav
         holder.binding.txtPriceFavNew.text = decimalFormat.format(fav.priceFavNow)+"đ"
         holder.binding.txtSelledFav.text = inters.getContextFav().getString(R.string.txtSelled)+" " +fav.selledFav

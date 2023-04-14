@@ -40,7 +40,7 @@ class SaleAdapter(private val inters : ISale) : RecyclerView.Adapter<SaleAdapter
     override fun onBindViewHolder(holder: SaleViewHolder, position: Int) {
         val decimalFormat = DecimalFormat("###,###,###")
         val saler = inters.getDataSale(position)
-        Glide.with(inters.getContextSale()).load(saler.ImageSale).into(holder.binding.imgSale)
+        Glide.with(inters.getContextSale()).load(saler.ImageSale).error(R.drawable.load_img).into(holder.binding.imgSale)
         holder.binding.txtPercentSale.text = "-"+saler.PercentSale+"%"
         holder.binding.txtNameSale.text = saler.DiscriptionSale
         holder.binding.txtPriceSaleOld.text = decimalFormat.format(saler.PriceSaleOld)+"đ"

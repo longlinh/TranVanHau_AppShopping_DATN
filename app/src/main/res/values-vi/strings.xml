@@ -104,4 +104,11 @@
     <string name="txtTotal">Tổng thanh toán :</string>
     <string name="btnOrder">Đặt Hàng</string>
     <string name="txtDiscountCode">Mã giảm giá :</string>
+    <string name="txtdiscount15">Mã giảm giá 15k</string>
+    <string name="txtdiscount30">Mã giảm giá 30k</string>
+    <string name="txtdiscountFreeShip">Miễn phí vận chuyển</string>
+    <string name="txtdiscount5">Mã giảm giá 5%</string>
+    <string name="txtdiscount500">Mã giảm giá 500K</string>
+    <string name="txtdiscount1m">Mã giảm giá 1000K</string>
+    <string name="txtCartEmpty">Giỏ hàng trống !</string>
 </resources>

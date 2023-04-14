@@ -102,6 +102,12 @@
     <string name="txtDelivery">Delivery Service :</string>
     <string name="txtTotal">Total :</string>
     <string name="btnOrder">Order</string>
-    <string name="txtDiscountCode">Discount code :</string>
-
+    <string name="txtDiscountCode">Discount:</string>
+    <string name="txtdiscount15">15k Discount</string>
+    <string name="txtdiscount30">30k Discount</string>
+    <string name="txtdiscountFreeShip">Free ship</string>
+    <string name="txtdiscount5">5% Discount</string>
+    <string name="txtdiscount500">500K Discount</string>
+    <string name="txtdiscount1m">1000K Discount</string>
+    <string name="txtCartEmpty">Cart is empty !</string>
 </resources>

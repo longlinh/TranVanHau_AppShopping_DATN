@@ -44,7 +44,7 @@ class NewAdapter(private val inter : INew) : RecyclerView.Adapter<NewAdapter.Com
     override fun onBindViewHolder(holder: NewViewHolder, position: Int) {
         val decimalFormat = DecimalFormat("###,###,###")
         val news = inter.getDataNew(position)
-        Glide.with(inter.getContextNew()).load(news.ImageNew).into(holder.binding.imgNew)
+        Glide.with(inter.getContextNew()).load(news.ImageNew).error(R.drawable.load_img).into(holder.binding.imgNew)
         holder.binding.txtNameNew.text = news.DiscriptionNew
         holder.binding.txtPriceNew.text = decimalFormat.format(news.PriceNew)+"đ"
         holder.binding.txtSelledNew.text = inter.getContextNew().getString(R.string.txtSelled) +" " +news.SelledNew
