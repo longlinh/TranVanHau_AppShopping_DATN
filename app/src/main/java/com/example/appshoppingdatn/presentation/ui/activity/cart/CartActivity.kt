@@ -1,12 +1,21 @@
 package com.example.appshoppingdatn.presentation.ui.activity.cart
 
 import android.annotation.SuppressLint
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import android.widget.AdapterView
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.appshoppingdatn.R
@@ -22,14 +31,18 @@ import java.text.DecimalFormat
 class CartActivity : BaseActivity<ActivityCartBinding>() , CartAdapter.ICart{
     private lateinit var viewModel: CartViewModel
     private lateinit var cartAdapter: CartAdapter
-    private var discout = 0f
-    private var feeShip =0f
-    var itemTotal = 0f
-    var total = 0f
+    private var dialogDelete : Dialog ?= null
     var totalDis = 0f
     val decimalFormat = DecimalFormat("###,###,###")
     override fun getLayoutResourceId(): Int {
         return R.layout.activity_cart
+    }
+
+    companion object {
+        var itemTotal = 0f
+        var discout = 0f
+        var feeShip =0f
+        var total = 0f
     }
 
     override fun initControls(savedInstanceState: Bundle?) {
@@ -58,8 +71,8 @@ class CartActivity : BaseActivity<ActivityCartBinding>() , CartAdapter.ICart{
             mBinding.txtCartEmpty.visibility = View.GONE
         }
     }
-
-    private fun customDataTotal() {
+    fun customDataTotal() {
+        itemTotal = 0f
         for (i in 0 until Utils.cartArrayList.size){
             itemTotal += Utils.cartArrayList[i].sumPrice
         }
@@ -100,7 +113,7 @@ class CartActivity : BaseActivity<ActivityCartBinding>() , CartAdapter.ICart{
                     } else if (txtdiscout == getString(R.string.txtdiscount5)) {
                         discout = itemTotal * 0.05f
                     } else if (txtdiscout == getString(R.string.txtdiscountFreeShip)) {
-                        discout = feeShip!!
+                        discout = feeShip
                     }else if (txtdiscout == getString(R.string.txtdiscount15)){
                         discout = 15000f
                     }else if (txtdiscout == getString(R.string.txtdiscount500)){
@@ -111,7 +124,6 @@ class CartActivity : BaseActivity<ActivityCartBinding>() , CartAdapter.ICart{
                     val decimalFormat = DecimalFormat("###,###,###")
                     mBinding.txtDiscountCode.text = "-"+decimalFormat.format(discout) + "đ"
                     totalDis = itemTotal + feeShip - discout
-                    Log.d("onItemSelected: ", "${itemTotal.toString()} - $feeShip - $discout")
                     mBinding.txtTotal.text = decimalFormat.format(totalDis)+"đ"
                 }
 
@@ -150,4 +162,93 @@ class CartActivity : BaseActivity<ActivityCartBinding>() , CartAdapter.ICart{
     override fun getContext(): Context {
         return applicationContext
     }
+
+    @SuppressLint("SetTextI18n")
+    override fun onCLickMinus(
+        position: Int,
+        idCart: String,
+        numberOder: Int,
+        txtNumberOrderCart: TextView,
+        txtSumPriceCart: TextView,
+        btnMinus: ImageView
+    ) {
+        if (numberOder < 2){
+            btnMinus.isEnabled = false
+        }else{
+            val newNumber = numberOder - 1
+            txtNumberOrderCart.text = newNumber.toString()
+            val numberNow = Utils.cartArrayList[position].numberOder
+            val priceNow = Utils.cartArrayList[position].sumPrice
+            Utils.cartArrayList[position].numberOder = newNumber
+            val newPrice = (newNumber*priceNow)/numberNow
+            Utils.cartArrayList[position].sumPrice = newPrice
+            txtSumPriceCart.text = decimalFormat.format(newPrice)+"đ"
+            viewModel.updateCart(this,idCart,newNumber,newPrice)
+            customDataTotal()
+            onSetDataSprinerDiscount()
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    override fun onClickPlus(
+        position: Int,
+        idCart: String,
+        numberOder: Int,
+        txtNumberOrderCart: TextView,
+        txtSumPriceCart: TextView
+    ) {
+        val newNumber = numberOder + 1
+        txtNumberOrderCart.text = newNumber.toString()
+        val numberNow = Utils.cartArrayList[position].numberOder
+        val priceNow = Utils.cartArrayList[position].sumPrice
+        Utils.cartArrayList[position].numberOder = newNumber
+        val newPrice = (newNumber * priceNow) / numberNow
+        Utils.cartArrayList[position].sumPrice = newPrice
+        txtSumPriceCart.text = decimalFormat.format(newPrice) + "đ"
+        viewModel.updateCart(this,idCart,newNumber,newPrice)
+        customDataTotal()
+        onSetDataSprinerDiscount()
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    override fun onClickDelete(id: String) {
+        OpenDialogDelete(Gravity.CENTER)
+        val dialogOk = dialogDelete!!.findViewById<Button>(R.id.btnOKDelete)
+        val dialogCancel = dialogDelete!!.findViewById<Button>(R.id.btnCancleDelete)
+        dialogCancel.setOnClickListener {
+            dialogDelete!!.dismiss()
+        }
+        dialogOk.setOnClickListener {
+            viewModel.deleteCart(this,id)
+            customDataTotal()
+            onSetDataSprinerDiscount()
+            dialogDelete!!.dismiss()
+            showMessage(getString(R.string.txtMessageDeleteSuccess))
+            mBinding.recylerCart.adapter!!.notifyDataSetChanged()
+            checkData()
+        }
+
+
+    }
+    private fun OpenDialogDelete(gravity: Int) {
+        dialogDelete = Dialog(this@CartActivity)
+        dialogDelete!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialogDelete!!.setContentView(R.layout.dialog_delete)
+        val window = dialogDelete!!.window ?: return
+        window.setLayout(
+            WindowManager.LayoutParams.MATCH_PARENT,
+            WindowManager.LayoutParams.WRAP_CONTENT
+        )
+        window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        val windowAtributes = window.attributes
+        windowAtributes.gravity = gravity
+        window.attributes = windowAtributes
+        if (Gravity.CENTER == gravity) {
+            dialogDelete!!.setCancelable(true)
+        } else {
+            dialogDelete!!.setCancelable(false)
+        }
+        dialogDelete!!.show()
+    }
+
 }

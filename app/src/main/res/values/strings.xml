@@ -110,4 +110,7 @@
     <string name="txtdiscount500">500K Discount</string>
     <string name="txtdiscount1m">1000K Discount</string>
     <string name="txtCartEmpty">Cart is empty !</string>
+    <string name="txtTitleDelete">Delete Confirmation</string>
+    <string name="txtContentDelete">Are you sure you want to delete this product ?</string>
+    <string name="txtMessageDeleteSuccess">Delete successfully</string>
 </resources>

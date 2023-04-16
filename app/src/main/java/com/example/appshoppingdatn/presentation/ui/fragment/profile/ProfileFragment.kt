@@ -33,6 +33,7 @@ import com.example.appshoppingdatn.presentation.ui.activity.login.LoginActivity
 import com.example.appshoppingdatn.presentation.ui.base.fragment.BaseFragment
 import com.example.appshoppingdatn.ultis.ContextUtils
 import com.example.appshoppingdatn.ultis.CustomProgressDialog
+import com.example.appshoppingdatn.ultis.Utils
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
@@ -305,6 +306,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         binding.btnLogout.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             startActivity(Intent(context,LoginActivity::class.java))
+            Utils.checkFragment = 0
         }
     }
     private fun OpenDialogCamera(gravity: Int) {

@@ -27,17 +27,18 @@ class DetailViewModel : BaseViewModel() {
             var exists = false
             for (i in 0 until Utils.cartArrayList.size) {
                 if (Utils.cartArrayList[i].idCart == idSP) {
-                    Utils.cartArrayList[i].numberOder = Utils.cartArrayList[i].numberOder + numberOder
+                    Utils.cartArrayList[i].numberOder = (Utils.cartArrayList[i].numberOder + numberOder)
                     Utils.cartArrayList[i].priceCart = priceCart * Utils.cartArrayList[i].numberOder
                     exists = true
+                    sqLiteHelper!!.QueryData("UPDATE CART1 SET NumberOrder = '${Utils.cartArrayList[i].numberOder}' , SumPrice = '${Utils.cartArrayList[i].priceCart} ' WHERE IdSP = '$idSP' AND IdAccount = '$idAccount' ")
                 }
             }
             if (!exists) {
-                val sumPrice = numberOder.toFloat() * priceCart
+                val sumPrice = numberOder* priceCart
                 sqLiteHelper!!.QueryData("INSERT INTO CART1 VALUES(null, '$idAccount' , '$idSP' , '$imgCart','$nameCart' ,'$priceCart','$destionCart','$selledCart','$numberOder','$sumPrice')")
             }
         }else {
-            val sumPrice = numberOder.toFloat() * priceCart
+            val sumPrice = numberOder * priceCart
             sqLiteHelper!!.QueryData("INSERT INTO CART1 VALUES(null, '$idAccount' , '$idSP' , '$imgCart','$nameCart' ,'$priceCart','$destionCart','$selledCart','$numberOder','$sumPrice')")
         }
     }
@@ -50,14 +51,15 @@ class DetailViewModel : BaseViewModel() {
                     Utils.cartArrayList[i].numberOder = Utils.cartArrayList[i].numberOder + numberOder
                     Utils.cartArrayList[i].priceCart = priceCart * Utils.cartArrayList[i].numberOder
                     exists = true
+                    sqLiteHelper!!.QueryData("UPDATE CART1 SET NumberOrder = '${Utils.cartArrayList[i].numberOder}' , SumPrice = '${Utils.cartArrayList[i].priceCart} ' WHERE IdSP = '$idSP' AND IdAccount = '$idAccount' ")
                 }
             }
             if (!exists) {
-                val sumPrice = numberOder.toFloat() * priceCart
+                val sumPrice = numberOder * priceCart
                 sqLiteHelper!!.QueryData("INSERT INTO CART1 VALUES(null, '$idAccount' , '$idSP' , '$imgCart','$nameCart' ,'$priceCart','$destionCart','$selledCart','$numberOder','$sumPrice')")
             }
         }else {
-            val sumPrice = numberOder.toFloat() * priceCart
+            val sumPrice = numberOder * priceCart
             sqLiteHelper!!.QueryData("INSERT INTO CART1 VALUES(null, '$idAccount' , '$idSP' , '$imgCart','$nameCart' ,'$priceCart','$destionCart','$selledCart','$numberOder','$sumPrice')")
         }
     }

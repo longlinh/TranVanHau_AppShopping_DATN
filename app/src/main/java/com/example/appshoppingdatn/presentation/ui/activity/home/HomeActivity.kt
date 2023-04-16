@@ -25,7 +25,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(){
     override fun initControls(savedInstanceState: Bundle?) {
         mBinding.bottomNavigation.background = null
         mBinding.bottomNavigation.menu.getItem(2).isEnabled = false
-        //replaceFragment(HomeFragment())
+        replaceFragment(HomeFragment())
         customBottomNavigationView()
         val config = Configuration()
         var locale: Locale? = null

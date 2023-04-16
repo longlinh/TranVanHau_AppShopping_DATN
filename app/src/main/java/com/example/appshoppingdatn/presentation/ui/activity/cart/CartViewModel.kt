@@ -36,7 +36,16 @@ class CartViewModel : BaseViewModel() {
            val number = data.getInt(8)
            val sumprice = data.getFloat(9)
            Utils.cartArrayList.add(Cart(id,img,name,price,destion,sell,number,sumprice))
-           Log.d("sumprice",sumprice.toString())
        }
+    }
+    fun updateCart(context: Context,id : String , newNumber : Int , newPrice : Float){
+        sqLiteHelper = SQLiteHelper(context,"Shopping1.db",null,2)
+        sqLiteHelper!!.QueryData("UPDATE CART1 SET NumberOrder = '$newNumber' , SumPrice = '$newPrice' WHERE IdSP = '$id' AND IdAccount = '$idAccount' ")
+        getDataCart(context)
+    }
+    fun deleteCart(context: Context,id: String){
+        sqLiteHelper = SQLiteHelper(context,"Shopping1.db",null,2)
+        sqLiteHelper!!.QueryData("DELETE FROM CART1 WHERE IdSP = '$id' AND IdAccount = '$idAccount' ")
+        getDataCart(context)
     }
 }

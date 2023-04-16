@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"
+            android:layout_gravity="center"
             android:orientation="horizontal">
             <ImageView
                 android:layout_width="90dp"
@@ -31,14 +32,29 @@
                 android:layout_marginBottom="5dp"
                 android:layout_gravity="center"
                 android:orientation="vertical">
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Iphone 14 pro max"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:id="@+id/txtNameCart"/>
+                    android:weightSum="2"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1.95"
+                        android:layout_height="wrap_content"
+                        android:text="Iphone 14 pro max"
+                        android:maxLines="2"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:layout_marginEnd="5dp"
+                        android:textSize="18sp"
+                        android:id="@+id/txtNameCart"/>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:id="@+id/imgDelete"
+                        android:src="@drawable/remove"/>
+                </LinearLayout>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -60,16 +76,16 @@
                         android:background="@drawable/custom_layout_number_oder_detail">
 
                         <ImageView
-                            android:layout_width="15dp"
-                            android:layout_height="15dp"
+                            android:layout_width="17dp"
+                            android:layout_height="match_parent"
                             android:id="@+id/btnMinus"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="15dp"
                             android:src="@drawable/minus" />
 
                         <ImageView
-                            android:layout_width="15dp"
-                            android:layout_height="15dp"
+                            android:layout_width="17dp"
+                            android:layout_height="match_parent"
                             android:id="@+id/btnPlus"
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"

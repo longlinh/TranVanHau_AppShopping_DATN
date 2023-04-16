@@ -111,4 +111,7 @@
     <string name="txtdiscount500">Mã giảm giá 500K</string>
     <string name="txtdiscount1m">Mã giảm giá 1000K</string>
     <string name="txtCartEmpty">Giỏ hàng trống !</string>
+    <string name="txtTitleDelete">Xác nhận xóa</string>
+    <string name="txtContentDelete">Bạn có chắc chắn muốn xóa sản phẩm này không ?</string>
+    <string name="txtMessageDeleteSuccess">Xóa thành công</string>
 </resources>
