@@ -24,6 +24,7 @@
             android:textStyle="bold"/>
         <RelativeLayout
             android:id="@+id/title"
+            android:background="@color/backgound_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -33,7 +34,7 @@
                 android:layout_centerVertical="true"
                 android:gravity="center_horizontal"
                 android:text="@string/txtCart"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="25dp"
                 android:textStyle="bold" />
 
@@ -56,16 +57,19 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_below="@id/title"
-            android:layout_height="match_parent">
+            android:layout_marginTop="8dp">
 
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
-                android:layout_above="@id/layout1"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_above="@id/layout1">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recylerCart"
                         android:layout_width="match_parent"
@@ -76,12 +80,13 @@
                         android:layout_marginBottom="10dp" />
                 </RelativeLayout>
             </androidx.core.widget.NestedScrollView>
+
             <LinearLayout
+                android:id="@+id/layout1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:id="@+id/layout1"
                 android:layout_above="@id/btnOrder"
+                android:layout_margin="10dp"
                 android:background="@drawable/custom_border_white"
                 android:orientation="vertical">
 
@@ -216,12 +221,16 @@
                 </LinearLayout>
 
             </LinearLayout>
+
             <Button
                 android:id="@+id/btnOrder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_margin="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/custom_btn_login"
                 android:padding="10dp"
                 android:text="@string/btnOrder"

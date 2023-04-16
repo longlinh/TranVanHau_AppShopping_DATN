@@ -24,6 +24,7 @@ import com.example.appshoppingdatn.model.Cart
 import com.example.appshoppingdatn.model.SpinnerData
 import com.example.appshoppingdatn.presentation.ui.activity.cart.spinner.CustomSpinner
 import com.example.appshoppingdatn.presentation.ui.activity.home.HomeActivity
+import com.example.appshoppingdatn.presentation.ui.activity.payment.PaymentActivity
 import com.example.appshoppingdatn.presentation.ui.base.activity.BaseActivity
 import com.example.appshoppingdatn.ultis.Utils
 import java.text.DecimalFormat
@@ -58,7 +59,13 @@ class CartActivity : BaseActivity<ActivityCartBinding>() , CartAdapter.ICart{
         onClickBack()
         customDataTotal()
         onSetDataSprinerDiscount()
+        onClickOrder()
+    }
 
+    private fun onClickOrder() {
+        mBinding.btnOrder.setOnClickListener {
+            startActivity(Intent(this@CartActivity,PaymentActivity::class.java))
+        }
     }
 
     private fun checkData() {
@@ -125,6 +132,7 @@ class CartActivity : BaseActivity<ActivityCartBinding>() , CartAdapter.ICart{
                     mBinding.txtDiscountCode.text = "-"+decimalFormat.format(discout) + "đ"
                     totalDis = itemTotal + feeShip - discout
                     mBinding.txtTotal.text = decimalFormat.format(totalDis)+"đ"
+                    Utils.payment = totalDis
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {

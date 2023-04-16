@@ -1,6 +1,7 @@
 package com.example.appshoppingdatn.presentation.ui.fragment.favorite
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.appshoppingdatn.R
 import com.example.appshoppingdatn.databinding.FragmentFavoriteBinding
 import com.example.appshoppingdatn.model.Favorite
+import com.example.appshoppingdatn.presentation.ui.activity.detail.DetailsActivity
 import com.example.appshoppingdatn.presentation.ui.base.fragment.BaseFragment
 import com.example.appshoppingdatn.presentation.ui.fragment.favorite.adapter.FavoriteAdapter
 import com.example.appshoppingdatn.ultis.Utils
@@ -63,5 +65,17 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding>() , FavoriteAdapt
         viewModel.onRemoveFav(fav.idFav,requireContext())
         viewModel.onRemoveItem(position)
         initRecylerview()
+    }
+
+    override fun onClickItemFavorite(position: Int) {
+        val intent = Intent(context, DetailsActivity::class.java)
+        val data = viewModel.listFav!![position]
+        intent.putExtra("id",data.idFav)
+        intent.putExtra("img",data.imgFav)
+        intent.putExtra("name",data.nameFav)
+        intent.putExtra("price",data.priceFavNow)
+        intent.putExtra("des",data.discriptionFav)
+        intent.putExtra("sell",data.selledFav)
+        startActivity(intent)
     }
 }

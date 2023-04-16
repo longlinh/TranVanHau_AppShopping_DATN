@@ -64,8 +64,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
         onDemoDataSale()
         onShowDataNew()
         onClickCategory()
-
     }
+
 
     private fun onShowErrorNew() {
         showMessage(getString(R.string.onShowErrorLoadDataHome))

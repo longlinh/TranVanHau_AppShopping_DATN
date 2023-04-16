@@ -184,6 +184,8 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
                 viewModel.updateData(edtName,edtPhone)
                 binding.txtName.text = edtName.text.toString()
                 binding.txtPhone.text = edtPhone.text.toString()
+                Utils.name = edtName.text.toString()
+                Utils.phone = edtPhone.text.toString()
                 dialogEdit!!.dismiss()
             }
         }

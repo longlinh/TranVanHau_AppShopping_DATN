@@ -113,4 +113,9 @@
     <string name="txtTitleDelete">Delete Confirmation</string>
     <string name="txtContentDelete">Are you sure you want to delete this product ?</string>
     <string name="txtMessageDeleteSuccess">Delete successfully</string>
+
+    ---------------------------PaymentActivity---------------------
+    <string name="txtPayment">Payment</string>
+    <string name="txtEnterAddress">Enter shipping address.....</string>
+    <string name="txtMessageAddressEmpty">Delivery address cannot be empty !</string>
 </resources>

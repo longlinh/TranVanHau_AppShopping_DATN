@@ -114,4 +114,9 @@
     <string name="txtTitleDelete">Xác nhận xóa</string>
     <string name="txtContentDelete">Bạn có chắc chắn muốn xóa sản phẩm này không ?</string>
     <string name="txtMessageDeleteSuccess">Xóa thành công</string>
+
+    ---------------------------PaymentActivity---------------------
+    <string name="txtPayment">Thanh toán</string>
+    <string name="txtEnterAddress">Nhập địa chỉ nhận hàng.....</string>
+    <string name="txtMessageAddressEmpty">Địa chỉ nhận hàng không được để trống !</string>
 </resources>

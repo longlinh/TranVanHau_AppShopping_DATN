@@ -12,6 +12,9 @@ class Utils {
         var listProductModel : ProductModel ?= null
         var checkFragment : Int = 0
         var cartArrayList : ArrayList<Cart> = ArrayList()
+        var name = ""
+        var phone = ""
+        var payment = 0f
     }
 
 }

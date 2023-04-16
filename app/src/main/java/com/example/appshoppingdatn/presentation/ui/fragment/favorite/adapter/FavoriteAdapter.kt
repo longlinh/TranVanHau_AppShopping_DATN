@@ -24,7 +24,7 @@ class FavoriteAdapter (private val inters : IFav) : RecyclerView.Adapter<Favorit
         fun getDataFav(position : Int) : Favorite
         fun getContextFav() : Context
         fun onCLickRemove(position: Int)
-
+        fun onClickItemFavorite(position: Int)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
@@ -52,6 +52,9 @@ class FavoriteAdapter (private val inters : IFav) : RecyclerView.Adapter<Favorit
 
         holder.binding.imgLove.setOnClickListener {
             inters.onCLickRemove(position)
+        }
+        holder.itemView.setOnClickListener {
+            inters.onClickItemFavorite(position)
         }
     }
 

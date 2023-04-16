@@ -1,10 +1,14 @@
 package com.example.appshoppingdatn.presentation.ui.fragment.home
 
 import android.content.Context
+import android.text.Editable
 import android.util.Log
+import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
+import com.bumptech.glide.Glide
 import com.example.appshoppingdatn.R
 import com.example.appshoppingdatn.data.api.APIService
 import com.example.appshoppingdatn.data.api.RetrofitClient
@@ -18,6 +22,8 @@ import com.example.appshoppingdatn.presentation.ui.base.viewmodel.BaseViewModel
 import com.example.appshoppingdatn.ultis.Utils
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -33,7 +39,6 @@ class HomeViewModel : BaseViewModel() {
     var listSaleModel = MutableLiveData<SaleModel>()
     private  var apiService : APIService ?= null
     private var compositeDisposable = CompositeDisposable()
-
     companion object{
 
         const val SHOW_MESSAGE_EROR_SALE = 1
@@ -55,7 +60,6 @@ class HomeViewModel : BaseViewModel() {
         }
 
     }
-
      fun getSPSale() {
         isLoading.value = true
         compositeDisposable.addAll(apiService!!.getSPSale()
