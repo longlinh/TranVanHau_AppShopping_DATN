@@ -81,7 +81,7 @@ class CartActivity : BaseActivity<ActivityCartBinding>() , CartAdapter.ICart{
     fun customDataTotal() {
         itemTotal = 0f
         for (i in 0 until Utils.cartArrayList.size){
-            itemTotal += Utils.cartArrayList[i].sumPrice
+            Utils.cartArrayList[i].sumPrice = Utils.cartArrayList[i].sumPrice!! + Utils.cartArrayList[i].sumPrice!!
         }
         total = itemTotal + feeShip - discout
         totalDis = total
@@ -188,7 +188,7 @@ class CartActivity : BaseActivity<ActivityCartBinding>() , CartAdapter.ICart{
             val numberNow = Utils.cartArrayList[position].numberOder
             val priceNow = Utils.cartArrayList[position].sumPrice
             Utils.cartArrayList[position].numberOder = newNumber
-            val newPrice = (newNumber*priceNow)/numberNow
+            val newPrice = (newNumber* priceNow!!)/ numberNow!!
             Utils.cartArrayList[position].sumPrice = newPrice
             txtSumPriceCart.text = decimalFormat.format(newPrice)+"đ"
             viewModel.updateCart(this,idCart,newNumber,newPrice)
@@ -210,7 +210,7 @@ class CartActivity : BaseActivity<ActivityCartBinding>() , CartAdapter.ICart{
         val numberNow = Utils.cartArrayList[position].numberOder
         val priceNow = Utils.cartArrayList[position].sumPrice
         Utils.cartArrayList[position].numberOder = newNumber
-        val newPrice = (newNumber * priceNow) / numberNow
+        val newPrice = (newNumber * priceNow!!) / numberNow!!
         Utils.cartArrayList[position].sumPrice = newPrice
         txtSumPriceCart.text = decimalFormat.format(newPrice) + "đ"
         viewModel.updateCart(this,idCart,newNumber,newPrice)

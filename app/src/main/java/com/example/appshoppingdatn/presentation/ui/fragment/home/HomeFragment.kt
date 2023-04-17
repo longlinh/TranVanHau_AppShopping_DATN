@@ -24,6 +24,7 @@ import com.example.appshoppingdatn.presentation.ui.fragment.category.CategoryVie
 import com.example.appshoppingdatn.presentation.ui.fragment.home.adapter.NewAdapter
 import com.example.appshoppingdatn.presentation.ui.fragment.home.adapter.SaleAdapter
 import com.example.appshoppingdatn.presentation.ui.fragment.home.adapter.ViewPagerAdapter
+import com.example.appshoppingdatn.presentation.ui.fragment.purchased.PurchasedFragment
 import java.util.ArrayList
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , NewAdapter.INew {
@@ -64,6 +65,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
         onDemoDataSale()
         onShowDataNew()
         onClickCategory()
+        onClickPurchased()
+    }
+
+    private fun onClickPurchased() {
+        binding.layoutPurchased.setOnClickListener {
+            replaceFragment(PurchasedFragment())
+        }
     }
 
 

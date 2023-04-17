@@ -75,7 +75,7 @@ class SignupViewModel : BaseViewModel(){
                     hashMap["password"] = passWord
                     hashMap["phone"] = phoneNumber
                     databaseReference!!.setValue(hashMap).addOnCompleteListener {
-                        if (task.isSuccessful){
+                        if (it.isSuccessful){
                             uiEventLiveData.value = NAV_REGISTER_SUCCESS
                         }
                     }

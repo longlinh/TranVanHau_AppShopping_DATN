@@ -119,4 +119,13 @@
     <string name="txtPayment">Thanh toán</string>
     <string name="txtEnterAddress">Nhập địa chỉ nhận hàng.....</string>
     <string name="txtMessageAddressEmpty">Địa chỉ nhận hàng không được để trống !</string>
+    <string name="listProduct">Danh sách sản phẩm :</string>
+
+    -------------------------PurchasedFragment----------------------
+    <string name="txtPurchasedOrder">Đơn hàng đã mua</string>
+    <string name="txtUserNamePurchased">Họ tên :</string>
+    <string name="txtPhonePurchased">Số điện thoại :</string>
+    <string name="txtAddressPurchased">Địa chỉ nhận hàng :</string>
+    <string name="txtDatePurchased">Ngày đặt :</string>
+    <string name="txtTotalPayment">Tổng tiền thanh toán :</string>
 </resources>

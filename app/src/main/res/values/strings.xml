@@ -118,4 +118,13 @@
     <string name="txtPayment">Payment</string>
     <string name="txtEnterAddress">Enter shipping address.....</string>
     <string name="txtMessageAddressEmpty">Delivery address cannot be empty !</string>
+    <string name="listProduct">List of products :</string>
+    
+    -------------------------PurchasedFragment----------------------
+    <string name="txtPurchasedOrder">Purchase Order</string>
+    <string name="txtUserNamePurchased">User name :</string>
+    <string name="txtPhonePurchased">Phone number :</string>
+    <string name="txtAddressPurchased">Delivery address :</string>
+    <string name="txtDatePurchased">Date :</string>
+    <string name="txtTotalPayment">Total payment :</string>
 </resources>

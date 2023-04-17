@@ -210,6 +210,7 @@
                                 android:background="@drawable/custom_layout_category"
                                 android:layout_height="80dp"
                                 android:gravity="center"
+                                android:id="@+id/layout_Purchased"
                                 android:layout_margin="10dp"
                                 android:orientation="vertical">
                                 <ImageView

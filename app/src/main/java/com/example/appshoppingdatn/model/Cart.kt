@@ -1,12 +1,12 @@
 package com.example.appshoppingdatn.model
 
 data class Cart (
-    var idCart : String,
-    var imgCart : String,
-    var nameCart : String,
-    var priceCart : Float,
-    var destionCart : String,
-    var selledCart : Int,
-    var numberOder : Int,
-    var sumPrice : Float
+    var idCart : String ?= null,
+    var imgCart : String ?= null,
+    var nameCart : String ?= null,
+    var priceCart : Float ?= null,
+    var destionCart : String ?= null,
+    var selledCart : Int ?= null,
+    var numberOder : Int ?= null,
+    var sumPrice : Float ?= null
 )

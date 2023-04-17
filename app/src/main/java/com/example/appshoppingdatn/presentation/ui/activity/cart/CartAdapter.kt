@@ -48,19 +48,21 @@ class CartAdapter(val inters : ICart) : RecyclerView.Adapter<CartAdapter.Compani
         holder.binding.txtPriceCart.text = decimalFormat.format(carts.priceCart)+"đ"
         holder.binding.txtNumberOderCart.text = carts.numberOder.toString()
         val number = holder.binding.txtNumberOderCart.text.toString().toInt()
-        val sumPrice = number * carts.priceCart
+        val sumPrice = number * carts.priceCart!!
         holder.binding.txtSumPriceCart.text = decimalFormat.format(sumPrice)+"đ"
 
         holder.binding.btnMinus.setOnClickListener {
           val numberOder = holder.binding.txtNumberOderCart.text.toString().toInt()
-          inters.onCLickMinus(position,carts.idCart,numberOder,holder.binding.txtNumberOderCart,holder.binding.txtSumPriceCart,holder.binding.btnMinus)
+          inters.onCLickMinus(position,
+              carts.idCart!!,numberOder,holder.binding.txtNumberOderCart,holder.binding.txtSumPriceCart,holder.binding.btnMinus)
         }
         holder.binding.btnPlus.setOnClickListener {
             val numberOder = holder.binding.txtNumberOderCart.text.toString().toInt()
-            inters.onClickPlus(position,carts.idCart,numberOder,holder.binding.txtNumberOderCart,holder.binding.txtSumPriceCart)
+            inters.onClickPlus(position,
+                carts.idCart!!,numberOder,holder.binding.txtNumberOderCart,holder.binding.txtSumPriceCart)
         }
         holder.binding.imgDelete.setOnClickListener {
-            inters.onClickDelete(carts.idCart)
+            inters.onClickDelete(carts.idCart!!)
         }
     }
 }

@@ -11,10 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".presentation.ui.activity.payment.PaymentActivity">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+
             <RelativeLayout
                 android:id="@+id/title"
                 android:background="@color/backgound_main"
@@ -49,101 +46,132 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15sp"
-                android:background="@drawable/custom_border_white"
-                android:elevation="5dp"
-                android:layout_marginStart="15sp"
-                android:layout_marginEnd="15sp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_below="@id/title"
+                android:layout_above="@id/btnPayment"
+                android:id="@+id/conentPay">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/baseline_dollar"/>
-                    <TextView
-                        android:layout_width="wrap_content"
+                    android:layout_marginTop="15sp"
+                    android:background="@drawable/custom_border_white"
+                    android:elevation="5dp"
+                    android:layout_marginStart="15sp"
+                    android:layout_marginEnd="15sp"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/txtPricePayment"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="10dp"
-                        android:textSize="20sp"
-                        android:textColor="@color/black"/>
+                        android:padding="10dp"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/baseline_dollar"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/txtPricePayment"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"/>
+                    </LinearLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/backgound_main"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/baseline_phone_red"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/txtPhonePayment"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"/>
+                    </LinearLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/backgound_main"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/baseline_person_red"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:id="@+id/txtNamePayment"
+                            android:layout_marginStart="10dp"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"/>
+                    </LinearLayout>
                 </LinearLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/backgound_main"/>
-                <LinearLayout
+                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/baseline_phone_red"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/txtPhonePayment"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="10dp"
-                        android:textSize="20sp"
-                        android:textColor="@color/black"/>
-                </LinearLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/backgound_main"/>
-                <LinearLayout
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/custom_editext_login"
+                    android:drawableStart="@drawable/baseline_add_location_24"
+                    android:drawablePadding="10dp"
+                    android:hint="@string/txtEnterAddress"
+                    android:id="@+id/edtAddressPayment"
+                    android:inputType="text"
+                    android:textSize="20sp"
+                    android:padding="15dp"
+                    android:textColor="@color/black"/>
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/baseline_person_red"/>
-                    <TextView
-                        android:layout_width="wrap_content"
+                    android:text="@string/listProduct"
+                    android:layout_marginStart="15dp"
+                    android:textSize="18sp"
+                    android:id="@+id/titleListProduct"
+                    android:textColor="@color/backgound_main"/>
+                <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginTop="5dp">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:id="@+id/txtNamePayment"
-                        android:layout_marginStart="10dp"
-                        android:textSize="20sp"
-                        android:textColor="@color/black"/>
-                </LinearLayout>
+                        android:id="@+id/recylerOrder" />
+                </androidx.core.widget.NestedScrollView>
+
             </LinearLayout>
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/custom_editext_login"
-                android:drawableStart="@drawable/baseline_add_location_24"
-                android:drawablePadding="10dp"
-                android:hint="@string/txtEnterAddress"
-                android:id="@+id/edtAddressPayment"
-                android:inputType="text"
-                android:textSize="20sp"
-                android:padding="15dp"
-                android:textColor="@color/black"/>
 
-        </LinearLayout>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:id="@+id/btnPayment"
-            android:layout_marginBottom="20sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15sp"
             android:layout_alignParentBottom="true"
             android:background="@drawable/custom_btn_login">
             <LinearLayout
@@ -166,5 +194,6 @@
                     android:src="@drawable/money"/>
             </LinearLayout>
         </RelativeLayout>
+      
     </RelativeLayout>
 </layout>
