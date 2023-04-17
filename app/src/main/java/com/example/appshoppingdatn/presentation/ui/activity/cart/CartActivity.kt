@@ -81,7 +81,7 @@ class CartActivity : BaseActivity<ActivityCartBinding>() , CartAdapter.ICart{
     fun customDataTotal() {
         itemTotal = 0f
         for (i in 0 until Utils.cartArrayList.size){
-            Utils.cartArrayList[i].sumPrice = Utils.cartArrayList[i].sumPrice!! + Utils.cartArrayList[i].sumPrice!!
+            itemTotal += Utils.cartArrayList[i].sumPrice!!
         }
         total = itemTotal + feeShip - discout
         totalDis = total

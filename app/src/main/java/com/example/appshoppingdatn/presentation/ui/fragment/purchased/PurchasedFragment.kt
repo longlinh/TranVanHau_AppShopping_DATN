@@ -1,5 +1,6 @@
 package com.example.appshoppingdatn.presentation.ui.fragment.purchased
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -47,6 +48,7 @@ class PurchasedFragment : BaseFragment<FragmentPurchasedBinding>() {
         binding.recylerPurchasedOrder.adapter = purchasedAdapter
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun getDataFromRealTimeDatabase() {
         if (firebaseUser==null){
             return
@@ -58,7 +60,6 @@ class PurchasedFragment : BaseFragment<FragmentPurchasedBinding>() {
                     for (data in it.children){
                         val bill = data.getValue(Bill::class.java) as Bill
                         purchasedArrayList.add(bill)
-                        Log.d("list",purchasedArrayList.toString())
                     }
                     purchasedAdapter.notifyDataSetChanged()
 

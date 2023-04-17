@@ -43,7 +43,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="15dp"
             android:background="@drawable/custom_layout_border_bottom_white">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -61,18 +61,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/txtUserNamePurchased"
+                        android:textStyle="bold"
+                        android:fontFamily="serif"
                         android:textColor="@color/black"
-                        android:textSize="18sp"/>
+                        android:textSize="16sp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Tran Van Hau"
                         android:id="@+id/txtNamePurchased"
-                        android:fontFamily="serif-monospace"
-                        android:textStyle="bold"
                         android:layout_marginStart="5dp"
                         android:textColor="@color/black"
-                        android:textSize="18sp"/>
+                        android:textSize="20sp"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -85,18 +85,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/txtPhonePurchased"
+                        android:textStyle="bold"
+                        android:fontFamily="serif"
                         android:textColor="@color/black"
-                        android:textSize="18sp"/>
+                        android:textSize="16sp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0358277399"
-                        android:textStyle="bold"
                         android:id="@+id/txtPhonePurchased"
-                        android:fontFamily="serif-monospace"
                         android:layout_marginStart="5dp"
                         android:textColor="@color/black"
-                        android:textSize="18sp"/>
+                        android:textSize="20sp"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -109,18 +109,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/txtAddressPurchased"
+                        android:textStyle="bold"
+                        android:fontFamily="serif"
                         android:textColor="@color/black"
-                        android:textSize="18sp"/>
+                        android:textSize="16sp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Ha Noi"
                         android:layout_marginStart="5dp"
-                        android:textStyle="bold"
                         android:id="@+id/txtAddressPurchased"
-                        android:fontFamily="serif-monospace"
                         android:textColor="@color/black"
-                        android:textSize="18sp"/>
+                        android:textSize="20sp"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -134,6 +134,7 @@
                         android:text="@string/listProduct"
                         android:textColor="@color/black"
                         android:textStyle="bold"
+                        android:fontFamily="serif"
                         android:textSize="16sp"/>
                 </LinearLayout>
             </LinearLayout>
@@ -167,7 +168,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/txtTotalPayment"
-                        android:textSize="17sp"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:fontFamily="serif"
                         android:layout_gravity="center"
                         android:textColor="@color/black"/>
                     <TextView
@@ -196,7 +199,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/txtDatePurchased"
-                    android:textSize="17sp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:fontFamily="serif"
                     android:layout_gravity="center"
                     android:textColor="@color/black"/>
                 <TextView
