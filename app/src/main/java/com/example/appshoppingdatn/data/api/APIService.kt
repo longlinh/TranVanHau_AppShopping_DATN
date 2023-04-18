@@ -17,4 +17,8 @@ interface APIService {
     @GET("getcategory.php")
     fun getCategory(
     ) : Observable<ProductModel>
+
+    @POST("search.php")
+    @FormUrlEncoded
+    fun getSearch(@Field("search") txtSearch : String) : Observable<ProductModel>
 }
