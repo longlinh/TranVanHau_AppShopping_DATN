@@ -2,6 +2,7 @@ package com.example.appshoppingdatn.ultis
 
 
 
+import android.widget.EditText
 import com.example.appshoppingdatn.model.*
 import java.util.ArrayList
 
@@ -15,6 +16,7 @@ class Utils {
         var name = ""
         var phone = ""
         var payment = 0f
+        var password : EditText ?= null
     }
 
 }

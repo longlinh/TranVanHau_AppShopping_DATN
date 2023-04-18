@@ -9,7 +9,11 @@ import android.widget.ImageView
 import com.example.appshoppingdatn.R
 import com.example.appshoppingdatn.presentation.ui.base.SingleLiveData
 import com.example.appshoppingdatn.presentation.ui.base.viewmodel.BaseViewModel
+import com.example.appshoppingdatn.presentation.ui.fragment.profile.ProfileViewModel
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
@@ -17,6 +21,7 @@ class SigninViewModel : BaseViewModel() {
     private var auth: FirebaseAuth?=null
     val uiEventLiveData = SingleLiveData<Int>()
     private var passwordNotVisible = 1
+    private var firebaseUser : FirebaseUser?= null
     companion object{
         const val NAV_LOGIN_SUCCESS = 1
         const val DIALOG_LOGIN_SHOW = 2
@@ -26,6 +31,7 @@ class SigninViewModel : BaseViewModel() {
     }
 
     init {
+        firebaseUser = FirebaseAuth.getInstance().currentUser
         auth = FirebaseAuth.getInstance()
     }
     fun onSignin(email : String, passWord : String , edtEmail : EditText , edtPassword : EditText,context:Context){

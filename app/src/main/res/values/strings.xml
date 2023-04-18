@@ -119,7 +119,12 @@
     <string name="txtEnterAddress">Enter shipping address.....</string>
     <string name="txtMessageAddressEmpty">Delivery address cannot be empty !</string>
     <string name="listProduct">List of products :</string>
-    
+    <string name="paymentCancel">Payment Cancel</string>
+    <string name="paymentFaild">Payment Failed</string>
+    <string name="paymentSuccess">Payment success</string>
+    <string name="thanks">Thank you for your order !</string>
+    <string name="continueBuy">Continue shopping</string>
+
     -------------------------PurchasedFragment----------------------
     <string name="txtPurchasedOrder">Purchase Order</string>
     <string name="txtUserNamePurchased">User name :</string>

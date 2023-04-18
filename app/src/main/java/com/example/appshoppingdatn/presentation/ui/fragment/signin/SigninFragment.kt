@@ -17,9 +17,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.appshoppingdatn.R
 import com.example.appshoppingdatn.databinding.FragmentSigninBinding
 import com.example.appshoppingdatn.presentation.ui.activity.home.HomeActivity
+import com.example.appshoppingdatn.presentation.ui.activity.login.LoginActivity
 import com.example.appshoppingdatn.presentation.ui.base.fragment.BaseFragment
+import com.example.appshoppingdatn.presentation.ui.fragment.profile.ProfileViewModel
 import com.example.appshoppingdatn.ultis.CustomProgressDialog
 import com.example.appshoppingdatn.ultis.Utils
+import com.google.firebase.auth.FirebaseAuth
 
 class SigninFragment : BaseFragment<FragmentSigninBinding>() {
     private var progressdialog: CustomProgressDialog? = null
@@ -98,7 +101,6 @@ class SigninFragment : BaseFragment<FragmentSigninBinding>() {
             viewModel.onSignin(email,password,binding.edtEmail,binding.edtPassword,requireActivity())
         }
     }
-
     private fun onClickVisiblePassWord() {
         binding.imgCheckPass.setOnClickListener {
             viewModel.onCLickVisiblePassword(binding.imgCheckPass,binding.edtPassword)

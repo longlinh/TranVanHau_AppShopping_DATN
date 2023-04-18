@@ -13,14 +13,14 @@
         tools:context=".presentation.ui.activity.detail.DetailsActivity">
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <RelativeLayout
                     android:id="@+id/layout_product"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
+                    android:layout_height="240dp"
                     android:background="@drawable/top_background_profile">
                     <ImageView
                         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
                     <RelativeLayout
                         android:layout_width="170dp"
                         android:layout_height="170dp"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="20dp"
                         android:layout_centerHorizontal="true">
 
                         <de.hdodenhof.circleimageview.CircleImageView
@@ -57,7 +57,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="30dp"
-                    android:layout_marginTop="215dp"
+                    android:layout_marginTop="200dp"
                     android:background="@drawable/custom_border_profile"
                     android:elevation="5dp"
                     android:orientation="vertical">

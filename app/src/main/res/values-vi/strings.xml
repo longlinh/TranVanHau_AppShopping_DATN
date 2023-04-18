@@ -120,6 +120,11 @@
     <string name="txtEnterAddress">Nhập địa chỉ nhận hàng.....</string>
     <string name="txtMessageAddressEmpty">Địa chỉ nhận hàng không được để trống !</string>
     <string name="listProduct">Danh sách sản phẩm :</string>
+    <string name="paymentCancel">Hủy bỏ thanh toán</string>
+    <string name="paymentFaild">Thanh toán thất bại</string>
+    <string name="paymentSuccess">Thanh toán thành công</string>
+    <string name="thanks">Cảm ơn quý khách đã đặt hàng !</string>
+    <string name="continueBuy">Tiếp tục mua hàng</string>
 
     -------------------------PurchasedFragment----------------------
     <string name="txtPurchasedOrder">Đơn hàng đã mua</string>

@@ -137,7 +137,6 @@
                     android:drawablePadding="10dp"
                     android:hint="@string/txtEnterAddress"
                     android:id="@+id/edtAddressPayment"
-                    android:inputType="text"
                     android:textSize="20sp"
                     android:padding="15dp"
                     android:textColor="@color/black"/>

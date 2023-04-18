@@ -53,6 +53,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     private val PERMISSION_REQUEST_CODE = 200
     private var bitMap: Bitmap? = null
     private var uri : Uri ?= null
+
     override fun getLayoutResId(): Int {
         return R.layout.fragment_profile
     }
