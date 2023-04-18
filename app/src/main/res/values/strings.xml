@@ -132,4 +132,7 @@
     <string name="txtAddressPurchased">Delivery address :</string>
     <string name="txtDatePurchased">Date :</string>
     <string name="txtTotalPayment">Total payment :</string>
+
+    -------------------------SearchFragment--------------------------
+    <string name="edtSearch">Search product . . . .</string>
 </resources>

@@ -25,6 +25,7 @@ import com.example.appshoppingdatn.presentation.ui.fragment.home.adapter.NewAdap
 import com.example.appshoppingdatn.presentation.ui.fragment.home.adapter.SaleAdapter
 import com.example.appshoppingdatn.presentation.ui.fragment.home.adapter.ViewPagerAdapter
 import com.example.appshoppingdatn.presentation.ui.fragment.purchased.PurchasedFragment
+import com.example.appshoppingdatn.presentation.ui.fragment.search.SearchFragment
 import java.util.ArrayList
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , NewAdapter.INew {
@@ -66,6 +67,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
         onShowDataNew()
         onClickCategory()
         onClickPurchased()
+        onClickSearch()
+    }
+
+    private fun onClickSearch() {
+        binding.edtSearch.setOnFocusChangeListener { v, hasFocus ->
+            replaceFragment(SearchFragment())
+        }
     }
 
     private fun onClickPurchased() {

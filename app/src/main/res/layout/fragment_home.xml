@@ -41,6 +41,7 @@
                         android:layout_marginEnd="50dp"
                         android:id="@+id/edtSearch"
                         android:elevation="3dp"
+                        android:enabled="true"
                         android:background="@drawable/custom_border_white"
                         android:drawableStart="@drawable/baseline_search_24"
                         android:drawablePadding="15dp"

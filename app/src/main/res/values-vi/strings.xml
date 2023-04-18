@@ -133,4 +133,7 @@
     <string name="txtAddressPurchased">Địa chỉ nhận hàng :</string>
     <string name="txtDatePurchased">Ngày đặt :</string>
     <string name="txtTotalPayment">Tổng tiền thanh toán :</string>
+
+    -------------------------SearchFragment--------------------------
+    <string name="edtSearch">Tìm kiếm sản phẩm . . . .</string>
 </resources>
