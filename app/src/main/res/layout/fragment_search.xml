@@ -15,12 +15,13 @@
             android:layout_marginTop="5dp"
             android:orientation="horizontal">
             <RelativeLayout
-                android:id="@+id/imgBackPurchased"
+                android:id="@+id/imgBackSearch"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_margin="10dp"
                 android:background="@drawable/custom_circle_white"
                 android:elevation="5dp">
+
                 <ImageView
                     android:layout_width="35dp"
                     android:layout_height="35dp"
@@ -33,15 +34,29 @@
                 android:layout_gravity="center_vertical"
                 android:textSize="18sp"
                 android:textColor="@color/black"
+                android:id="@+id/edtSearch"
                 android:padding="10dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="10dp"
                 android:hint="@string/edtSearch"/>
         </LinearLayout>
-        <androidx.recyclerview.widget.RecyclerView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/recylerSearch"
-            android:layout_margin="10dp"/>
+            android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="invisible"
+                android:id="@+id/recylerSearch"
+                android:layout_margin="10dp"/>
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="50dp"
+                android:progressTint="@color/backgound_main"
+                android:progressBackgroundTint="@color/backgound_main"
+                android:layout_centerInParent="true"
+                android:layout_height="50dp"/>
+        </RelativeLayout>
+
     </LinearLayout>
 </layout>

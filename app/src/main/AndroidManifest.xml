@@ -54,7 +54,8 @@
             android:name=".presentation.ui.activity.home.HomeActivity"
             android:configChanges="locale"
             android:exported="false"
-            android:theme="@style/CustomNavigation" />
+            android:theme="@style/CustomNavigation"
+            android:windowSoftInputMode="adjustPan"/>
     </application>
 
 </manifest>

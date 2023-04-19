@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseUser
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import java.util.ArrayList
 
 class CategoryViewModel : BaseViewModel() {
     val uiEventLiveData = SingleLiveData<Int>()
@@ -51,7 +52,9 @@ class CategoryViewModel : BaseViewModel() {
                                     listProduct.add(data)
                                 }
                             }
-                            listProductModel.value = ProductModel(productModel.success,productModel.message,listProduct)
+                            listProductModel.value = ProductModel(productModel.success,productModel.message,
+                                listProduct as ArrayList<Product>
+                            )
                             Utils.listProductModel = ProductModel(productModel.success,productModel.message,listProduct)
                         }
                     }
