@@ -136,4 +136,8 @@
 
     -------------------------SearchFragment--------------------------
     <string name="edtSearch">Tìm kiếm sản phẩm . . . .</string>
+    ------------------------NotificationFragment--------------------
+    <string name="txtMessageTB">Bạn vừa đặt thành công đơn hàng có giá trị là </string>
+    <string name="txtMessageChangePassword">Bạn vừa thay đổi mật khẩu thành công !</string>
+    <string name="txtMessageChangeInfo">Bạn vừa thay đổi thông tin thành công !</string>
 </resources>

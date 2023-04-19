@@ -73,6 +73,10 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
                 "Selled INTEGER ,"+
                 "NumberOrder INTEGER,"+
                 "SumPrice FLOAT)")
+        sqliteHelper!!.QueryData("CREATE TABLE IF NOT EXISTS NOTIFICATION (Id INTEGER PRIMARY KEY AUTOINCREMENT,"+
+        "IdAccount VARCHAR(100),"+
+        "TxtTB VARCHAR(300),"+
+        "DateTB VARCHAR(100))")
     }
 
     override fun attachBaseContext(newBase: Context?) {

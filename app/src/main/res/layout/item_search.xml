@@ -62,7 +62,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Đã bán 100"
-                        android:textSize="15sp"
+                        android:textSize="13sp"
                         android:gravity="end"
                         android:id="@+id/txtSellSearch"
                         android:textColor="@color/black"

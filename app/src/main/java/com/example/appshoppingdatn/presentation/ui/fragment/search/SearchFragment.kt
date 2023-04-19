@@ -18,7 +18,6 @@ import java.util.*
 class SearchFragment : BaseFragment<FragmentSearchBinding>() {
     private lateinit var searchAdapter : SearchAdapter
     private lateinit var viewModel: SearchViewModel
-   // private var listSearch : ArrayList<Product> = ArrayList()
     override fun getLayoutResId(): Int {
         return R.layout.fragment_search
     }
