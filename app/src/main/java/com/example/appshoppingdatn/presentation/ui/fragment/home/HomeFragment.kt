@@ -39,7 +39,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
     private var saleAdapter : SaleAdapter ?= null
     private var newAdapter : NewAdapter ?= null
     private lateinit var viewModel: HomeViewModel
-    //private var list  = ArrayList<Notification>()
     override fun getLayoutResId(): Int {
         return R.layout.fragment_home
     }
@@ -82,15 +81,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
     }
     @SuppressLint("SetTextI18n")
     private fun onShowNumberNoti() {
-
         viewModel.onShowDataNoti(requireActivity())
-        if ( Utils.notiArrayList.size < 1){
-            binding.layoutNumber.visibility = View.GONE
-        }else{
-            binding.layoutNumber.visibility = View.VISIBLE
-            binding.txtNumberNoti.text = Utils.notiArrayList.size.toString()
+        viewModel.numberNoti.observe(this@HomeFragment) {
+            if (it == 0) {
+                binding.layoutNumber.visibility = View.GONE
+            } else {
+                binding.layoutNumber.visibility = View.VISIBLE
+                binding.txtNumberNoti.text = it.toString()
+            }
         }
-
     }
 
     private fun onClickNotification() {

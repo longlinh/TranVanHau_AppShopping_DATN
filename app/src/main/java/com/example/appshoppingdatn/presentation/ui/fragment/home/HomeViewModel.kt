@@ -36,6 +36,7 @@ class HomeViewModel : BaseViewModel() {
     var listNewModel = MutableLiveData<NewModel>()
     var listSaleModel = MutableLiveData<SaleModel>()
    // var listNoti : ArrayList<Notification> ?= null
+    var numberNoti = MutableLiveData<Int>()
     private  var apiService : APIService ?= null
     private var compositeDisposable = CompositeDisposable()
     companion object{
@@ -139,18 +140,18 @@ class HomeViewModel : BaseViewModel() {
 
     @SuppressLint("NotifyDataSetChanged")
     fun onShowDataNoti(context: Context){
-        if (Utils.notiArrayList != null){
-            Utils.notiArrayList.clear()
-        }else{
-            Utils.notiArrayList = ArrayList()
-            sqLiteHelper = SQLiteHelper(context,"Shopping1.db",null,2)
-            val data = sqLiteHelper!!.getData("SELECT * FROM NOTIFICATION WHERE IdAccount = '$idAccount' ORDER BY Id DESC")
-            while (data.moveToNext()){
-                val idTB = data.getInt(0)
-                val txtTB = data.getString(2)
-                val dateTB = data.getString(3)
-                Utils.notiArrayList.add(Notification(idTB,txtTB,dateTB))
-            }
+        var count = 0
+        Utils.notiArrayList = ArrayList()
+        sqLiteHelper = SQLiteHelper(context, "Shopping1.db", null, 2)
+        val data = sqLiteHelper!!.getData("SELECT * FROM NOTIFICATION WHERE IdAccount = '$idAccount' ORDER BY Id DESC")
+        while (data.moveToNext()) {
+            val idTB = data.getInt(0)
+            val txtTB = data.getString(2)
+            val dateTB = data.getString(3)
+            Utils.notiArrayList.add(Notification(idTB, txtTB, dateTB))
+            count++
         }
+        numberNoti.value = count
+
     }
 }
