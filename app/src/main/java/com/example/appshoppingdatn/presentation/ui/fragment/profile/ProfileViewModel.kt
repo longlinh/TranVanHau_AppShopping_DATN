@@ -11,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.appshoppingdatn.R
+import com.example.appshoppingdatn.data.database.SQLiteHelper
 import com.example.appshoppingdatn.presentation.ui.base.SingleLiveData
 import com.example.appshoppingdatn.presentation.ui.base.viewmodel.BaseViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -25,10 +26,12 @@ class ProfileViewModel : BaseViewModel() {
     private var databaseReference: DatabaseReference? = null
     private var firebaseUser : FirebaseUser ?= null
     private var passwordNotVisible = 1
-
+    private var sqLiteHelper: SQLiteHelper? = null
+    var idAccount : String ?= null
     init {
         firebaseUser = FirebaseAuth.getInstance().currentUser
         firebaseDatabase = FirebaseDatabase.getInstance()
+        idAccount = firebaseUser!!.uid
     }
     companion object{
         const val UPDATE_SUCCESS = 1
@@ -64,15 +67,17 @@ class ProfileViewModel : BaseViewModel() {
         }
     }
 
-    fun updateData(edtName : EditText , edtPhone : EditText){
-        val idAccount = firebaseUser!!.uid
+    fun updateData(context: Context,edtName : EditText , edtPhone : EditText,date : String){
         databaseReference = firebaseDatabase!!.getReference("User")
         val user = mapOf<String,String>(
             "name" to edtName.text.toString(),
             "phone" to edtPhone.text.toString()
         )
-        databaseReference!!.child(idAccount).updateChildren(user).addOnSuccessListener {
+        databaseReference!!.child(idAccount!!).updateChildren(user).addOnSuccessListener {
             uiEventLiveData.value = UPDATE_SUCCESS
+            sqLiteHelper = SQLiteHelper(context,"Shopping1.db",null,2)
+            val contentTB = context.getString(R.string.txtMessageChangeInfo)
+            sqLiteHelper!!.QueryData("INSERT INTO NOTIFICATION VALUES(null,'$idAccount','$contentTB','$date') ")
             edtName.text.clear()
             edtPhone.text.clear()
         }.addOnFailureListener {
@@ -80,18 +85,17 @@ class ProfileViewModel : BaseViewModel() {
         }
     }
     fun changePasswordToRealTimeDb(edtPass : EditText){
-        val idAccount = firebaseUser!!.uid
         databaseReference = firebaseDatabase!!.getReference("User")
         val user = mapOf<String,String>(
             "password" to edtPass.text.toString()
         )
-        databaseReference!!.child(idAccount).updateChildren(user).addOnSuccessListener {
+        databaseReference!!.child(idAccount!!).updateChildren(user).addOnSuccessListener {
            uiEventLiveData.value = CHANGE_SUCCESS
         }.addOnFailureListener {
            uiEventLiveData.value = CHANGE_FAILD
         }
     }
-    fun changePassword(passwordNow : String , edtOldPass : EditText , edtNewPass : EditText , edtConfirmPass : EditText,context: Context){
+    fun changePassword(passwordNow : String , edtOldPass : EditText , edtNewPass : EditText , edtConfirmPass : EditText,context: Context,date : String){
         val oldPass = edtOldPass.text.toString().trim()
         val newPass = edtNewPass.text.toString().trim()
         val confimPass = edtConfirmPass.text.toString().trim()
@@ -125,7 +129,11 @@ class ProfileViewModel : BaseViewModel() {
                 if (it.isSuccessful){
                     uiEventLiveData.value = DISS_PROGRESS_DIALOG
                     changePasswordToRealTimeDb(edtNewPass)
+                    sqLiteHelper = SQLiteHelper(context,"Shopping1.db",null,2)
+                    val contentTB = context.getString(R.string.txtMessageChangePassword)
+                    sqLiteHelper!!.QueryData("INSERT INTO NOTIFICATION VALUES(null,'$idAccount','$contentTB','$date') ")
                     uiEventLiveData.value = DISS_DIALOG_CHANGE
+
                 }
             }.addOnFailureListener {
                 uiEventLiveData.value = DISS_PROGRESS_DIALOG

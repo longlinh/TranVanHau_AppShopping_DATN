@@ -59,21 +59,24 @@
                         <ImageView
                             android:layout_width="40dp"
                             android:layout_height="30dp"
+                            android:id="@+id/imgNoti"
                             android:src="@drawable/baseline_notifications_24"/>
                             <RelativeLayout
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:layout_marginStart="16dp"
+                                android:id="@+id/layoutNumber"
                                 android:background="@drawable/custom_layout_circle_red">
+
                                 <TextView
+                                    android:id="@+id/txtNumberNoti"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="10"
-                                    android:textSize="14sp"
-                                    android:textColor="@color/white"
                                     android:layout_centerInParent="true"
-                                    android:textStyle="bold"
-                                    android:id="@+id/txtNumberOder"/>
+                                    android:text="10"
+                                    android:textColor="@color/white"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
                             </RelativeLayout>
                     </RelativeLayout>
                 </RelativeLayout>

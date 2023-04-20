@@ -21,14 +21,14 @@ class FavoriteViewModel : BaseViewModel() {
 
     init {
         listFav = ArrayList()
+        firebaseUser = FirebaseAuth.getInstance().currentUser
+        idAccount = firebaseUser!!.uid
     }
     fun onShowData(context: Context){
         if (listFav != null){
             listFav!!.clear()
         }
         sqLiteHelper = SQLiteHelper(context,"Shopping1.db",null,2)
-        firebaseUser = FirebaseAuth.getInstance().currentUser
-        idAccount = firebaseUser!!.uid
         val data = sqLiteHelper!!.getData("SELECT * FROM FAVORITE2 WHERE IdAccount = '$idAccount' AND StatusFav = '1' ")
         while (data.moveToNext()){
             val idFav = data.getString(2)
@@ -45,7 +45,7 @@ class FavoriteViewModel : BaseViewModel() {
     }
     fun onRemoveFav(idFav : String , context: Context){
         sqLiteHelper = SQLiteHelper(context,"Shopping1.db",null,2)
-        sqLiteHelper!!.QueryData("DELETE FROM FAVORITE2 WHERE IdSP = '$idFav'")
+        sqLiteHelper!!.QueryData("DELETE FROM FAVORITE2 WHERE IdSP = '$idFav' AND IdAccount = '$idAccount' ")
     }
     fun onRemoveItem(position : Int){
         listFav!!.removeAt(position)

@@ -1,5 +1,6 @@
 package com.example.appshoppingdatn.presentation.ui.fragment.home
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.text.Editable
 import android.util.Log
@@ -13,10 +14,7 @@ import com.example.appshoppingdatn.R
 import com.example.appshoppingdatn.data.api.APIService
 import com.example.appshoppingdatn.data.api.RetrofitClient
 import com.example.appshoppingdatn.data.database.SQLiteHelper
-import com.example.appshoppingdatn.model.New
-import com.example.appshoppingdatn.model.NewModel
-import com.example.appshoppingdatn.model.Sale
-import com.example.appshoppingdatn.model.SaleModel
+import com.example.appshoppingdatn.model.*
 import com.example.appshoppingdatn.presentation.ui.base.SingleLiveData
 import com.example.appshoppingdatn.presentation.ui.base.viewmodel.BaseViewModel
 import com.example.appshoppingdatn.ultis.Utils
@@ -37,6 +35,7 @@ class HomeViewModel : BaseViewModel() {
     val uiEventLiveData = SingleLiveData<Int>()
     var listNewModel = MutableLiveData<NewModel>()
     var listSaleModel = MutableLiveData<SaleModel>()
+   // var listNoti : ArrayList<Notification> ?= null
     private  var apiService : APIService ?= null
     private var compositeDisposable = CompositeDisposable()
     companion object{
@@ -46,6 +45,8 @@ class HomeViewModel : BaseViewModel() {
     }
     init {
         apiService = RetrofitClient.instance.create(APIService::class.java)
+        firebaseUser = FirebaseAuth.getInstance().currentUser
+        idAccount = firebaseUser!!.uid
         if (Utils.listNewsModel != null){
             listNewModel.value = Utils.listNewsModel
             isLoading.value = false
@@ -58,7 +59,6 @@ class HomeViewModel : BaseViewModel() {
         }else{
             getSPSale()
         }
-
     }
      fun getSPSale() {
         isLoading.value = true
@@ -108,19 +108,15 @@ class HomeViewModel : BaseViewModel() {
     }
 
     fun onInsertFavoriteToSQLite(idFav : String, imgFav : String , nameFav : String ,priceNew : Float , priceOld : Float, discription : String , type : String , selled : Int, status : Int , checkFav : String, context : Context){
-        firebaseUser = FirebaseAuth.getInstance().currentUser
-        idAccount = firebaseUser!!.uid
         sqLiteHelper = SQLiteHelper(context,"Shopping1.db",null,2)
         sqLiteHelper!!.QueryData("INSERT INTO FAVORITE2 VALUES(null, '$idAccount' , '$idFav' , '$imgFav','$nameFav' ,'$priceNew','$priceOld','$discription','$type','$selled','$status','$checkFav')")
     }
     fun onDeleteFavoriteToSQLite(id : String, context: Context){
         sqLiteHelper = SQLiteHelper(context,"Shopping1.db",null,2)
-        sqLiteHelper!!.QueryData("DELETE FROM FAVORITE2 WHERE IdSP = '$id' ")
+        sqLiteHelper!!.QueryData("DELETE FROM FAVORITE2 WHERE IdSP = '$id' AND IdAccount = '$idAccount' ")
     }
     fun onGetStatus(news: New,context: Context,img :ImageView) {
         sqLiteHelper = SQLiteHelper(context, "Shopping1.db", null, 2)
-        firebaseUser = FirebaseAuth.getInstance().currentUser
-        idAccount = firebaseUser!!.uid
         val data = sqLiteHelper!!.getData("SELECT * FROM FAVORITE2 WHERE IdAccount = '$idAccount' AND IdSP = '${news.IdNew}'")
         while (data.moveToNext()) {
             val favStatus = data.getInt(10)
@@ -134,12 +130,27 @@ class HomeViewModel : BaseViewModel() {
     }
     fun onGetStatusSale(sales: Sale,context: Context) {
         sqLiteHelper = SQLiteHelper(context, "Shopping1.db", null, 2)
-        firebaseUser = FirebaseAuth.getInstance().currentUser
-        idAccount = firebaseUser!!.uid
         val data = sqLiteHelper!!.getData("SELECT * FROM FAVORITE2 WHERE IdAccount = '$idAccount' AND IdSP = '${sales.IdSale}' AND StatusFav = 1")
         while (data.moveToNext()) {
             val favStatus = data.getInt(10)
             sales.FavStatusSale = favStatus
+        }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun onShowDataNoti(context: Context){
+        if (Utils.notiArrayList != null){
+            Utils.notiArrayList.clear()
+        }else{
+            Utils.notiArrayList = ArrayList()
+            sqLiteHelper = SQLiteHelper(context,"Shopping1.db",null,2)
+            val data = sqLiteHelper!!.getData("SELECT * FROM NOTIFICATION WHERE IdAccount = '$idAccount' ORDER BY Id DESC")
+            while (data.moveToNext()){
+                val idTB = data.getInt(0)
+                val txtTB = data.getString(2)
+                val dateTB = data.getString(3)
+                Utils.notiArrayList.add(Notification(idTB,txtTB,dateTB))
+            }
         }
     }
 }

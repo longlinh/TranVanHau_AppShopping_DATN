@@ -16,6 +16,7 @@ import com.example.appshoppingdatn.R
 import com.example.appshoppingdatn.databinding.FragmentHomeBinding
 import com.example.appshoppingdatn.model.Banner
 import com.example.appshoppingdatn.model.New
+import com.example.appshoppingdatn.model.Notification
 import com.example.appshoppingdatn.model.Sale
 import com.example.appshoppingdatn.presentation.ui.activity.detail.DetailsActivity
 import com.example.appshoppingdatn.presentation.ui.base.fragment.BaseFragment
@@ -24,8 +25,11 @@ import com.example.appshoppingdatn.presentation.ui.fragment.category.CategoryVie
 import com.example.appshoppingdatn.presentation.ui.fragment.home.adapter.NewAdapter
 import com.example.appshoppingdatn.presentation.ui.fragment.home.adapter.SaleAdapter
 import com.example.appshoppingdatn.presentation.ui.fragment.home.adapter.ViewPagerAdapter
+import com.example.appshoppingdatn.presentation.ui.fragment.notification.NotificationFragment
+import com.example.appshoppingdatn.presentation.ui.fragment.notification.NotificationViewModel
 import com.example.appshoppingdatn.presentation.ui.fragment.purchased.PurchasedFragment
 import com.example.appshoppingdatn.presentation.ui.fragment.search.SearchFragment
+import com.example.appshoppingdatn.ultis.Utils
 import java.util.ArrayList
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , NewAdapter.INew {
@@ -35,7 +39,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
     private var saleAdapter : SaleAdapter ?= null
     private var newAdapter : NewAdapter ?= null
     private lateinit var viewModel: HomeViewModel
-
+    //private var list  = ArrayList<Notification>()
     override fun getLayoutResId(): Int {
         return R.layout.fragment_home
     }
@@ -68,6 +72,31 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
         onClickCategory()
         onClickPurchased()
         onClickSearch()
+        onClickNotification()
+        onShowNumberNoti()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        onShowNumberNoti()
+    }
+    @SuppressLint("SetTextI18n")
+    private fun onShowNumberNoti() {
+
+        viewModel.onShowDataNoti(requireActivity())
+        if ( Utils.notiArrayList.size < 1){
+            binding.layoutNumber.visibility = View.GONE
+        }else{
+            binding.layoutNumber.visibility = View.VISIBLE
+            binding.txtNumberNoti.text = Utils.notiArrayList.size.toString()
+        }
+
+    }
+
+    private fun onClickNotification() {
+        binding.imgNoti.setOnClickListener {
+            replaceFragment(NotificationFragment())
+        }
     }
 
     private fun onClickSearch() {

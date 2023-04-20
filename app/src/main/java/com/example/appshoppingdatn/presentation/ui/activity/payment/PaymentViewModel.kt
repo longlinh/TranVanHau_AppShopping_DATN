@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import org.json.JSONException
 import org.json.JSONObject
+import java.text.DecimalFormat
 import java.util.ArrayList
 
 class PaymentViewModel  :BaseViewModel() {
@@ -73,6 +74,11 @@ class PaymentViewModel  :BaseViewModel() {
             hashMap["productArrayList"] = productArrayList
             databaseReference!!.setValue(hashMap)
 
+            //add data to sqlite notification
+            val decimalFormat = DecimalFormat("###,###,###")
+            val contentTB = context.getString(R.string.txtMessageTB)+" "+decimalFormat.format(sumPrice)+"đ"
+            sqLiteHelper = SQLiteHelper(context,"Shopping1.db",null,2)
+            sqLiteHelper!!.QueryData("INSERT INTO NOTIFICATION VALUES(null,'$idAccount','$contentTB','$date') ")
         }
     }
 

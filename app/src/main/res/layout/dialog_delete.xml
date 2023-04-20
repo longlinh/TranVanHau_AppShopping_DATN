@@ -29,8 +29,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/txtContentDelete"
                 android:textSize="20dp"
-                android:lineSpacingMultiplier="1.2"
                 android:layout_marginTop="10dp"
+                android:id="@+id/txtContentDialog"
+                android:layout_gravity="center_horizontal"
                 android:textColor="@color/black"
                 android:gravity="center"/>
             <LinearLayout

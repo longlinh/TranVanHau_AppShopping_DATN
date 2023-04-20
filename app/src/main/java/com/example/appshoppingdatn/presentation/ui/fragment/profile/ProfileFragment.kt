@@ -31,6 +31,7 @@ import com.example.appshoppingdatn.databinding.FragmentProfileBinding
 import com.example.appshoppingdatn.presentation.ui.activity.home.HomeActivity
 import com.example.appshoppingdatn.presentation.ui.activity.login.LoginActivity
 import com.example.appshoppingdatn.presentation.ui.base.fragment.BaseFragment
+import com.example.appshoppingdatn.presentation.ui.fragment.notification.NotificationFragment
 import com.example.appshoppingdatn.ultis.ContextUtils
 import com.example.appshoppingdatn.ultis.CustomProgressDialog
 import com.example.appshoppingdatn.ultis.Utils
@@ -38,6 +39,8 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import java.io.ByteArrayOutputStream
+import java.text.DateFormat
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -78,6 +81,13 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         onClickEditProfile()
         onClickChangePassword()
         onClickLanguage()
+        OnClickNotification()
+    }
+
+    private fun OnClickNotification() {
+        binding.layoutNotification.setOnClickListener {
+            replaceFragment(NotificationFragment())
+        }
     }
 
 
@@ -152,7 +162,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
                 dialogChangePass!!.dismiss()
             }
             btnOK.setOnClickListener {
-                viewModel.changePassword(passwordNoew,edtPasswordOld,edtPasswordNew,edtPasswordConfirm,requireActivity())
+                viewModel.changePassword(passwordNoew,edtPasswordOld,edtPasswordNew,edtPasswordConfirm,requireActivity(),date()!!)
                 binding.txtPassword.text = Editable.Factory.getInstance().newEditable(edtPasswordNew.text.toString())
             }
         }
@@ -182,7 +192,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
                 dialogEdit!!.dismiss()
             }
             btnOK.setOnClickListener {
-                viewModel.updateData(edtName,edtPhone)
+                viewModel.updateData(requireActivity(),edtName,edtPhone, date()!!)
                 binding.txtName.text = edtName.text.toString()
                 binding.txtPhone.text = edtPhone.text.toString()
                 Utils.name = edtName.text.toString()
@@ -191,7 +201,13 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
             }
         }
     }
-
+    @SuppressLint("SimpleDateFormat")
+    fun date(): String? {
+        val dateFormat: DateFormat = SimpleDateFormat("HH:mm:ss dd/MM/yyyy")
+        val cal = Calendar.getInstance()
+        println(dateFormat.format(cal.time))
+        return dateFormat.format(cal.time)
+    }
     private fun checkPermission(): Boolean {
         return ContextCompat.checkSelfPermission(requireActivity(),android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED
     }

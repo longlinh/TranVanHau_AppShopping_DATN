@@ -31,7 +31,8 @@
 
         <activity
             android:name=".presentation.ui.activity.payment.PaymentActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".presentation.ui.activity.cart.CartActivity"
             android:exported="false" />
