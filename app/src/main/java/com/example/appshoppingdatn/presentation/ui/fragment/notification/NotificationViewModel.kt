@@ -17,27 +17,10 @@ class NotificationViewModel : BaseViewModel(){
     private var firebaseUser: FirebaseUser? = null
     private var sqLiteHelper: SQLiteHelper? = null
     private var idAccount: String? = null
-   // var listNoti : ArrayList<Notification> ?= null
     init {
         firebaseUser = FirebaseAuth.getInstance().currentUser
         idAccount = firebaseUser!!.uid
-      //  listNoti = ArrayList()
     }
-
-//    @SuppressLint("NotifyDataSetChanged")
-//    fun onShowDataNoti(context: Context){
-//        if (listNoti != null){
-//            listNoti!!.clear()
-//        }
-//        sqLiteHelper = SQLiteHelper(context,"Shopping1.db",null,2)
-//        val data = sqLiteHelper!!.getData("SELECT * FROM NOTIFICATION WHERE IdAccount = '$idAccount' ORDER BY Id DESC")
-//        while (data.moveToNext()) {
-//            val idTB = data.getInt(0)
-//            val txtTB = data.getString(2)
-//            val dateTB = data.getString(3)
-//            listNoti!!.add(Notification(idTB, txtTB, dateTB))
-//        }
-//    }
     @SuppressLint("NotifyDataSetChanged")
     fun onShowDataNoti(context: Context){
         if (Utils.notiArrayList != null){

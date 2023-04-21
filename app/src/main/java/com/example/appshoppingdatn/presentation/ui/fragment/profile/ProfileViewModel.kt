@@ -66,7 +66,6 @@ class ProfileViewModel : BaseViewModel() {
             Glide.with(context).load(photoUrl).error(R.drawable.avatar).into(imgAvatar)
         }
     }
-
     fun updateData(context: Context,edtName : EditText , edtPhone : EditText,date : String){
         databaseReference = firebaseDatabase!!.getReference("User")
         val user = mapOf<String,String>(

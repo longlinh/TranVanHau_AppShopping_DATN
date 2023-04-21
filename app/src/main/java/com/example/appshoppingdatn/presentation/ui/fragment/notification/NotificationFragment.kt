@@ -35,7 +35,6 @@ class NotificationFragment : BaseFragment<FragmentNotificationBinding>() , Notif
 
             }
         }
-       // adapter = NotificationAdapter(viewModel.listNoti!!,this)
         adapter = NotificationAdapter(Utils.notiArrayList,this)
         initRecylerView()
         onShowDataNoti()

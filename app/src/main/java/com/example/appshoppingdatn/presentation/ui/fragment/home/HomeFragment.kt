@@ -143,7 +143,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
                 binding.recylerNew.layoutManager = linearLayoutManager
                 binding.recylerNew.adapter = newAdapter
             }
-            Log.d("new",viewModel.listNewModel.toString())
         }else{
             showMessage(getString(R.string.txtNoInternet))
         }
@@ -210,7 +209,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
     }
 
     override fun onStatusSaleFav(sales: Sale) {
-        Log.d("onStatusSaleFav",sales.toString())
         viewModel.onGetStatusSale(sales,requireContext())
     }
 

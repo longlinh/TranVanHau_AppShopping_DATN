@@ -4,7 +4,6 @@ package com.example.appshoppingdatn.presentation.ui.fragment.signup
 import android.content.Context
 import android.widget.EditText
 import com.example.appshoppingdatn.R
-import com.example.appshoppingdatn.model.User
 import com.example.appshoppingdatn.presentation.ui.base.SingleLiveData
 import com.example.appshoppingdatn.presentation.ui.base.viewmodel.BaseViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -68,12 +67,13 @@ class SignupViewModel : BaseViewModel(){
                     idAccount = task.result.user!!.uid
                     //add data to firebase database
                     databaseReference = FirebaseDatabase.getInstance().getReference("User").child(idAccount!!)
-                    val hashMap = HashMap<String, String>()
+                    val hashMap = HashMap<String, Any>()
                     hashMap["userID"] = idAccount!!
                     hashMap["name"] = name
                     hashMap["email"] = email
                     hashMap["password"] = passWord
                     hashMap["phone"] = phoneNumber
+                    hashMap["avatar"] = "default"
                     databaseReference!!.setValue(hashMap).addOnCompleteListener {
                         if (it.isSuccessful){
                             uiEventLiveData.value = NAV_REGISTER_SUCCESS

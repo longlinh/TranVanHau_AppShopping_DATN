@@ -135,9 +135,13 @@
 
     -------------------------SearchFragment--------------------------
     <string name="edtSearch">Search product . . . .</string>
+
     ------------------------NotificationFragment--------------------
     <string name="txtMessageTB">You have successfully placed an order with a value of </string>
     <string name="txtMessageChangePassword">You have successfully changed your password !</string>
     <string name="txtMessageChangeInfo">You have successfully changed your information !</string>
     <string name="txtMessageDialogDelete">Do you want to remove this message ?</string>
+
+    -----------------------ChatFragment---------------------
+    <string name="typeMesage">Type message . . .</string>
 </resources>

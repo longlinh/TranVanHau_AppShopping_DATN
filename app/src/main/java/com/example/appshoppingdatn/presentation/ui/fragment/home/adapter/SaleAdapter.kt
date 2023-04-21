@@ -46,8 +46,6 @@ class SaleAdapter(private val inters : ISale) : RecyclerView.Adapter<SaleAdapter
         holder.binding.txtPriceSaleOld.text = decimalFormat.format(saler.PriceSaleOld)+"đ"
         holder.binding.txtPriceSaleNew.text = decimalFormat.format(saler.PriceSaleNow)+"đ"
         holder.binding.txtSelled.text = inters.getContextSale().getString(R.string.txtSelled) +" "+saler.SelledSale
-        Log.d("listSale",saler.toString())
-
         inters.onStatusSaleFav(saler)
         if (saler.FavStatusSale == 1){
             holder.binding.imgFavorite.setImageResource(R.drawable.baseline_favorite_24)
@@ -55,7 +53,6 @@ class SaleAdapter(private val inters : ISale) : RecyclerView.Adapter<SaleAdapter
             holder.binding.imgFavorite.setImageResource(R.drawable.no_favorite)
         }
         holder.binding.imgFavorite.setOnClickListener {
-            Log.d("sale",saler.toString())
             if (saler.FavStatusSale == 0){
                 saler.FavStatusSale = 1
                 holder.binding.imgFavorite.setImageResource(R.drawable.baseline_favorite_24)

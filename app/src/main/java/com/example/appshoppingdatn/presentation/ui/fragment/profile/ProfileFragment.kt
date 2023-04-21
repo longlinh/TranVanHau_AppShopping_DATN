@@ -13,7 +13,9 @@ import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.provider.OpenableColumns
 import android.text.Editable
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.Window
@@ -38,6 +40,7 @@ import com.example.appshoppingdatn.ultis.Utils
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.ktx.Firebase
 import java.io.ByteArrayOutputStream
 import java.text.DateFormat
 import java.text.SimpleDateFormat
@@ -56,6 +59,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     private val PERMISSION_REQUEST_CODE = 200
     private var bitMap: Bitmap? = null
     private var uri : Uri ?= null
+   // private var storageRef = Firebase.storage.reference
 
     override fun getLayoutResId(): Int {
         return R.layout.fragment_profile
@@ -267,6 +271,20 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
                 }
             }
     }
+//    @SuppressLint("Range")
+//    private fun getFileName(context: Context, uri: Uri): String? {
+//        if (uri.scheme == "content") {
+//            val cursor = context.contentResolver.query(uri, null, null, null, null)
+//            cursor.use {
+//                if (cursor != null) {
+//                    if(cursor.moveToFirst()) {
+//                        return cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME))
+//                    }
+//                }
+//            }
+//        }
+//        return uri.path?.lastIndexOf('/')?.let { uri.path?.substring(it) }
+//    }
     private fun getImageFromGallery() {
         val photoPickerIntent = Intent(Intent.ACTION_PICK)
         photoPickerIntent.type = "image/*"
@@ -291,6 +309,8 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
                 val takentImage = data!!.extras!!.get("data") as Bitmap
                 setBitmapImageView(takentImage)
                 bitMap = takentImage
+                // extract the file name with extension
+              //  val sd = getFileName(requireActivity(),getImageUriFromBitmap(requireActivity(),bitMap!!))
                 binding.imgSave.visibility = View.VISIBLE
             }else if (check == 1){
                 val selectedImage = data!!.data
