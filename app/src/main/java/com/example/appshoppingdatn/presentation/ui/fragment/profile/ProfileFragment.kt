@@ -41,6 +41,8 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import java.io.ByteArrayOutputStream
 import java.text.DateFormat
 import java.text.SimpleDateFormat
@@ -59,7 +61,8 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     private val PERMISSION_REQUEST_CODE = 200
     private var bitMap: Bitmap? = null
     private var uri : Uri ?= null
-   // private var storageRef = Firebase.storage.reference
+    private var storage : FirebaseStorage ?= null
+    private var storageRef : StorageReference ?= null
 
     override fun getLayoutResId(): Int {
         return R.layout.fragment_profile
@@ -77,6 +80,8 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
                 ProfileViewModel.DISS_PROGRESS_DIALOG -> onDisProgressDialog()
             }
         }
+        storage = FirebaseStorage.getInstance()
+        storageRef = storage!!.reference
         progrssdialog = CustomProgressDialog(requireActivity())
         onClickLogout()
         onSetInformationProfile()
@@ -256,35 +261,32 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
             UserProfileChangeRequest.Builder()
                 .setPhotoUri(getImageUriFromBitmap(requireActivity(),bitMap!!))
                 .build()
+
         }else{
             UserProfileChangeRequest.Builder()
                 .setPhotoUri(uri)
                 .build()
         }
+
         firebaseUser.updateProfile(profileChangeRequest)
             .addOnCompleteListener { task: Task<Void?> ->
                 if (task.isSuccessful) {
                     progrssdialog!!.dismiss()
                     Glide.with(requireActivity()).load(firebaseUser.photoUrl).error(R.drawable.avatar).into(binding.imgAvatar)
                     binding.imgSave.visibility = View.GONE
+                    if (check==0){
+                        //Save image to firebase storage
+                        val ref = storageRef!!.child("image/"+UUID.randomUUID().toString())
+                        ref.putFile(getImageUriFromBitmap(requireActivity(),bitMap!!))
+                    }else{
+                        //Save image to firebase storage
+                        val ref = storageRef!!.child("image/"+UUID.randomUUID().toString())
+                        ref.putFile(uri!!)
+                    }
                     Toast.makeText(context, getString(R.string.uploadAvatarSuccess), Toast.LENGTH_SHORT).show()
                 }
             }
     }
-//    @SuppressLint("Range")
-//    private fun getFileName(context: Context, uri: Uri): String? {
-//        if (uri.scheme == "content") {
-//            val cursor = context.contentResolver.query(uri, null, null, null, null)
-//            cursor.use {
-//                if (cursor != null) {
-//                    if(cursor.moveToFirst()) {
-//                        return cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME))
-//                    }
-//                }
-//            }
-//        }
-//        return uri.path?.lastIndexOf('/')?.let { uri.path?.substring(it) }
-//    }
     private fun getImageFromGallery() {
         val photoPickerIntent = Intent(Intent.ACTION_PICK)
         photoPickerIntent.type = "image/*"
@@ -307,10 +309,9 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         if (requestCode == RESULT_LOAD_IMG && resultCode == RESULT_OK){
             if (check == 0){
                 val takentImage = data!!.extras!!.get("data") as Bitmap
+
                 setBitmapImageView(takentImage)
                 bitMap = takentImage
-                // extract the file name with extension
-              //  val sd = getFileName(requireActivity(),getImageUriFromBitmap(requireActivity(),bitMap!!))
                 binding.imgSave.visibility = View.VISIBLE
             }else if (check == 1){
                 val selectedImage = data!!.data
@@ -322,6 +323,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
             }
         }
     }
+
     fun getImageUriFromBitmap(context: Context, bitmap: Bitmap): Uri{
         val bytes = ByteArrayOutputStream()
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes)

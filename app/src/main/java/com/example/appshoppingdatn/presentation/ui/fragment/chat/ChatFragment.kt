@@ -29,9 +29,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding>() {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun onDataSetChange() {
-
         chatAdapter!!.notifyDataSetChanged()
-
     }
 
     private fun initRecylerView() {
