@@ -144,4 +144,5 @@
 
     -----------------------ChatFragment---------------------
     <string name="typeMesage">Nhập tin nhắn . . .</string>
+    <string name="messageEmpty">Tin nhắn không được trống !</string>
 </resources>

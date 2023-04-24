@@ -14,23 +14,27 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
+            android:padding="7dp"
             android:id="@+id/title"
             android:background="@color/backgound_main"
             android:orientation="horizontal">
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:id="@+id/imgBack"
+                android:layout_gravity="center"
                 android:src="@drawable/baseline_back_white"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="15dp"
+                android:layout_gravity="center"
                 android:orientation="horizontal">
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginEnd="5dp"
+                    android:id="@+id/imageMessage"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_user_name"/>
                 <TextView
@@ -40,6 +44,7 @@
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold"
+                    android:id="@+id/txtNameMessage"
                     android:layout_gravity="center"/>
             </LinearLayout>
 
@@ -63,13 +68,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1.92"
                 android:layout_marginStart="5dp"
+                android:id="@+id/edtMessageSend"
                 android:hint="@string/typeMesage"
                 android:backgroundTint="@color/backgound_main"
                 android:textColor="@color/black"
                 android:textSize="17sp"/>
             <ImageView
                 android:layout_width="35dp"
-                android:id="@+id/imgSend"
+                android:id="@+id/btnSend"
                 android:layout_height="35dp"
                 android:src="@drawable/baseline_send_24"
                 android:layout_marginStart="10dp"

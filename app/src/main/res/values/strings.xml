@@ -144,4 +144,5 @@
 
     -----------------------ChatFragment---------------------
     <string name="typeMesage">Type message . . .</string>
+    <string name="messageEmpty">Message can not be empty !</string>
 </resources>

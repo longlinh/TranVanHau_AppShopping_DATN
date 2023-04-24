@@ -100,7 +100,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginStart="5dp"
                         android:text="@string/txtItemTotal"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
@@ -128,7 +127,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginStart="5dp"
                         android:text="@string/txtDelivery"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
@@ -142,7 +140,7 @@
                         android:gravity="end"
                         android:text="0"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -156,7 +154,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginStart="5dp"
                         android:text="@string/txtDiscountCode"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
@@ -167,6 +164,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="giảm 15k"
+                        android:textSize="10dp"
                         tools:listitem="@layout/item_spinner" />
 
                     <TextView
@@ -178,16 +176,16 @@
                         android:gravity="end"
                         android:text="0"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginStart="15dp"
+                    android:layout_marginStart="5dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="15dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_marginBottom="5dp"
                     android:background="@color/black" />
 
@@ -201,7 +199,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="5dp"
                         android:text="@string/txtTotal"
                         android:textColor="@color/black"
                         android:textSize="20sp"
@@ -216,7 +214,7 @@
                         android:gravity="end"
                         android:text="0"
                         android:textColor="@color/red"
-                        android:textSize="22sp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 

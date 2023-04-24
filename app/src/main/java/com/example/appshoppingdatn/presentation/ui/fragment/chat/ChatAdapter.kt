@@ -1,12 +1,14 @@
 package com.example.appshoppingdatn.presentation.ui.fragment.chat
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appshoppingdatn.databinding.ItemUserChatBinding
 import com.example.appshoppingdatn.model.User
+import com.example.appshoppingdatn.presentation.ui.activity.message.MessageActivity
 
 class ChatAdapter(val context: Context,val chatList : java.util.ArrayList<User>) : RecyclerView.Adapter<ChatAdapter.Companion.ChatViewHolder>(){
     companion object{
@@ -26,14 +28,20 @@ class ChatAdapter(val context: Context,val chatList : java.util.ArrayList<User>)
         val data = chatList[position]
         holder.binding.txtUserName.text = data.name
 
-        if (data.message == ""){
-            holder.binding.txtMessge.visibility = View.GONE
-        }else{
-            holder.binding.txtMessge.text = data.message
-            holder.binding.txtMessge.visibility = View.VISIBLE
-        }
+//        if (data.message == ""){
+//            holder.binding.txtMessge.visibility = View.GONE
+//        }else{
+//            holder.binding.txtMessge.text = data.message
+//            holder.binding.txtMessge.visibility = View.VISIBLE
+//        }
 
       //  Glide.with(context).load(data.avatar).error(R.drawable.load_img).into(holder.binding.imgAvatar)
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context,MessageActivity::class.java)
+            intent.putExtra("img",data.avataURL)
+            intent.putExtra("name",data.name)
+            context.startActivity(intent)
+        }
     }
 
 }
