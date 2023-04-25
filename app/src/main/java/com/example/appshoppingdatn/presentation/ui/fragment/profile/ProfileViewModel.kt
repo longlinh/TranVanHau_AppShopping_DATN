@@ -1,6 +1,7 @@
 package com.example.appshoppingdatn.presentation.ui.fragment.profile
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.text.Editable
 import android.text.TextUtils
 import android.text.method.HideReturnsTransformationMethod
@@ -82,6 +83,13 @@ class ProfileViewModel : BaseViewModel() {
         }.addOnFailureListener {
             uiEventLiveData.value = UPDATE_FAILD
         }
+    }
+    fun updateAvatar(avatar : String){
+        databaseReference = firebaseDatabase!!.getReference("User")
+        val hash = mapOf<String,String>(
+            "avatar" to avatar
+        )
+        databaseReference!!.child(idAccount!!).updateChildren(hash)
     }
     fun changePasswordToRealTimeDb(edtPass : EditText){
         databaseReference = firebaseDatabase!!.getReference("User")

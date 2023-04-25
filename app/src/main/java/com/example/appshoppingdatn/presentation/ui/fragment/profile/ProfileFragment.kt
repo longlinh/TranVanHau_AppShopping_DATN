@@ -8,12 +8,13 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import android.provider.OpenableColumns
 import android.text.Editable
 import android.util.Log
 import android.view.Gravity
@@ -21,11 +22,9 @@ import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.appshoppingdatn.R
@@ -40,7 +39,6 @@ import com.example.appshoppingdatn.ultis.Utils
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.io.ByteArrayOutputStream
@@ -63,6 +61,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     private var uri : Uri ?= null
     private var storage : FirebaseStorage ?= null
     private var storageRef : StorageReference ?= null
+    var tamp = ""
 
     override fun getLayoutResId(): Int {
         return R.layout.fragment_profile
@@ -276,12 +275,27 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
                     binding.imgSave.visibility = View.GONE
                     if (check==0){
                         //Save image to firebase storage
-                        val ref = storageRef!!.child("image/"+UUID.randomUUID().toString())
+                        tamp = UUID.randomUUID().toString()
+                        val ref = storageRef!!.child("image/$tamp")
                         ref.putFile(getImageUriFromBitmap(requireActivity(),bitMap!!))
+                        var avatar : Uri ?= null
+                        ref.downloadUrl.addOnSuccessListener {
+                            avatar = it
+                        }
+                        viewModel.updateAvatar(avatar.toString())
                     }else{
                         //Save image to firebase storage
-                        val ref = storageRef!!.child("image/"+UUID.randomUUID().toString())
+                        val ref = storageRef!!.child("image/$tamp")
                         ref.putFile(uri!!)
+                        val dow = storageRef!!.child("image/$tamp")
+                        dow.downloadUrl.addOnSuccessListener {
+                            if (it != null){
+                                viewModel.updateAvatar(it.toString())
+                            }
+                        }.addOnFailureListener {
+                            Log.d("faild",it.toString())
+                        }
+
                     }
                     Toast.makeText(context, getString(R.string.uploadAvatarSuccess), Toast.LENGTH_SHORT).show()
                 }
@@ -323,7 +337,13 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
             }
         }
     }
-
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun BitMapToString(bitmap: Bitmap): String {
+        val base = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, base)
+        val b = base.toByteArray()
+        return Base64.getEncoder().encodeToString(b)
+    }
     fun getImageUriFromBitmap(context: Context, bitmap: Bitmap): Uri{
         val bytes = ByteArrayOutputStream()
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes)

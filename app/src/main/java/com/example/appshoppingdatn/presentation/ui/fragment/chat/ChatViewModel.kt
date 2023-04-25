@@ -2,6 +2,8 @@ package com.example.appshoppingdatn.presentation.ui.fragment.chat
 
 import android.annotation.SuppressLint
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.appshoppingdatn.model.User
 import com.example.appshoppingdatn.presentation.ui.base.SingleLiveData
 import com.example.appshoppingdatn.presentation.ui.base.viewmodel.BaseViewModel
@@ -15,7 +17,7 @@ class ChatViewModel : BaseViewModel() {
     private var firebaseDatabase: FirebaseDatabase? = null
     private var databaseReference: DatabaseReference? = null
     private var firebaseUser : FirebaseUser?= null
-    var listChat : ArrayList<User> ? = null
+    var listChat : MutableLiveData<ArrayList<User>> = MutableLiveData()
 
     companion object{
         const val NOTIFY_DATACHANGE = 1
@@ -23,7 +25,6 @@ class ChatViewModel : BaseViewModel() {
     init {
         firebaseUser = FirebaseAuth.getInstance().currentUser
         firebaseDatabase = FirebaseDatabase.getInstance()
-        listChat = ArrayList()
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -35,12 +36,16 @@ class ChatViewModel : BaseViewModel() {
             databaseReference = firebaseDatabase!!.getReference("User")
             databaseReference!!.addValueEventListener(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    listChat!!.clear()
+
+                    val newList : ArrayList<User> = ArrayList()
                     for (data : DataSnapshot in snapshot.children){
                         val user = data.getValue(User::class.java)
                         if (user!!.userID != idAccount){
-                            listChat!!.add(user)
+                            newList.add(user)
                         }
+                    }
+                    if (newList.size > 0){
+                        listChat.value = newList
                     }
                     uiEventLiveData.value = NOTIFY_DATACHANGE
                 }

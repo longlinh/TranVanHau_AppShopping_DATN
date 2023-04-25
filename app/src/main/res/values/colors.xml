@@ -14,4 +14,6 @@
     <color name="gray">#F5F5F5</color>
     <color name="blue">#C6EFFD</color>
     <color name="light_cyan">#E2F7FF</color>
+    <color name="colorItemLeft">#E6E4E4</color>
+    <color name="colorItemRight">#813fd7</color>
 </resources>
