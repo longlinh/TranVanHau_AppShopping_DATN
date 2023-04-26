@@ -18,9 +18,9 @@ class MessageActivity : BaseActivity<ActivityMessageBinding>() {
     var reference: DatabaseReference? = null
     var chatList = ArrayList<Chat>()
     private var idAccount: String? = null
-    var topic = ""
     var userID : String ?= null
     var userName : String ?= null
+    var avatar : String ?= null
     override fun getLayoutResourceId(): Int {
         return R.layout.activity_message
     }
@@ -32,22 +32,22 @@ class MessageActivity : BaseActivity<ActivityMessageBinding>() {
         chatList = ArrayList()
         idAccount = firebaseUser!!.uid
         reference = FirebaseDatabase.getInstance().getReference("User").child(idAccount!!)
-        reference!!.addValueEventListener(object : ValueEventListener {
-            override fun onCancelled(error: DatabaseError) {
-
-            }
-
-            override fun onDataChange(snapshot: DataSnapshot) {
-
-                val user = snapshot.getValue(User::class.java)
-                mBinding.txtNameMessage.text = user!!.name
-                if (user.avatar == "") {
-                    mBinding.imageMessage.setImageResource(R.drawable.ic_user_name)
-                } else {
-                    Glide.with(this@MessageActivity).load(user.avatar).into(mBinding.imageMessage)
-                }
-            }
-        })
+//        reference!!.addValueEventListener(object : ValueEventListener {
+//            override fun onCancelled(error: DatabaseError) {
+//
+//            }
+//
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//
+//                val user = snapshot.getValue(User::class.java)
+//                mBinding.txtNameMessage.text = user!!.name
+//                if (user.avatar == "") {
+//                    mBinding.imageMessage.setImageResource(R.drawable.ic_user_name)
+//                } else {
+//                    Glide.with(this@MessageActivity).load(user.avatar).into(mBinding.imageMessage)
+//                }
+//            }
+//        })
         mBinding.btnSend.setOnClickListener {
             val message = mBinding.edtMessageSend.text.toString().trim()
             if (message.isEmpty()){
@@ -83,6 +83,7 @@ class MessageActivity : BaseActivity<ActivityMessageBinding>() {
                 val chatAdapter = MessageAdapter(this@MessageActivity, chatList)
                 mBinding.recylerMessage.layoutManager = LinearLayoutManager(this@MessageActivity)
                 mBinding.recylerMessage.adapter = chatAdapter
+                mBinding.recylerMessage.scrollToPosition(chatList.size-1)
             }
         })
     }
@@ -95,10 +96,10 @@ class MessageActivity : BaseActivity<ActivityMessageBinding>() {
 
     private fun getDataIntent() {
         val intent = intent
-        val avatar = intent.getStringExtra("img")
+        avatar = intent.getStringExtra("img")
         userName = intent.getStringExtra("name")
         userID = intent.getStringExtra("userID")
-        Glide.with(applicationContext).load(avatar).error(R.drawable.load_img).into(mBinding.imageMessage)
+        Glide.with(applicationContext).load(avatar).error(R.drawable.ic_user_name).into(mBinding.imageMessage)
         mBinding.txtNameMessage.text = userName
     }
     private fun sendMessage(senderId: String, receiverId: String, message: String) {

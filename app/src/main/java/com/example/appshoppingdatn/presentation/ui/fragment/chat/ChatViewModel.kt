@@ -42,6 +42,7 @@ class ChatViewModel : BaseViewModel() {
                         val user = data.getValue(User::class.java)
                         if (user!!.userID != idAccount){
                             newList.add(user)
+                            Log.d("data",newList.toString())
                         }
                     }
                     if (newList.size > 0){

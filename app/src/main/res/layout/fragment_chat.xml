@@ -18,9 +18,10 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:gravity="center_horizontal"
-            android:text="@string/txtNotification"
+            android:text="@string/txtChat"
             android:textColor="@color/white"
             android:textSize="23sp"
+            android:padding="5dp"
             android:textStyle="bold" />
     </RelativeLayout>
 

@@ -275,8 +275,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
                     binding.imgSave.visibility = View.GONE
                     if (check==0){
                         //Save image to firebase storage
-                        tamp = UUID.randomUUID().toString()
-                        val ref = storageRef!!.child("image/$tamp")
+                        val ref = storageRef!!.child("image/"+UUID.randomUUID().toString())
                         ref.putFile(getImageUriFromBitmap(requireActivity(),bitMap!!))
                         var avatar : Uri ?= null
                         ref.downloadUrl.addOnSuccessListener {
@@ -285,10 +284,9 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
                         viewModel.updateAvatar(avatar.toString())
                     }else{
                         //Save image to firebase storage
-                        val ref = storageRef!!.child("image/$tamp")
+                        val ref = storageRef!!.child("image/"+UUID.randomUUID().toString())
                         ref.putFile(uri!!)
-                        val dow = storageRef!!.child("image/$tamp")
-                        dow.downloadUrl.addOnSuccessListener {
+                        ref.downloadUrl.addOnSuccessListener {
                             if (it != null){
                                 viewModel.updateAvatar(it.toString())
                             }

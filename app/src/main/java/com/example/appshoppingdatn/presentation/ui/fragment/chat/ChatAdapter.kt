@@ -31,7 +31,7 @@ class ChatAdapter(val context: Context,val chatList : java.util.ArrayList<User>)
         val data = chatList[position]
         holder.binding.txtUserName.text = data.name
         Log.d("avatar",data.avatar)
-        Glide.with(context).load(data.avatar).error(R.drawable.load_img).into(holder.binding.imgAvatar)
+        Glide.with(context).load(data.avatar).error(R.drawable.ic_user_name).into(holder.binding.imgAvatar)
         holder.itemView.setOnClickListener {
             val intent = Intent(context,MessageActivity::class.java)
             intent.putExtra("userID",data.userID)
