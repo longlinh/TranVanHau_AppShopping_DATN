@@ -275,25 +275,28 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
                     binding.imgSave.visibility = View.GONE
                     if (check==0){
                         //Save image to firebase storage
-                        val ref = storageRef!!.child("image/"+UUID.randomUUID().toString())
-                        ref.putFile(getImageUriFromBitmap(requireActivity(),bitMap!!))
-                        var avatar : Uri ?= null
-                        ref.downloadUrl.addOnSuccessListener {
-                            avatar = it
+                        val nameIMG = "image/"+UUID.randomUUID().toString()+".jpeg"
+                        val ref = storageRef!!.child(nameIMG)
+                        ref.putFile(getImageUriFromBitmap(requireActivity(),bitMap!!)).addOnCompleteListener {
+                            if (it.isSuccessful){
+                                ref.downloadUrl.addOnSuccessListener {
+                                    viewModel.updateAvatar(it.toString())
+                                }
+                            }
                         }
-                        viewModel.updateAvatar(avatar.toString())
                     }else{
                         //Save image to firebase storage
-                        val ref = storageRef!!.child("image/"+UUID.randomUUID().toString())
-                        ref.putFile(uri!!)
-                        ref.downloadUrl.addOnSuccessListener {
-                            if (it != null){
-                                viewModel.updateAvatar(it.toString())
+                        val nameIMG = "image/"+UUID.randomUUID().toString()+".jpeg"
+                        val ref = storageRef!!.child(nameIMG)
+                        ref.putFile(uri!!).addOnCompleteListener {
+                            if (it.isSuccessful){
+                                ref.downloadUrl.addOnSuccessListener {
+                                    viewModel.updateAvatar(it.toString())
+                                }.addOnFailureListener {
+                                    Log.d("faild",it.toString())
+                                }
                             }
-                        }.addOnFailureListener {
-                            Log.d("faild",it.toString())
                         }
-
                     }
                     Toast.makeText(context, getString(R.string.uploadAvatarSuccess), Toast.LENGTH_SHORT).show()
                 }
@@ -335,13 +338,14 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
             }
         }
     }
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun BitMapToString(bitmap: Bitmap): String {
-        val base = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, base)
-        val b = base.toByteArray()
-        return Base64.getEncoder().encodeToString(b)
-    }
+
+//    @RequiresApi(Build.VERSION_CODES.O)
+//    fun BitMapToString(bitmap: Bitmap): String {
+//        val base = ByteArrayOutputStream()
+//        bitmap.compress(Bitmap.CompressFormat.PNG, 100, base)
+//        val b = base.toByteArray()
+//        return Base64.getEncoder().encodeToString(b)
+//    }
     fun getImageUriFromBitmap(context: Context, bitmap: Bitmap): Uri{
         val bytes = ByteArrayOutputStream()
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
