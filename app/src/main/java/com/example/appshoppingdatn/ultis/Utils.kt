@@ -12,7 +12,6 @@ class Utils {
         var name = ""
         var phone = ""
         var payment = 0f
-        var numberNoti = 0
         var notiArrayList : ArrayList<Notification> = ArrayList()
     }
 

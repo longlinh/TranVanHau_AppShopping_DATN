@@ -101,7 +101,12 @@ class PaymentActivity : BaseActivity<ActivityPaymentBinding>() {
             phoneUser = mBinding.txtPhonePayment.text.toString().trim()
             sumPrice = Utils.payment
             dateOrder = date()!!
-            PaymentFlow()
+            val address = mBinding.edtAddressPayment.text.toString().trim()
+            if (address.isEmpty()){
+                mBinding.edtAddressPayment.error = getString(R.string.txtMessageAddressEmpty)
+            }else{
+                PaymentFlow()
+            }
         }
     }
 

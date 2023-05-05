@@ -55,7 +55,6 @@ class CategoryViewModel : BaseViewModel() {
                             listProductModel.value = ProductModel(productModel.success,productModel.message,
                                 listProduct as ArrayList<Product>
                             )
-                            Utils.listProductModel = ProductModel(productModel.success,productModel.message,listProduct)
                         }
                     }
                 },{

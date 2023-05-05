@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/backgound_main">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="@string/txtReport"
+                android:textColor="@color/white"
+                android:textSize="23sp"
+                android:textStyle="bold" />
+            <RelativeLayout
+                android:id="@+id/imgBackReport"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/custom_circle_white"
+                android:elevation="5dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/baseline_arrow_back_24" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true" />
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/pieChart"
+            android:layout_marginTop="10dp"
+            android:layout_above="@id/linea1"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:visibility="invisible"
+            android:layout_marginBottom="20dp"
+            android:layout_below="@id/title"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            android:id="@+id/linea1"
+            android:layout_marginBottom="80dp"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="invisible"
+                android:id="@+id/txtName1"
+                android:layout_marginBottom="5dp">
+                <RelativeLayout
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/background2"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="Apple iphone 14 pro max 512GB"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="13sp"
+                    android:layout_marginStart="10dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:id="@+id/txtName2"
+                android:visibility="invisible"
+                android:orientation="horizontal">
+                <RelativeLayout
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/colorYellow"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="13sp"
+                    android:text="Samsung Galaxy s23 Ultra 5G 256GB"
+                    android:layout_marginStart="10dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtName3"
+                android:visibility="invisible"
+                android:orientation="horizontal">
+                <RelativeLayout
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/tulip"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="Redmi Note 11 128GB"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="13sp"
+                    android:layout_marginStart="10dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

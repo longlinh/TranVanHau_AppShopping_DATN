@@ -10,22 +10,21 @@
         android:layout_height="match_parent">
         <RelativeLayout
             android:id="@+id/title"
-            android:background="@color/backgound_main"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/backgound_main">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:gravity="center_horizontal"
-                android:text="@string/txtNotification"
+                android:text="@string/txtMap"
                 android:textColor="@color/white"
                 android:textSize="23sp"
                 android:textStyle="bold" />
-
             <RelativeLayout
-                android:id="@+id/imgBackNoti"
+                android:id="@+id/imgBackMap"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_margin="10dp"
@@ -39,15 +38,11 @@
                     android:src="@drawable/baseline_arrow_back_24" />
             </RelativeLayout>
         </RelativeLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recylerNoti"
+        <fragment
+            android:id="@+id/mapFragment"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:layout_below="@id/title"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp" />
+            android:layout_height="match_parent" />
     </RelativeLayout>
 </layout>

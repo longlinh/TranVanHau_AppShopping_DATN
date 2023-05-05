@@ -52,8 +52,8 @@
     <string name="txtLaptop">Laptop</string>
     <string name="txtPhone">Phone</string>
     <string name="txtWatch">Watch</string>
-    <string name="txtMap">Location</string>
-    <string name="txtReport">Report</string>
+    <string name="txtMap">Map</string>
+    <string name="txtReport">Statistical</string>
     <string name="txtPurchased">Purchased</string>
 
     ----------------------FragmentFavorite----------------------------

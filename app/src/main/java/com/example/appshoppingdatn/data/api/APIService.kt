@@ -15,6 +15,7 @@ interface APIService {
     @GET("getspsale.php")
     fun getSPSale() : Observable<SaleModel>
     @GET("getcategory.php")
-    fun getCategory(
-    ) : Observable<ProductModel>
+    fun getCategory() : Observable<ProductModel>
+    @GET("thongke.php")
+    fun getReport() : Observable<ProductModel>
 }

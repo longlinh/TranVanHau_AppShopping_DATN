@@ -25,9 +25,11 @@ import com.example.appshoppingdatn.presentation.ui.fragment.category.CategoryVie
 import com.example.appshoppingdatn.presentation.ui.fragment.home.adapter.NewAdapter
 import com.example.appshoppingdatn.presentation.ui.fragment.home.adapter.SaleAdapter
 import com.example.appshoppingdatn.presentation.ui.fragment.home.adapter.ViewPagerAdapter
+import com.example.appshoppingdatn.presentation.ui.fragment.location.LocationFragment
 import com.example.appshoppingdatn.presentation.ui.fragment.notification.NotificationFragment
 import com.example.appshoppingdatn.presentation.ui.fragment.notification.NotificationViewModel
 import com.example.appshoppingdatn.presentation.ui.fragment.purchased.PurchasedFragment
+import com.example.appshoppingdatn.presentation.ui.fragment.report.ReportFragment
 import com.example.appshoppingdatn.presentation.ui.fragment.search.SearchFragment
 import com.example.appshoppingdatn.ultis.Utils
 import java.util.ArrayList
@@ -73,6 +75,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , SaleAdapter.ISale , N
         onClickSearch()
         onClickNotification()
         onShowNumberNoti()
+        onClickReport()
+        onClickLocation()
+    }
+
+    private fun onClickLocation() {
+        binding.layoutLocation.setOnClickListener {
+            replaceFragment(LocationFragment())
+        }
+    }
+
+    private fun onClickReport() {
+        binding.layoutReport.setOnClickListener {
+            replaceFragment(ReportFragment())
+        }
     }
 
     override fun onResume() {
