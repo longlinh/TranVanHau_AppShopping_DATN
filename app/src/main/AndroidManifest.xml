@@ -62,7 +62,7 @@
         <activity android:name=".presentation.ui.activity.message.MessageActivity"/>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBId5_Sidq8wuPbNVKxYFZZ-Z2J3-t25Ag" />
+            android:value="AIzaSyBTHmSTF1mt-COuu0ESZtQCYZzv2gxUzUk" />
     </application>
 
 

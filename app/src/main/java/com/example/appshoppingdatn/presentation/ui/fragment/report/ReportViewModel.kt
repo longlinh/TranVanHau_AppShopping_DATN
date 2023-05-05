@@ -53,7 +53,6 @@ class ReportViewModel : BaseViewModel() {
                                 val nameSP = productModel.result[i].NameProduct
                                 val sell = productModel.result[i].SelledProduct
                                 listData.add(PieEntry(sell.toFloat(), nameSP))
-                                Log.d("name",nameSP)
                             }
                             val pieDataSet = PieDataSet(listData, "")
                             val data = PieData()
