@@ -36,7 +36,7 @@ class LocationFragment : BaseFragment<FragmentLocationBinding>(){
             )
             mMap!!.addMarker(
                 MarkerOptions().position(cs2).title("Cơ sở 2")
-                    .snippet("Tòa S202 Vinhome Smath City")
+                    .snippet("Tòa S202 Vinhome Smart City")
                     .icon(BitmapDescriptorFactory.defaultMarker())
             )
             mMap!!.addMarker(

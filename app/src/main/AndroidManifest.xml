@@ -43,7 +43,8 @@
             android:exported="false" />
         <activity
             android:name=".presentation.ui.activity.login.LoginActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:noHistory="true"/>
         <activity
             android:name=".presentation.ui.activity.splash.SplashActivity"
             android:exported="true">
